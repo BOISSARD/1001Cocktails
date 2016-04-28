@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="Projet.BoutonConnecte"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Projet"
+             mc:Ignorable="d" 
+             d:DesignHeight="70" d:DesignWidth="300">
+    <Grid VerticalAlignment="Bottom">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <Button Grid.Column="0" Content="Ajouter" Margin="10" Padding="5" FontSize="14" Click="Ajout" Name="ajout"/>
+        <Button Grid.Column="1" Content="Modifier" Margin="10" Padding="5" FontSize="14" Click="Modif" Name="modif"/>
+        <Button Grid.Column="2" Content="Supprimer" Margin="10" Padding="5" FontSize="14" Click="Suppr" Name="suppr"/>
+        <Button Grid.Column="3" Content="Commentaire" Margin="10" Padding="5" FontSize="14" Click="Comment" Name="comment"/>
+    </Grid>
+</UserControl>
