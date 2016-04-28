@@ -30,7 +30,7 @@ namespace Projet
             User user = new User(login.Text, password.Password);
             if (true)
             {
-                new MainWindow().Show();
+                new MainWindow(true).Show();
                 this.Close();
             }
             /*else
@@ -41,9 +41,8 @@ namespace Projet
 
         private void Visit(object sender, RoutedEventArgs e)
         {
-            MainWindow main = new MainWindow();
+            MainWindow main = new MainWindow(false);
             main.Show();
-            //(Application.Current.MainWindow as MainWindow) //BoutonConnecte.Visibility = Visibility.Hidden;
             this.Close();
 
         }

@@ -24,5 +24,20 @@ namespace Projet
         {
             InitializeComponent();
         }
+
+        public MainWindow(bool type)
+        {
+            InitializeComponent();
+            if (type)
+            {
+                connecte.Visibility = Visibility.Visible;
+                visiteur.Visibility = Visibility.Hidden;
+            }
+            else
+            {
+                connecte.Visibility = Visibility.Hidden;
+                visiteur.Visibility = Visibility.Visible;
+            }
+        }
     }
 }

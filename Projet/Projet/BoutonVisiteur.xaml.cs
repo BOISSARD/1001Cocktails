@@ -33,6 +33,7 @@ namespace Projet
         private void Connect(object sender, RoutedEventArgs e)
         {
             new Connexion().Show();
+            Window.GetWindow(this).Close();
         }
     }
 }
