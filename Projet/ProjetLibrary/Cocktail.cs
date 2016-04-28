@@ -12,6 +12,7 @@ namespace ProjetLibrary
         private string nom { set; get;}
         private string recette { set; get; }
         private List<Ingredient> ingredients;
+        private List<Commentaire> commentaires;
 
         public Cocktail(string nom)
         {
@@ -30,11 +31,19 @@ namespace ProjetLibrary
             this.ingredients = ingredients;
         }
 
-        public Cocktail(string nom, string recette , List<Ingredient> ingredients)
+        public Cocktail(string nom, string recette, List<Ingredient> ingredients)
         {
             this.nom = nom;
             this.recette = recette;
             this.ingredients = ingredients;
+        }
+
+        public Cocktail(string nom, string recette , List<Ingredient> ingredients, List<Commentaire> commentaires)
+        {
+            this.nom = nom;
+            this.recette = recette;
+            this.ingredients = ingredients;
+            this.commentaires = commentaires;
         }
 
         public override int GetHashCode()

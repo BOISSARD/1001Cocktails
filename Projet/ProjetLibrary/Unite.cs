@@ -21,19 +21,4 @@ namespace ProjetLibrary
         trait,
         zeste
     }
-
-    /*static class UniteMethods
-    {
-        public override string ToString()
-        {
-            if (this Unite != Unite.unite )
-            {
-
-            }
-            else
-            {
-                return "";
-            }
-        }
-    }*/
 }
