@@ -41,21 +41,8 @@
             <TextBlock Text="Avis :" FontSize="16" TextDecorations="Underline" FontWeight="Bold" Padding="15,5,5,5" Grid.Row="3" VerticalAlignment="Center"/>
             <ListView MinHeight="100" Margin="10,0,10,10" Grid.Row="4">
             </ListView>
-            <Grid VerticalAlignment="Bottom" Grid.Row="4" Height="51" Grid.RowSpan="2" Name="boutons">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                    <ColumnDefinition/>
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1*"/>
-                </Grid.RowDefinitions>
-                <Button Grid.Column="0" Content="Ajouter" Margin="10" Padding="5" FontSize="14" Click="Ajout" Name="ajout"/>
-                <Button Grid.Column="1" Content="Modifier" Margin="10" Padding="5" FontSize="14" Click="Modif" Name="modif"/>
-                <Button Grid.Column="2" Content="Supprimer" Margin="10" Padding="5" FontSize="14" Click="Suppr" Name="suppr"/>
-                <Button Grid.Column="3" Content="Commentaire" Margin="10" Padding="5" FontSize="14" Click="Comment" Name="comment"/>
-            </Grid>
+            <local:BoutonConnecte  Grid.Row="5" Visibility="Visible"/>
+            <local:BoutonVisiteur  Grid.Row="5" Visibility="Hidden"/>
         </Grid>
     </DockPanel>
 </Window>

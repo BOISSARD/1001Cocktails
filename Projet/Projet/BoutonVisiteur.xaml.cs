@@ -24,5 +24,15 @@ namespace Projet
         {
             InitializeComponent();
         }
+
+        private void Comment(object sender, RoutedEventArgs e)
+        {
+            new Commentaire().Show();
+        }
+
+        private void Connect(object sender, RoutedEventArgs e)
+        {
+            new Connexion().Show();
+        }
     }
 }

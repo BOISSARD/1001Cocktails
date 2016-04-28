@@ -53,12 +53,26 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BoutonConnecte.xaml.cs">
+      <DependentUpon>BoutonConnecte.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="BoutonVisiteur.xaml.cs">
+      <DependentUpon>BoutonVisiteur.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Ingredient.xaml.cs">
       <DependentUpon>Ingredient.xaml</DependentUpon>
     </Compile>
     <Compile Include="Supprimer.xaml.cs">
       <DependentUpon>Supprimer.xaml</DependentUpon>
     </Compile>
+    <Page Include="BoutonConnecte.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="BoutonVisiteur.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Ingredient.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -103,19 +117,12 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="MainWindowBis.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Page Include="Supprimer.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MainWindowBis.xaml.cs">
-      <DependentUpon>MainWindowBis.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

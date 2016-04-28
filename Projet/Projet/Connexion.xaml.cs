@@ -41,8 +41,11 @@ namespace Projet
 
         private void Visit(object sender, RoutedEventArgs e)
         {
-            new MainWindowBis().Show();
+            MainWindow main = new MainWindow();
+            main.Show();
+            //(Application.Current.MainWindow as MainWindow) //BoutonConnecte.Visibility = Visibility.Hidden;
             this.Close();
+
         }
 
         private void CreatCompte(object sender, RoutedEventArgs e)

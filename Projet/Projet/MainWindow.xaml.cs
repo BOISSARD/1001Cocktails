@@ -24,38 +24,5 @@ namespace Projet
         {
             InitializeComponent();
         }
-
-        private void Ajout(object sender, RoutedEventArgs e)
-        {
-            new NewCocktail().Show();
-        }
-
-        private void Modif(object sender, RoutedEventArgs e)
-        {
-            if (List.SelectedItem != null) {
-                new NewCocktail().Show();
-            }
-            else
-            {
-                MessageBox.Show("Il faut sélectionner un cocktail à modifier !");
-            }
-        }
-
-        private void Suppr(object sender, RoutedEventArgs e)
-        {
-            if (List.SelectedItem != null)
-            {
-                new Supprimer().Show();
-            }
-            else
-            {
-                MessageBox.Show("Il faut sélectionner un cocktail à supprimer !");
-            }
-        }
-
-        private void Comment(object sender, RoutedEventArgs e)
-        {
-            new Commentaire().Show();
-        }
     }
 }
