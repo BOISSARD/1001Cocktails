@@ -22,7 +22,7 @@ namespace Projet
     {
         static string nom;
         static string recette;
-        static int nbIng;
+        static int nbIng, exNbIng = 1;
         /*static string nomIngredient = "";
         static int quantiteIngredient = 0;
         static Unite uniteIngredient = Unite.unite;*/
@@ -37,24 +37,48 @@ namespace Projet
             this.Close();
         }
 
-        private void Ingredient(object sender, RoutedEventArgs e)
-        {
-            nbIng = Convert.ToInt32(nbIngredientsC.Text);
-            MessageBox.Show(nbIng.ToString());
-            if (nbIng < 1) return;
-            for (int i = 1; i < nbIng; i++)
-            {
-                //main.RowDefinitions.Insert(4+nbIng,new RowDefinition());
-                //this.main.
-            }
-        }
-
         private void Ajout(object sender, RoutedEventArgs e)
         {
             nom = nomC.Text;
             recette = recetteC.Text;
             Cocktail c = new Cocktail(nom, recette);
             this.Close();
+        }
+
+        private void nbIngredientsC_DropDownClosed_1(object sender, EventArgs e)
+        {
+            nbIng = nbIngredientsC.SelectedIndex + 1;
+
+            if (nbIng == exNbIng) return;
+            else if (nbIng < exNbIng)
+            {
+                for (int i = exNbIng - 1; i >= nbIng; i--)
+                {
+                    ListIng.Items.RemoveAt(i);
+                    /*if (i == 2 || i == 3)
+                    {
+                        this.Height = this.ActualHeight - 100;
+                        ListIng.Height = ListIng.ActualHeight - 80;
+                    }*/
+                }
+                exNbIng -= nbIng;
+            }
+            else
+            {
+                for (int i = 2; i <= nbIng; i++)
+                {
+                    Ingredient ing = new Ingredient() { Name = "ingredient" + nbIng };
+                    ListIng.Items.Add(ing);
+                    if (i == 2 || i == 3)
+                    {
+                        this.Height = this.ActualHeight + 100;
+                        ListIng.Height = ListIng.ActualHeight + 80;
+                    }
+                }
+                exNbIng += nbIng-exNbIng;
+            }
+            MessageBox.Show(exNbIng.ToString());
+
         }
     }
 }
