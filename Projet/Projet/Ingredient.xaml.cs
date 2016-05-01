@@ -22,30 +22,6 @@ namespace Projet
     /// </summary>
     public partial class Ingredient : UserControl
     {
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void RaisePropertyChanged(string propertyName)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-            }
-        }
-
-        private IEnumerable<Unite> ddlItemSource;
-        public IEnumerable<Unite> DDLItemSource
-        {
-            get
-            {
-                return Enum.GetValues(typeof(Unite)).Cast<Unite>();
-            }
-            set
-            {
-                ddlItemSource = value;
-                RaisePropertyChanged("DDLItemSource");
-            }
-        }
-
         public Ingredient()
         {
             InitializeComponent();

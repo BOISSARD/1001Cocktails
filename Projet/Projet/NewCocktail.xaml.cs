@@ -30,6 +30,7 @@ namespace Projet
         public NewCocktail()
         {
             InitializeComponent();
+            nbIngredientsC.SelectedIndex = 0;
         }
 
         private void Annuler(object sender, RoutedEventArgs e)
@@ -48,6 +49,7 @@ namespace Projet
         private void nbIngredientsC_DropDownClosed_1(object sender, EventArgs e)
         {
             nbIng = nbIngredientsC.SelectedIndex + 1;
+            MessageBox.Show(nbIng.ToString());
 
             if (nbIng == exNbIng) return;
             else if (nbIng < exNbIng)
@@ -55,30 +57,29 @@ namespace Projet
                 for (int i = exNbIng - 1; i >= nbIng; i--)
                 {
                     ListIng.Items.RemoveAt(i);
-                    /*if (i == 2 || i == 3)
+                    if (i == 1 || i == 2)
                     {
-                        this.Height = this.ActualHeight - 100;
-                        ListIng.Height = ListIng.ActualHeight - 80;
-                    }*/
+                        grid.RowDefinitions[4].Height = new GridLength(grid.RowDefinitions[4].ActualHeight - 88, GridUnitType.Star);
+                        this.Height = this.ActualHeight - 82;
+                    }
                 }
-                exNbIng -= nbIng;
+                exNbIng -= exNbIng - nbIng;
             }
             else
             {
-                for (int i = 2; i <= nbIng; i++)
+                for (int i = exNbIng+1; i <= nbIng; i++)
                 {
                     Ingredient ing = new Ingredient() { Name = "ingredient" + nbIng };
                     ListIng.Items.Add(ing);
                     if (i == 2 || i == 3)
                     {
-                        this.Height = this.ActualHeight + 100;
-                        ListIng.Height = ListIng.ActualHeight + 80;
+                        grid.RowDefinitions[4].Height = new GridLength(grid.RowDefinitions[4].ActualHeight + 84, GridUnitType.Star);
+                        this.Height = this.ActualHeight + 82;
                     }
                 }
                 exNbIng += nbIng-exNbIng;
             }
             MessageBox.Show(exNbIng.ToString());
-
         }
     }
 }

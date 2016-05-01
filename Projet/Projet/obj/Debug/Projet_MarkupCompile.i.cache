@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\travail\cocktails\cocktails\Projet\Projet\obj\Debug\
+E:\CSharp\Cocktails\cocktails\Projet\Projet\obj\Debug\
 Projet
 none
 false
 DEBUG;TRACE
-C:\travail\cocktails\cocktails\Projet\Projet\App.xaml
+E:\CSharp\Cocktails\cocktails\Projet\Projet\App.xaml
 9946635647
 
-17-957165873
-13-227418086
+172059522118
+131232858763
 BoutonConnecte.xaml;BoutonVisiteur.xaml;Ingredient.xaml;NewCocktail.xaml;Commentaire.xaml;Connexion.xaml;CreaCompte.xaml;MainWindow.xaml;Supprimer.xaml;
 
 True
