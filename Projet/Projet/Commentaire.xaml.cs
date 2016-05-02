@@ -28,5 +28,12 @@ namespace Projet
         {
             this.Close();
         }
+
+        private void ChoixValeurNote(object sender, RoutedEventArgs e)
+        {
+            short laNote = (short)note.Value;
+            float laVraieNote = (float)laNote / 2;
+            valNote.Text = laVraieNote.ToString("0.0");
+        }
     }
 }

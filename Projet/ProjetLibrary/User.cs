@@ -8,9 +8,9 @@ namespace ProjetLibrary
 {
     public class User
     {
-        private string pseudo { set; get; }
-        private string mail { set; get; }
-        private string password { set; get; }
+        public string pseudo { set; get; }
+        public string mail { set; get; }
+        public string password { set; get; }
 
         public User(string pseudo, string password)
         {
@@ -32,10 +32,15 @@ namespace ProjetLibrary
 
         public override bool Equals(object obj)
         {
-            if (obj == this) return true;
-            if (obj == null || obj.GetType() != this.GetType()) return false;
-            User c = (User)obj;
-            return this.pseudo.Equals(c.pseudo);
+            if (object.ReferenceEquals(obj, null)) return false;
+            if (object.ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return this.Equals(obj as User);
+        }
+
+        public bool Equals(User user)
+        {
+            return this.pseudo.Equals(user.pseudo);
         }
     }
 }

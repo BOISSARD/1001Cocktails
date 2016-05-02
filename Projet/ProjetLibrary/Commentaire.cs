@@ -8,14 +8,14 @@ namespace ProjetLibrary
 {
     public class Commentaire
     {
-        private string titre { set; get; }
-        private string texte { set; get; }
-        private User utilisateur { set; get; }
-        private short note
+        public string titre { set; get; }
+        public string texte { set; get; }
+        public User utilisateur { set; get; }
+        public short note
         {
             set
             {
-                if (value > 0 && value < 10)
+                if (value >= 0 && value <= 10)
                 {
                     note = value;
                 }

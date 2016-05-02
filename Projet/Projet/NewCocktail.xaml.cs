@@ -40,10 +40,10 @@ namespace Projet
 
         private void Ajout(object sender, RoutedEventArgs e)
         {
-            nom = nomC.Text;
+           /* nom = nomC.Text;
             recette = recetteC.Text;
             Cocktail c = new Cocktail(nom, recette);
-            this.Close();
+            this.Close();*/
         }
 
         private void nbIngredientsC_DropDownClosed_1(object sender, EventArgs e)

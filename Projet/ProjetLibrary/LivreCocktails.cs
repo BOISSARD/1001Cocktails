@@ -8,7 +8,7 @@ namespace ProjetLibrary
 {
     public class LivreCocktails
     {
-        private Dictionary<string, Cocktail> livre;
+        public Dictionary<string, Cocktail> livre;
 
         public LivreCocktails()
         {
@@ -18,6 +18,19 @@ namespace ProjetLibrary
         public LivreCocktails(Dictionary<string, Cocktail> livre)
         {
             this.livre = livre;
+        }
+
+        public void ajouterCocktail(Cocktail cocktail)
+        {
+            livre.Add(cocktail.nom.ToLower(), cocktail);
+        }
+
+        public void ajouterCocktails(List<Cocktail> cocktails)
+        {
+            foreach (Cocktail c in cocktails)
+            {
+                livre.Add(c.nom.ToLower(), c);
+            }
         }
     }
 }

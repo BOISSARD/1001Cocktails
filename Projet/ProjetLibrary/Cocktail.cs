@@ -7,27 +7,17 @@ using ProjetLibrary;
 
 namespace ProjetLibrary
 {
-    public class Cocktail 
+    public class Cocktail
     {
-        private string nom { set; get;}
-        private string recette { set; get; }
-        private List<Ingredient> ingredients;
-        private List<Commentaire> commentaires;
-
-        public Cocktail(string nom)
-        {
-            this.nom = nom;
-        }
-
-        public Cocktail(string nom, string recette)
-        {
-            this.nom = nom;
-            this.recette = recette;
-        }
+        public string nom { set; get;}
+        public string recette { set; get; }
+        public List<Ingredient> ingredients;
+        public List<Commentaire> commentaires;
 
         public Cocktail(string nom, List<Ingredient> ingredients)
         {
             this.nom = nom;
+            this.recette = "Pas de recette !";
             this.ingredients = ingredients;
         }
 
@@ -46,19 +36,6 @@ namespace ProjetLibrary
             this.commentaires = commentaires;
         }
 
-        public override int GetHashCode()
-        {
-            return nom.GetHashCode();
-        }
-
-        public override bool Equals(object obj)
-        {
-            if (obj == this) return true;
-            if (obj == null || obj.GetType() != this.GetType()) return false;
-            Cocktail c = (Cocktail)obj;
-            return this.nom.Equals(c.nom);
-        }
-
         public void ajouterIngredients(Ingredient ingredient)
         {
             if (ingredients.Count == 0)
@@ -74,6 +51,24 @@ namespace ProjetLibrary
             {
                 ingredients.Remove(ingredient);
             }
+        }
+
+        public override int GetHashCode()
+        {
+            return nom.GetHashCode();
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (object.ReferenceEquals(obj, null)) return false;
+            if (object.ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return this.Equals(obj as Cocktail);
+        }
+
+        public bool Equals(Cocktail cocktail)
+        {
+            return this.nom.Equals(cocktail.nom);
         }
 
     }
