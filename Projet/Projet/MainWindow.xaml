@@ -5,7 +5,7 @@
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:Projet"
         xmlns:import="clr-namespace:ProjetLibrary;assembly=ProjetLibrary"
-        Title="MainWindow" Height="550" Width="820" ResizeMode="NoResize">
+        Title="MainWindow" Height="550" Width="820" ResizeMode="NoResize" Background="#94BCDD">
 
     <DockPanel>
         <ListView DockPanel.Dock="Left" Margin="20,20,10,20" HorizontalAlignment="Left" MinWidth="100" Width="230" Name="List">

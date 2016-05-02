@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projet"
         mc:Ignorable="d"
-       Title="Créer un Compte" Height="300" Width="350" ResizeMode="NoResize">
+       Title="Créer un Compte" Height="300" Width="350" ResizeMode="NoResize" Background="#94BCDD">
 
     <Grid>
         <Grid.RowDefinitions>

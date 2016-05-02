@@ -1,0 +1,6 @@
+E:\CSharp\Cocktails\cocktails\Projet\ProjetLibrary\bin\Debug\Cocktail.cs
+E:\CSharp\Cocktails\cocktails\Projet\ProjetLibrary\bin\Debug\ProjetLibrary.dll
+E:\CSharp\Cocktails\cocktails\Projet\ProjetLibrary\bin\Debug\ProjetLibrary.pdb
+E:\CSharp\Cocktails\cocktails\Projet\ProjetLibrary\obj\Debug\ProjetLibrary.csprojResolveAssemblyReference.cache
+E:\CSharp\Cocktails\cocktails\Projet\ProjetLibrary\obj\Debug\ProjetLibrary.dll
+E:\CSharp\Cocktails\cocktails\Projet\ProjetLibrary\obj\Debug\ProjetLibrary.pdb
