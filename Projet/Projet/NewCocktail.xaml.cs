@@ -58,8 +58,8 @@ namespace Projet
                     ListIng.Items.RemoveAt(i);
                     if (i == 1 || i == 2)
                     {
-                        grid.RowDefinitions[4].Height = new GridLength(grid.RowDefinitions[4].ActualHeight - 88, GridUnitType.Star);
-                        this.Height = this.ActualHeight - 82;
+                        grid.RowDefinitions[4].Height = new GridLength(grid.RowDefinitions[4].ActualHeight - 90, GridUnitType.Star);
+                        this.Height = this.ActualHeight - 84;
                     }
                 }
                 exNbIng -= exNbIng - nbIng;
@@ -72,8 +72,8 @@ namespace Projet
                     ListIng.Items.Add(ing);
                     if (i == 2 || i == 3)
                     {
-                        grid.RowDefinitions[4].Height = new GridLength(grid.RowDefinitions[4].ActualHeight + 84, GridUnitType.Star);
-                        this.Height = this.ActualHeight + 82;
+                        grid.RowDefinitions[4].Height = new GridLength(grid.RowDefinitions[4].ActualHeight + 85, GridUnitType.Star);
+                        this.Height = this.ActualHeight + 84;
                     }
                 }
                 exNbIng += nbIng-exNbIng;
