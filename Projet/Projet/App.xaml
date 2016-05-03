@@ -4,42 +4,75 @@
              StartupUri="Connexion.xaml">
     <Application.Resources>
 
-        <Style TargetType="Button">
-            <Setter Property="Background" Value="#4A7296"/>
-            <Setter Property="Foreground" Value="#1C3043"/>
-            <Setter Property="FontWeight" Value="Thin"/>
+        <SolidColorBrush x:Key="color1" Color="#FEFEFE"/>
+        <!-- #2C4053    #E15B64-->
+        <SolidColorBrush x:Key="color2" Color="#0190FE"/>
+        <!-- #4A7296    #F27F62-->
+        <SolidColorBrush x:Key="color3" Color="#FDFDFD"/> 
+        <!-- #94BCDD    #FBB36B -->
+        <SolidColorBrush x:Key="color4" Color="#C4D7ED"/>
+        <!-- #F1D6BA    #ABBC85-->
+        <SolidColorBrush x:Key="color5" Color="#849B89"/>
+        <!-- #FFF4D4 -->
+
+        <Style TargetType="Window" x:Key="fenetre">
+            <Setter Property="Background" Value="{StaticResource color3}"/>
+            <Setter Property="Foreground" Value="{StaticResource color2}"/>
+        </Style>
+
+        <Style TargetType="UserControl" x:Key="usercontrol">
+            <Setter Property="Background" Value="{StaticResource color3}"/>
+            <Setter Property="Foreground" Value="{StaticResource color2}"/>
+        </Style>
+
+        <Style TargetType="TextBlock">
             <Setter Property="FontSize" Value="16"/>
-            <Setter Property="VerticalContentAlignment" Value="Center"/>
-            <Setter Property="BorderThickness" Value="1"/>
-            <Setter Property="BorderBrush" Value="#1C3043"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="TextDecorations" Value="Underline"/>
+            <!--<Setter Property="Foreground" Value="{StaticResource color2}"/>-->
         </Style>
 
         <Style TargetType="TextBox">
-            <Setter Property="Background" Value="#DCEAFF"/>
-            <Setter Property="BorderBrush" Value="#1C3043"/>
+            <Setter Property="Background" Value="{StaticResource color4}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource color1}"/>
+            <Setter Property="TextDecorations" Value="None"/>
         </Style>
-
+        
         <Style TargetType="PasswordBox">
-            <Setter Property="Background" Value="#DCEAFF"/>
-            <Setter Property="BorderBrush" Value="#1C3043"/>
+            <Setter Property="Background" Value="{StaticResource color4}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource color1}"/>
         </Style>
 
-        <Style TargetType="Window">
-            <Setter Property="Background" Value="#94BCDD"/>
+        <Style TargetType="Button">
+            <Setter Property="Background" Value="{StaticResource color2}"/>
+            <Setter Property="Foreground" Value="{StaticResource color1}"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="{StaticResource color1}"/>
+            <Setter Property="ContentTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <TextBlock TextDecorations="None" Text="{TemplateBinding Content}"/>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
 
         <Style TargetType="ListView">
-            <Setter Property="Background" Value="#DCEAFF"/>
-            <Setter Property="BorderBrush" Value="#1C3043"/>
+            <Setter Property="Background" Value="{StaticResource color4}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource color1}"/>
         </Style>
 
         <Style TargetType="ListBox">
-            <Setter Property="Background" Value="#DCEAFF"/>
-            <Setter Property="BorderBrush" Value="#1C3043"/>
+            <Setter Property="Background" Value="{StaticResource color3}"/>
+            <Setter Property="BorderBrush" Value="{StaticResource color1}"/>
         </Style>
 
         <Style TargetType="ComboBox">
             <Setter Property="Background" Value="#DCEAFF"/>
+            <Setter Property="Foreground" Value="{StaticResource color2}"/>
             <!--<Setter Property="BorderBrush" Value="#1C3043"/>-->
         </Style>
 

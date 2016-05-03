@@ -49,7 +49,6 @@ namespace Projet
         private void nbIngredientsC_DropDownClosed_1(object sender, EventArgs e)
         {
             nbIng = nbIngredientsC.SelectedIndex + 1;
-            MessageBox.Show(nbIng.ToString());
 
             if (nbIng == exNbIng) return;
             else if (nbIng < exNbIng)
@@ -79,7 +78,6 @@ namespace Projet
                 }
                 exNbIng += nbIng-exNbIng;
             }
-            MessageBox.Show(exNbIng.ToString());
         }
     }
 }

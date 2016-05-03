@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projet"
         mc:Ignorable="d" 
-        Title="Connexion" Height="300" Width="300" MaxWidth="300" MaxHeight="300" MinWidth="300" MinHeight="300" ResizeMode="NoResize" Background="#94BCDD">
+        Title="Connexion" Height="300" Width="300" MaxWidth="300" MaxHeight="300" MinWidth="300" MinHeight="300" ResizeMode="NoResize" Style="{StaticResource fenetre}">
     
     <StackPanel>
         <TextBox Height="32" Width="150" Margin="0,20,0,2" VerticalContentAlignment="Center" Name="login"/>

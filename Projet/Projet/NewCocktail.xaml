@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projet"
         mc:Ignorable="d" 
-        Title="NewCocktail" Height="500" Width="400" ResizeMode="NoResize" Background="#94BCDD">
+        Title="NewCocktail" Height="500" Width="400" ResizeMode="NoResize" Style="{StaticResource fenetre}">
 
     <!--<Window.Resources>
         <ControlTemplate x:Key="CustomToggleButton" TargetType="ToggleButton">

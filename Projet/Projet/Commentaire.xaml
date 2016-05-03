@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projet"
         mc:Ignorable="d"
-        Title="Commentaire" Height="400" Width="320" ResizeMode="NoResize" Background="#94BCDD">
+        Title="Commentaire" Height="400" Width="320" ResizeMode="NoResize" Style="{StaticResource fenetre}">
     
     <Grid>
         <Grid.ColumnDefinitions>
