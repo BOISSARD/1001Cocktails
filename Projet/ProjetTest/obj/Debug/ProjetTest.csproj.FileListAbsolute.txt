@@ -1,0 +1,9 @@
+C:\Travail\Cocktail\cocktails\Projet\ProjetTest\bin\Debug\Cocktail.cs
+C:\Travail\Cocktail\cocktails\Projet\ProjetTest\bin\Debug\ProjetTest.exe.config
+C:\Travail\Cocktail\cocktails\Projet\ProjetTest\bin\Debug\ProjetTest.exe
+C:\Travail\Cocktail\cocktails\Projet\ProjetTest\bin\Debug\ProjetTest.pdb
+C:\Travail\Cocktail\cocktails\Projet\ProjetTest\bin\Debug\ProjetLibrary.dll
+C:\Travail\Cocktail\cocktails\Projet\ProjetTest\bin\Debug\ProjetLibrary.pdb
+C:\Travail\Cocktail\cocktails\Projet\ProjetTest\obj\Debug\ProjetTest.csprojResolveAssemblyReference.cache
+C:\Travail\Cocktail\cocktails\Projet\ProjetTest\obj\Debug\ProjetTest.exe
+C:\Travail\Cocktail\cocktails\Projet\ProjetTest\obj\Debug\ProjetTest.pdb
