@@ -19,6 +19,7 @@ namespace ProjetLibrary
             this.nom = nom;
             this.recette = "Pas de recette !";
             this.ingredients = ingredients;
+            this.commentaires = new List<Commentaire>();
         }
 
         public Cocktail(string nom, string recette, List<Ingredient> ingredients)
@@ -26,6 +27,7 @@ namespace ProjetLibrary
             this.nom = nom;
             this.recette = recette;
             this.ingredients = ingredients;
+            this.commentaires = new List<Commentaire>();
         }
 
         public Cocktail(string nom, string recette , List<Ingredient> ingredients, List<Commentaire> commentaires)
@@ -74,7 +76,16 @@ namespace ProjetLibrary
         public override string ToString()
         {
             string description;
-            description = nom +"\n"+ ingredients +"\n"+ recette;
+            description = nom +"\n";
+            foreach (Ingredient ing in ingredients)
+            {
+                description += ing.ToString() + "\n";
+            }
+            description += recette + "\n";
+            foreach (Commentaire ing in commentaires)
+            {
+                description += ing.ToString() + "\n";
+            }
             return description;
         }
     }

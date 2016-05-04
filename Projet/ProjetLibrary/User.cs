@@ -42,5 +42,10 @@ namespace ProjetLibrary
         {
             return this.pseudo.Equals(user.pseudo);
         }
+
+        public override string ToString()
+        {
+            return pseudo + " " + mail + " " + password;
+        }
     }
 }
