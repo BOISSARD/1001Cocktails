@@ -71,5 +71,11 @@ namespace ProjetLibrary
             return this.nom.Equals(cocktail.nom);
         }
 
+        public override string ToString()
+        {
+            string description;
+            description = nom +"\n"+ ingredients +"\n"+ recette;
+            return description;
+        }
     }
 }

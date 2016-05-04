@@ -20,12 +20,12 @@ namespace Projet
     /// </summary>
     public partial class NewCocktail : Window
     {
-        static string nom;
-        static string recette;
+    //    static string nom;
+    //    static string recette;
         static int nbIng, exNbIng = 1;
-        /*static string nomIngredient = "";
-        static int quantiteIngredient = 0;
-        static Unite uniteIngredient = Unite.unite;*/
+    //    /*static string nomIngredient = "";
+    //    static int quantiteIngredient = 0;
+    //    static Unite uniteIngredient = Unite.unite;*/
 
         public NewCocktail()
         {

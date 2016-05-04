@@ -32,5 +32,15 @@ namespace ProjetLibrary
                 livre.Add(c.nom.ToLower(), c);
             }
         }
+
+        public override string ToString()
+        {
+            string description = "";
+            foreach (Cocktail c in livre.Values)
+            {
+                description += c.ToString() + "\n";
+            }
+            return description;
+        }
     }
 }

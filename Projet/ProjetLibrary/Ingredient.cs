@@ -18,5 +18,10 @@ namespace ProjetLibrary
             this.quantite = quantite;
             this.unite = unite;
         }
+
+        public override string ToString()
+        {
+            return nom + " : " + quantite.ToString() + " " + unite.ToString();
+        }
     }
 }

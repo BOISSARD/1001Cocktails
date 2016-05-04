@@ -11,20 +11,21 @@ namespace ProjetLibrary
         public string titre { set; get; }
         public string texte { set; get; }
         public User utilisateur { set; get; }
-        public short note
-        {
+        public short note { set; get; }
+        /*{
             set
             {
                 if (value >= 0 && value <= 10)
                 {
                     note = value;
                 }
+                else return;
             }
             get
             {
                 return note;
             }
-        }
+        }*/
 
         public Commentaire(string titre, User user, short note)
         {
@@ -39,6 +40,11 @@ namespace ProjetLibrary
             this.texte = texte;
             this.utilisateur = user;
             this.note = note;
+        }
+
+        public override string ToString()
+        {
+            return titre + " " + texte + " " + utilisateur.pseudo + " " + note;
         }
     }
 }

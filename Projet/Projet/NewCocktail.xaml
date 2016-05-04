@@ -42,8 +42,6 @@
         </ComboBox>
         <ListBox Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="3" Name="ListIng">
             <local:Ingredient x:Name="ingredient1" Height="84" Width="350"/>
-            <!--local:Ingredient x:Name="ingredient2" Height="81" Width="350"/>
-            <local:Ingredient x:Name="ingredient3" Height="81" Width="350"/-->
         </ListBox>
         <TextBlock Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="5" Text="Recette :" VerticalAlignment="Center" Margin="15,13,0,13"/>
         <TextBox Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="6" Margin="10,0" VerticalContentAlignment="Center" Name="recetteC"/>
