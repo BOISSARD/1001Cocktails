@@ -103,3 +103,5 @@ C:\Travail\Cocktail\cocktails\Projet\Projet\obj\Debug\Supprimer.baml
 C:\Travail\Cocktail\cocktails\Projet\Projet\obj\Debug\Projet.g.resources
 C:\Travail\Cocktail\cocktails\Projet\Projet\obj\Debug\Projet.Properties.Resources.resources
 C:\Travail\Cocktail\cocktails\Projet\Projet\obj\Debug\Projet.csproj.GenerateResource.Cache
+E:\CSharp\Cocktails\cocktails\Projet\Projet\obj\Debug\Description.g.cs
+E:\CSharp\Cocktails\cocktails\Projet\Projet\obj\Debug\Description.baml

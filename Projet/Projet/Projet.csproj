@@ -59,6 +59,9 @@
     <Compile Include="BoutonVisiteur.xaml.cs">
       <DependentUpon>BoutonVisiteur.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Description.xaml.cs">
+      <DependentUpon>Description.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Ingredient.xaml.cs">
       <DependentUpon>Ingredient.xaml</DependentUpon>
     </Compile>
@@ -70,6 +73,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="BoutonVisiteur.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Description.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
