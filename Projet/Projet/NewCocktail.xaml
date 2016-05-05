@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projet"
         mc:Ignorable="d" 
-        Title="NewCocktail" Height="510" Width="400" ResizeMode="NoResize" Style="{StaticResource fenetre}">
+        Title="NewCocktail" Height="510" Width="400" Style="{StaticResource fenetre}">
 
     <Grid Name="grid">
         <Grid.ColumnDefinitions>
