@@ -11,24 +11,29 @@ namespace ProjetTest
     {
         static void Main(string[] args)
         {
+            // Création du livre
             LivreCocktails livre = new LivreCocktails();
-
-            List<Ingredient> ing = new List<Ingredient>();
-            ing.Add(new Ingredient("Coca",50,Unite.cl));
-            ing.Add(new Ingredient("Whisky",10,Unite.cl));
-            ing.Add(new Ingredient("Sucre",2,Unite.cuillere));
-            livre.ajouterCocktail(new Cocktail("blalbla", ing));
-
             Ingredient i1 = new Ingredient("Vodka", 60, Unite.cl);
-
-            List<Ingredient> ingredients = new List<Ingredient>();
             //Console.WriteLine(i1.ToString());
+
+            // Création d'une première liste d'ingrédients
+            List<Ingredient> ingredients = new List<Ingredient>();
             ingredients.Add(i1);
             ingredients.Add(new Ingredient("Orange", 1, Unite.zeste));
-
+            // Création d'un premier cocktail avec la première liste
             Cocktail c1 = new Cocktail("Vodkorange", ingredients);
+            // Ajout du cocktail dans le livre
             livre.ajouterCocktail(c1);
 
+            // Création d'une deuxième liste d'ingrédients
+            List<Ingredient> ing = new List<Ingredient>();
+            ing.Add(new Ingredient("Coca", 50, Unite.cl));
+            ing.Add(new Ingredient("Whisky", 10, Unite.cl));
+            ing.Add(new Ingredient("Sucre", 2, Unite.cuillere));
+            // Ajout du deuxième cocktail contenant la deuxième liste dans le livre
+            livre.ajouterCocktail(new Cocktail("blalbla", ing));
+
+            // Affichage du livre
             Console.WriteLine(livre.ToString());
             Console.ReadLine();
         }

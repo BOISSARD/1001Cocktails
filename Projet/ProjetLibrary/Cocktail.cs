@@ -13,6 +13,7 @@ namespace ProjetLibrary
         public string recette { set; get; }
         public List<Ingredient> ingredients;
         public List<Commentaire> commentaires;
+        public string urlImage; 
 
         public Cocktail(string nom, List<Ingredient> ingredients)
         {
@@ -22,20 +23,22 @@ namespace ProjetLibrary
             this.commentaires = new List<Commentaire>();
         }
 
-        public Cocktail(string nom, string recette, List<Ingredient> ingredients)
+        public Cocktail(string nom, string recette, List<Ingredient> ingredients, string url)
         {
             this.nom = nom;
             this.recette = recette;
             this.ingredients = ingredients;
             this.commentaires = new List<Commentaire>();
+            this.urlImage = url;
         }
 
-        public Cocktail(string nom, string recette , List<Ingredient> ingredients, List<Commentaire> commentaires)
+        public Cocktail(string nom, string recette , List<Ingredient> ingredients, List<Commentaire> commentaires, string url)
         {
             this.nom = nom;
             this.recette = recette;
             this.ingredients = ingredients;
             this.commentaires = commentaires;
+            this.urlImage = url;
         }
 
         public void ajouterIngredients(Ingredient ingredient)
