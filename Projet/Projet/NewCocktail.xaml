@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Projet"
         mc:Ignorable="d" 
-        Title="NewCocktail" Height="510" Width="400" Style="{StaticResource fenetre}">
+        Title="NewCocktail" Height="520" Width="400" Style="{StaticResource fenetre}">
 
     <Grid Name="grid">
         <Grid.ColumnDefinitions>
@@ -19,9 +19,9 @@
             <RowDefinition Height="40*"/>
             <RowDefinition Height="44*"/>
             <RowDefinition Height="88*"/>
-            <RowDefinition Height="40*"/>
+            <RowDefinition Height="45*"/>
             <RowDefinition Height="120*"/>
-            <RowDefinition Height="40*"/>
+            <RowDefinition Height="55*"/>
         </Grid.RowDefinitions>
         <Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Width="100" Margin="48,5,49,0"/>
         <Button Grid.Column="0" Grid.Row="3" Margin="15,5" Content="Modifier image"/>
@@ -45,7 +45,7 @@
         </ListBox>
         <TextBlock Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="5" Text="Recette :" VerticalAlignment="Center" Margin="15,13,0,13"/>
         <TextBox Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="6" Margin="10,0" VerticalContentAlignment="Center" Name="recetteC"/>
-        <Button Grid.Column="0" Grid.Row="7" Content="Ajouter" Margin="15,5" Click="Ajout"/>
-        <Button Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="7" Content="Annuler" Margin="15,5" Click="Annuler"/>
+        <Button Grid.Column="0" Grid.Row="7" Content="Ajouter" Margin="10,10" Click="Ajout"/>
+        <Button Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="7" Content="Annuler" Margin="10,10" Click="Annuler"/>
     </Grid>
 </Window>
