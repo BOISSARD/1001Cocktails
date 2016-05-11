@@ -7,38 +7,38 @@ using ProjetLibrary;
 
 namespace ProjetLibrary
 {
-    public class Cocktail
+    public class Cocktail : IEquatable<Cocktail>
     {
-        public string nom { set; get;}
-        public string recette { set; get; }
-        public List<Ingredient> ingredients;
-        public List<Commentaire> commentaires;
-        public string urlImage; 
+        public string Nom { private set; get;}
+        public string Recette { private set; get; }
+        private List<Ingredient> ingredients = new List<Ingredient>();
+        private List<Commentaire> commentaires = new List<Commentaire>();
+        private string urlImage; 
 
         public Cocktail(string nom, List<Ingredient> ingredients)
         {
-            this.nom = nom;
-            this.recette = "Pas de recette !";
-            this.ingredients = ingredients;
-            this.commentaires = new List<Commentaire>();
+            this.Nom = nom;
+            this.Recette = "Pas de recette !";
+            //foreach (var ing in ingredients)
+            //{
+            //    this.ingredients.Add(new Ingredient(ing.nom, ing.quantite, ing.unite));
+            //}
+            ingredients.ForEach(i => this.ingredients.Add(new Ingredient(i.Nom, i.Quantite, i.Unite)));
         }
 
-        public Cocktail(string nom, string recette, List<Ingredient> ingredients, string url)
+        public Cocktail(string nom, string recette, List<Ingredient> ingredients) : this(nom, ingredients)
         {
-            this.nom = nom;
-            this.recette = recette;
-            this.ingredients = ingredients;
-            this.commentaires = new List<Commentaire>();
+            this.Recette = recette;
+        }
+
+        public Cocktail(string nom, string recette, List<Ingredient> ingredients, string url) : this(nom, recette, ingredients)
+        {
             this.urlImage = url;
         }
 
-        public Cocktail(string nom, string recette , List<Ingredient> ingredients, List<Commentaire> commentaires, string url)
+        public Cocktail(string nom, string recette , List<Ingredient> ingredients, List<Commentaire> commentaires, string url) : this(nom, recette, ingredients, url)
         {
-            this.nom = nom;
-            this.recette = recette;
-            this.ingredients = ingredients;
-            this.commentaires = commentaires;
-            this.urlImage = url;
+            commentaires.ForEach(i => this.commentaires.Add(new Commentaire(i.Titre, i.Texte, i.Utilisateur,i.Note)));
         }
 
         public void ajouterIngredients(Ingredient ingredient)
@@ -60,7 +60,7 @@ namespace ProjetLibrary
 
         public override int GetHashCode()
         {
-            return nom.GetHashCode();
+            return Nom.GetHashCode();
         }
 
         public override bool Equals(object obj)
@@ -73,23 +73,23 @@ namespace ProjetLibrary
 
         public bool Equals(Cocktail cocktail)
         {
-            return this.nom.Equals(cocktail.nom);
+            return this.Nom.Equals(cocktail.Nom);
         }
 
         public override string ToString()
         {
-            string description;
-            description = nom +"\n";
+            StringBuilder sb = new StringBuilder(Nom);
+            sb.Append("\n");
             foreach (Ingredient ing in ingredients)
             {
-                description += ing.ToString() + "\n";
+                sb.AppendFormat("{0}\n", ing.ToString());
             }
-            description += recette + "\n";
-            foreach (Commentaire ing in commentaires)
+            sb.AppendFormat("{0}\n", Recette);
+            foreach (Commentaire comm in commentaires)
             {
-                description += ing.ToString() + "\n";
+                sb.AppendFormat("{0}\n", comm.ToString());
             }
-            return description;
+            return sb.ToString();
         }
     }
 }

@@ -16,7 +16,7 @@
             <ListView.View>
                 <GridView ColumnHeaderContainerStyle="{StaticResource GridHeader}">
                     <!--<GridViewColumn Header="Image"/>-->
-                    <GridViewColumn Header="Nom" />
+                    <GridViewColumn Header="Nom" DisplayMemberBinding="{Binding nom}"/>
                 </GridView>
             </ListView.View>
             <ListView.ItemTemplate>

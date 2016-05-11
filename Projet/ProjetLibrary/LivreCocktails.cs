@@ -8,39 +8,34 @@ namespace ProjetLibrary
 {
     public class LivreCocktails
     {
-        public Dictionary<string, Cocktail> livre;
+        public List<Cocktail> livre = new List<Cocktail>();
 
-        public LivreCocktails()
+        public LivreCocktails(List<Cocktail> livre)
         {
-            this.livre = new Dictionary<string, Cocktail>();
-        }
-
-        public LivreCocktails(Dictionary<string, Cocktail> livre)
-        {
-            this.livre = livre;
+            livre.ForEach(i => this.livre.Add(new Cocktail(i.Nom,i.Recette,i.ajouterIngredients,i.commentaires,i.url)));
         }
 
         public void ajouterCocktail(Cocktail cocktail)
         {
-            livre.Add(cocktail.nom.ToLower(), cocktail);
+            livre.Add(cocktail);
         }
 
         public void ajouterCocktails(List<Cocktail> cocktails)
         {
             foreach (Cocktail c in cocktails)
             {
-                livre.Add(c.nom.ToLower(), c);
+                livre.Add(c);
             }
         }
 
         public override string ToString()
         {
-            string description = "";
-            foreach (Cocktail c in livre.Values)
+            StringBuilder sb = new StringBuilder("");
+            foreach (Cocktail c in livre)
             {
-                description += c.ToString() + "\n";
+                sb.AppendFormat("{0}\n", c.ToString());
             }
-            return description;
+            return sb.ToString();
         }
     }
 }

@@ -8,43 +8,40 @@ namespace ProjetLibrary
 {
     public class Commentaire
     {
-        public string titre { set; get; }
-        public string texte { set; get; }
-        public User utilisateur { set; get; }
-        public short note { set; get; }
-        /*{
-            set
+        public string Titre { private set; get; }
+        public string Texte { private set; get; }
+        private User Utilisateur { set; get; }
+        public short Note
+        {
+            private set
             {
                 if (value >= 0 && value <= 10)
                 {
-                    note = value;
+                    Note = value;
                 }
                 else return;
             }
             get
             {
-                return note;
+                return Note;
             }
-        }*/
+        }
 
         public Commentaire(string titre, User user, short note)
         {
-            this.titre = titre;
-            this.utilisateur = user;
-            this.note = note;
+            this.Titre = titre;
+            this.Utilisateur = user;
+            this.Note = note;
         }
 
-        public Commentaire(string titre, string texte, User user, short note)
+        public Commentaire(string titre, string texte, User user, short note) : this(titre, user, note)
         {
-            this.titre = titre;
-            this.texte = texte;
-            this.utilisateur = user;
-            this.note = note;
+            this.Texte = texte;
         }
 
         public override string ToString()
         {
-            return titre + " " + texte + " " + utilisateur.pseudo + " " + note;
+            return string.Format("{0} {1} {2} {4}", Titre, Texte, Utilisateur.Pseudo, Note);
         }
     }
 }

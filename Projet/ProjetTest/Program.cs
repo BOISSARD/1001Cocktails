@@ -33,6 +33,7 @@ namespace ProjetTest
             // Ajout du deuxième cocktail contenant la deuxième liste dans le livre
             livre.ajouterCocktail(new Cocktail("blalbla", ing));
 
+            ingredients.Clear();
             // Affichage du livre
             Console.WriteLine(livre.ToString());
             Console.ReadLine();

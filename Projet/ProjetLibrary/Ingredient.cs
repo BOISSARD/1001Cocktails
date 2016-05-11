@@ -8,20 +8,20 @@ namespace ProjetLibrary
 {
     public class Ingredient
     {
-        public string nom { set; get; }
-        public int quantite { set; get;}
-        public Unite unite { set; get; }
+        public string Nom { private set; get; }
+        public int Quantite { private set; get;}
+        public Unite Unite { private set; get; }
 
         public Ingredient(string nom, int quantite, Unite unite)
         {
-            this.nom = nom;
-            this.quantite = quantite;
-            this.unite = unite;
+            this.Nom = nom;
+            this.Quantite = quantite;
+            this.Unite = unite;
         }
 
         public override string ToString()
         {
-            return nom + " : " + quantite.ToString() + " " + unite.ToString();
+            return string.Format("{0} {1} {2}", Nom, Quantite.ToString(), Unite.ToString());
         }
     }
 }

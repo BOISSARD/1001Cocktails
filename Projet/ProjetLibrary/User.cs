@@ -6,28 +6,26 @@ using System.Threading.Tasks;
 
 namespace ProjetLibrary
 {
-    public class User
+    public class User : IEquatable<User>
     {
-        public string pseudo { set; get; }
-        public string mail { set; get; }
-        public string password { set; get; }
+        public string Pseudo { private set; get; }
+        public string Mail { private set; get; }
+        public string Password { private set; get; }
 
         public User(string pseudo, string password)
         {
-            this.pseudo = pseudo;
-            this.password = password;
+            this.Pseudo = pseudo;
+            this.Password = password;
         }
 
-        public User(string pseudo, string mail, string password)
+        public User(string pseudo, string mail, string password) : this(pseudo, password)
         {
-            this.pseudo = pseudo;
-            this.mail = mail;
-            this.password = password;
+            this.Mail = mail;
         }
 
         public override int GetHashCode()
         {
-            return pseudo.GetHashCode();
+            return Pseudo.GetHashCode();
         }
 
         public override bool Equals(object obj)
@@ -40,12 +38,12 @@ namespace ProjetLibrary
 
         public bool Equals(User user)
         {
-            return this.pseudo.Equals(user.pseudo);
+            return this.Pseudo.Equals(user.Pseudo);
         }
 
         public override string ToString()
         {
-            return pseudo + " " + mail + " " + password;
+            return string.Format("{0} {1} {2}", Pseudo, Mail, Password);
         }
     }
 }
