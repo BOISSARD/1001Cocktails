@@ -8,11 +8,16 @@ namespace ProjetLibrary
 {
     public class LivreCocktails
     {
-        public List<Cocktail> livre = new List<Cocktail>();
+        public List<Cocktail> livre;
 
-        public LivreCocktails(List<Cocktail> livre)
+        public LivreCocktails() { livre = new List<Cocktail>();  }
+
+        public LivreCocktails(List<Cocktail> livre) : this()
         {
-            livre.ForEach(i => this.livre.Add(new Cocktail(i.Nom,i.Recette,i.ajouterIngredients,i.commentaires,i.url)));
+            foreach(Cocktail c in livre)
+            {
+                this.livre.Add(new Cocktail(c.Nom, c.Recette, c.getIngredients(), c.getCommentaire(), c.urlImage));
+            };
         }
 
         public void ajouterCocktail(Cocktail cocktail)

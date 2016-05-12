@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,16 +13,26 @@ namespace ProjetLibrary
         public string Recette { private set; get; }
         private List<Ingredient> ingredients = new List<Ingredient>();
         private List<Commentaire> commentaires = new List<Commentaire>();
-        private string urlImage; 
+        public string urlImage { private set; get; }
+
+        public List<Ingredient> getIngredients()
+        {
+            List<Ingredient> ing = new List<Ingredient>();
+            ingredients.ForEach(i => ing.Add(new Ingredient(i.Nom, i.Quantite, i.Unite)));
+            return ing;
+        }
+
+        public List<Commentaire> getCommentaire()
+        {
+            List<Commentaire> com = new List<Commentaire>();
+            commentaires.ForEach(i => com.Add(new Commentaire(i.Titre, i.Texte, i.Utilisateur, i.Note)));
+            return com;
+        }
 
         public Cocktail(string nom, List<Ingredient> ingredients)
         {
             this.Nom = nom;
             this.Recette = "Pas de recette !";
-            //foreach (var ing in ingredients)
-            //{
-            //    this.ingredients.Add(new Ingredient(ing.nom, ing.quantite, ing.unite));
-            //}
             ingredients.ForEach(i => this.ingredients.Add(new Ingredient(i.Nom, i.Quantite, i.Unite)));
         }
 

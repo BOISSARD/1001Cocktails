@@ -10,7 +10,7 @@ namespace ProjetLibrary
     {
         public string Titre { private set; get; }
         public string Texte { private set; get; }
-        private User Utilisateur { set; get; }
+        public User Utilisateur { private set; get; }
         public short Note
         {
             private set

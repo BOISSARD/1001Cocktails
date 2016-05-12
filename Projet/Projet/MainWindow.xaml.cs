@@ -36,14 +36,13 @@ namespace Projet
                 new ProjetLibrary.Ingredient("Jus de Pomme",25,Unite.cl)
             });
 
+            //List<Cocktail> list = new List<Cocktail>();
+            //list.Add(c1);
+
             LivreCocktails livre = new LivreCocktails();
 
             livre.ajouterCocktail(c1);
             livre.ajouterCocktail(c2);
-
-            //List.ItemsSource = livre;
-            
-
 
         }
 
