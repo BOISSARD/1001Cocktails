@@ -8,6 +8,6 @@ namespace ProjetLibrary
 {
     public class Manager
     {
-
+        
     }
 }

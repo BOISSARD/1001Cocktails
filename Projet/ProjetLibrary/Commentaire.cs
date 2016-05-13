@@ -39,6 +39,24 @@ namespace ProjetLibrary
             this.Texte = texte;
         }
 
+        public override int GetHashCode()
+        {
+            return Titre.GetHashCode()*Texte.GetHashCode()*Utilisateur.GetHashCode()*Note.GetHashCode();
+        }
+
+        public override bool Equals(object obj)
+        {
+            if (object.ReferenceEquals(obj, null)) return false;
+            if (object.ReferenceEquals(this, obj)) return true;
+            if (obj.GetType() != this.GetType()) return false;
+            return this.Equals(obj as Commentaire);
+        }
+
+        public bool Equals(Commentaire com)
+        {
+            return this.Titre.Equals(com.Titre) && this.Texte.Equals(com.Texte) && this.Utilisateur.Equals(com.Utilisateur) && this.Note.Equals(com.Note);
+        }
+
         public override string ToString()
         {
             return string.Format("{0} {1} {2} {4}", Titre, Texte, Utilisateur.Pseudo, Note);

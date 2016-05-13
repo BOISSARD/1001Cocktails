@@ -7,28 +7,44 @@ using ProjetLibrary;
 
 namespace ProjetLibrary
 {
+    /// <summary>
+    /// 
+    /// </summary>
     public class Cocktail : IEquatable<Cocktail>
     {
+        /// <summary>
+        /// 
+        /// </summary>
         public string Nom { private set; get;}
         public string Recette { private set; get; }
         private List<Ingredient> ingredients = new List<Ingredient>();
         private List<Commentaire> commentaires = new List<Commentaire>();
         public string urlImage { private set; get; }
 
-        public List<Ingredient> getIngredients()
+        /// <summary>
+        /// 
+        /// </summary>
+        public IEnumerable<Ingredient> ingredientIEnumerable
         {
-            List<Ingredient> ing = new List<Ingredient>();
-            ingredients.ForEach(i => ing.Add(new Ingredient(i.Nom, i.Quantite, i.Unite)));
-            return ing;
+            get
+            {
+                return ingredients;
+            }
         }
 
-        public List<Commentaire> getCommentaire()
+        public IEnumerable<Commentaire> commentairesIEnumerable
         {
-            List<Commentaire> com = new List<Commentaire>();
-            commentaires.ForEach(i => com.Add(new Commentaire(i.Titre, i.Texte, i.Utilisateur, i.Note)));
-            return com;
+            get
+            {
+                return commentaires;
+            }
         }
 
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="nom"></param>
+        /// <param name="ingredients"></param>
         public Cocktail(string nom, List<Ingredient> ingredients)
         {
             this.Nom = nom;
@@ -53,7 +69,7 @@ namespace ProjetLibrary
 
         public void ajouterIngredients(Ingredient ingredient)
         {
-            if (ingredients.Count == 0)
+            if (ingredients == null)
             {
                 ingredients = new List<Ingredient>();
             }
