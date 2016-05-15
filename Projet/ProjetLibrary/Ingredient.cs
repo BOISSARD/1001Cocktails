@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjetLibrary
 {
-    public class Ingredient : IEquatable<Ingredient>
+    internal class Ingredient : IEquatable<Ingredient>
     {
         public string Nom { private set; get; }
         public int Quantite { private set; get;}

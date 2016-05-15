@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjetLibrary
 {
-    public class Commentaire
+    internal class Commentaire : IEquatable<Commentaire>
     {
         public string Titre { private set; get; }
         public string Texte { private set; get; }

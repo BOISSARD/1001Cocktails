@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjetLibrary
 {
-    public class User : IEquatable<User>
+    internal class User : IEquatable<User>
     {
         public string Pseudo { private set; get; }
         public string Mail { private set; get; }

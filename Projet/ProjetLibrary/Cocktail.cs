@@ -10,7 +10,7 @@ namespace ProjetLibrary
     /// <summary>
     /// 
     /// </summary>
-    public class Cocktail : IEquatable<Cocktail>
+    internal class Cocktail : IEquatable<Cocktail>
     {
         /// <summary>
         /// 

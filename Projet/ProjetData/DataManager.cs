@@ -16,9 +16,9 @@ namespace ProjetData
             return Users;
         }
 
-        LivreCocktails IDataManager.getLivreCocktails()
+        sefsefsefsefe IDataManager.getLivreCocktails()
         {
-            LivreCocktails livre = new LivreCocktails();
+            sefsefsefsefe livre = new sefsefsefsefe();
 
             return livre;
         }

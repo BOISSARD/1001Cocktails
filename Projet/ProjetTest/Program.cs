@@ -12,7 +12,7 @@ namespace ProjetTest
         static void Main(string[] args)
         {
             // Création du livre
-            LivreCocktails livre = new LivreCocktails();
+            Manager manager = new Manager();
             Ingredient i1 = new Ingredient("Vodka", 60, Unite.cl);
             //Console.WriteLine(i1.ToString());
 

@@ -39,7 +39,7 @@ namespace Projet
             //List<Cocktail> list = new List<Cocktail>();
             //list.Add(c1);
 
-            LivreCocktails livre = new LivreCocktails();
+            sefsefsefsefe livre = new sefsefsefsefe();
 
             livre.ajouterCocktail(c1);
             livre.ajouterCocktail(c2);
