@@ -6,11 +6,10 @@ using System.Threading.Tasks;
 
 namespace ProjetLibrary
 {
-    internal class Commentaire : IEquatable<Commentaire>
+    class Commentaire : IEquatable<Commentaire>
     {
         public string Titre { private set; get; }
         public string Texte { private set; get; }
-        public User Utilisateur { private set; get; }
         public short Note
         {
             private set
@@ -27,21 +26,20 @@ namespace ProjetLibrary
             }
         }
 
-        public Commentaire(string titre, User user, short note)
+        public Commentaire(string titre, short note)
         {
             this.Titre = titre;
-            this.Utilisateur = user;
             this.Note = note;
         }
 
-        public Commentaire(string titre, string texte, User user, short note) : this(titre, user, note)
+        public Commentaire(string titre, string texte, short note) : this(titre, note)
         {
             this.Texte = texte;
         }
 
         public override int GetHashCode()
         {
-            return Titre.GetHashCode()*Texte.GetHashCode()*Utilisateur.GetHashCode()*Note.GetHashCode();
+            return Titre.GetHashCode()*Texte.GetHashCode()*Note.GetHashCode();
         }
 
         public override bool Equals(object obj)
@@ -54,12 +52,12 @@ namespace ProjetLibrary
 
         public bool Equals(Commentaire com)
         {
-            return this.Titre.Equals(com.Titre) && this.Texte.Equals(com.Texte) && this.Utilisateur.Equals(com.Utilisateur) && this.Note.Equals(com.Note);
+            return this.Titre.Equals(com.Titre) && this.Texte.Equals(com.Texte) && this.Note.Equals(com.Note);
         }
 
         public override string ToString()
         {
-            return string.Format("{0} {1} {2} {4}", Titre, Texte, Utilisateur.Pseudo, Note);
+            return string.Format("{0} {1} {2}", Titre, Texte, Note);
         }
     }
 }

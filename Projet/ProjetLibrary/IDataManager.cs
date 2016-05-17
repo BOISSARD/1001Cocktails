@@ -9,7 +9,5 @@ namespace ProjetLibrary
     public interface IDataManager
     {
         List<User> getUser();
-
-        sefsefsefsefe getLivreCocktails();
     }
 }

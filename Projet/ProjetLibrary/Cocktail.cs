@@ -10,7 +10,7 @@ namespace ProjetLibrary
     /// <summary>
     /// 
     /// </summary>
-    internal class Cocktail : IEquatable<Cocktail>
+    class Cocktail : IEquatable<Cocktail>
     {
         /// <summary>
         /// 
@@ -18,7 +18,8 @@ namespace ProjetLibrary
         public string Nom { private set; get;}
         public string Recette { private set; get; }
         private List<Ingredient> ingredients = new List<Ingredient>();
-        private List<Commentaire> commentaires = new List<Commentaire>();
+        private Dictionary<IUser, Commentaire> commentaires = new Dictionary<IUser, Commentaire>();
+        //private List<Commentaire> commentaires = new List<Commentaire>();
         public string urlImage { private set; get; }
 
         /// <summary>
@@ -32,13 +33,13 @@ namespace ProjetLibrary
             }
         }
 
-        public IEnumerable<Commentaire> commentairesIEnumerable
-        {
-            get
-            {
-                return commentaires;
-            }
-        }
+        //public IEnumerable<Commentaire> commentairesIEnumerable
+        //{
+        //    get
+        //    {
+        //        return commentaires;
+        //    }
+        //}
 
         /// <summary>
         /// 
@@ -62,9 +63,13 @@ namespace ProjetLibrary
             this.urlImage = url;
         }
 
-        public Cocktail(string nom, string recette , List<Ingredient> ingredients, List<Commentaire> commentaires, string url) : this(nom, recette, ingredients, url)
+        public Cocktail(string nom, string recette , List<Ingredient> ingredients, Dictionary<User, Commentaire> commentaires, string url) : this(nom, recette, ingredients, url)
         {
-            commentaires.ForEach(i => this.commentaires.Add(new Commentaire(i.Titre, i.Texte, i.Utilisateur,i.Note)));
+            /*
+            foreach (var com in commentaires.Values)
+            {
+                this.commentaires.Add(com,com)
+            }*/
         }
 
         public void ajouterIngredients(Ingredient ingredient)
@@ -111,7 +116,7 @@ namespace ProjetLibrary
                 sb.AppendFormat("{0}\n", ing.ToString());
             }
             sb.AppendFormat("{0}\n", Recette);
-            foreach (Commentaire comm in commentaires)
+            foreach (Commentaire comm in commentaires.Values)
             {
                 sb.AppendFormat("{0}\n", comm.ToString());
             }

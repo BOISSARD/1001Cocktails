@@ -26,24 +26,18 @@ namespace Projet
         {
             InitializeComponent();
 
-            Cocktail c1 = new Cocktail("VodkaOrange","Mélange la vodka au jus d'orange", new List<ProjetLibrary.Ingredient>(){
-                new ProjetLibrary.Ingredient("Vodka",10,Unite.cl),
-                new ProjetLibrary.Ingredient("Jus d'Orange",25,Unite.cl)
-            });
+            //Cocktail c1 = new Cocktail("VodkaOrange","Mélange la vodka au jus d'orange", new List<ProjetLibrary.Ingredient>(){
+            //    new ProjetLibrary.Ingredient("Vodka",10,Unite.cl),
+            //    new ProjetLibrary.Ingredient("Jus d'Orange",25,Unite.cl)
+            //});
 
-            Cocktail c2 = new Cocktail("VodkaPomme", "Mélange la vodka au jus de pomme", new List<ProjetLibrary.Ingredient>(){
-                new ProjetLibrary.Ingredient("Vodka",10,Unite.cl),
-                new ProjetLibrary.Ingredient("Jus de Pomme",25,Unite.cl)
-            });
+            //Cocktail c2 = new Cocktail("VodkaPomme", "Mélange la vodka au jus de pomme", new List<ProjetLibrary.Ingredient>(){
+            //    new ProjetLibrary.Ingredient("Vodka",10,Unite.cl),
+            //    new ProjetLibrary.Ingredient("Jus de Pomme",25,Unite.cl)
+            //});
 
             //List<Cocktail> list = new List<Cocktail>();
             //list.Add(c1);
-
-            sefsefsefsefe livre = new sefsefsefsefe();
-
-            livre.ajouterCocktail(c1);
-            livre.ajouterCocktail(c2);
-
         }
 
         public MainWindow(bool type)

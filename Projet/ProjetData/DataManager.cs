@@ -16,11 +16,11 @@ namespace ProjetData
             return Users;
         }
 
-        sefsefsefsefe IDataManager.getLivreCocktails()
-        {
-            sefsefsefsefe livre = new sefsefsefsefe();
+        //sefsefsefsefe IDataManager.getLivreCocktails()
+        //{
+        //    sefsefsefsefe livre = new sefsefsefsefe();
 
-            return livre;
-        }
+        //    return livre;
+        //}
     }
 }

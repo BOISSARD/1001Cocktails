@@ -58,6 +58,7 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="XmlTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -83,6 +84,10 @@
     <ProjectReference Include="..\ProjetLibrary\ProjetLibrary.csproj">
       <Project>{8d54b0e8-f164-45cf-abcf-6e4052b9c309}</Project>
       <Name>ProjetLibrary</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Projet\Projet.csproj">
+      <Project>{B550019C-FDD7-4313-BE35-E6B1E2D90F5D}</Project>
+      <Name>Projet</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
