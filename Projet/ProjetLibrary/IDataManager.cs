@@ -8,6 +8,6 @@ namespace ProjetLibrary
 {
     public interface IDataManager
     {
-        List<User> getUser();
+        public IEnumerable<IUser> loadUsers();
     }
 }

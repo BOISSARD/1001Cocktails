@@ -9,31 +9,13 @@ namespace ProjetLibrary
     public class Manager
     {
         private Dictionary<string, Cocktail> livre = new Dictionary<string, Cocktail>();
-        private List<IUser> utilisateurs = new List<IUser>();
+        public IEnumerable<IUser> utilisateurs { get { return utilisateurs; } }
 
         public Manager()
         {
-            //livre = new Dictionary<string, Cocktail>();
-            //utilisateurs = new List<User>();
         }
 
-        public Manager(List<IUser> users) //: this ()
-        {
-            users.ForEach(i => utilisateurs.Add(new User(i.Pseudo,i.Mail,i.Password)));
-        }
 
-        //public Manager(Dictionary<string, Cocktail> bouquin)
-        //{
-        //    foreach(KeyValuePair<string, Cocktail> i in bouquin)
-        //    {
-        //        livre.Add(i.Key, i.Value);
-        //    }
-        //}
-
-        //public Manager(Dictionary<string, Cocktail> bouquin, List<User> users) : this(bouquin)
-        //{
-        //    users.ForEach(i => utilisateurs.Add(new User(i.Pseudo, i.Mail, i.Password)));
-        //}
 
         public override string ToString()
         {
