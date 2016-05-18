@@ -9,13 +9,14 @@ namespace ProjetLibrary
 {
     public interface IDataManager
     {
-        public List</*...*/> loadUser();
+        string url { get; }
 
-        public List</*...*/> loadCocktail();
+        List<IUser> loadUser();
 
-        public void saveUser(List<User> list);
+        List<ICocktail> loadCocktail();
 
-        public void saveCocktail();
-    
+        void saveUser(List<User> list);
+
+        void saveCocktail(List<Cocktail> list);
     }
 }

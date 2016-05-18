@@ -9,9 +9,9 @@ namespace ProjetLibrary
     public class Manager
     {
         private List<Cocktail> livre = new List<Cocktail>();
-        //public IEnumerable<ICocktail>
+        public IEnumerable<ICocktail> CocktailIEnum { get { return livre; } }
         private List<User> utilisateurs = new List<User>();
-        public IEnumerable<IUser> User { get { return utilisateurs; } }
+        public IEnumerable<IUser> UserIEnum { get { return utilisateurs; } }
         private IDataManager dataManager;
 
         public Manager(IDataManager dataManager) 
@@ -34,10 +34,11 @@ namespace ProjetLibrary
             utilisateurs.Add(new User(pseudo,mail,mdp));
         }
 
-        public void ajouterCocktail(string nom, string recette, List<Ingredient> ing, string image)
+        public void ajouterCocktail(string nom, string recette, List<IIngredient> ing, string image)
         {
-            List<Ingredient> ing; 
-            livre.Add(new Cocktail(nom,recette,ing,image));
+            List<Ingredient> ingredients = new List<Ingredient>();
+            ing.ForEach(i => ingredients.Add(new Ingredient(i.Nom,i.Quantite,i.Unite)));
+            livre.Add(new Cocktail(nom,recette,ingredients,image));
         }
 
         public void sauvegarder()
