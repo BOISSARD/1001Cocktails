@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ProjetLibrary
 {
-    public class Ingredient : IIngredient
+    class Ingredient : IIngredient
     {
         public string Nom { private set; get; }
         public int Quantite { private set; get;}

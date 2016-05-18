@@ -18,28 +18,13 @@ namespace ProjetLibrary
         public string Nom { private set; get;}
         public string Recette { private set; get; }
         private List<Ingredient> ingredients = new List<Ingredient>();
-        private Dictionary<IUser, Commentaire> commentaires = new Dictionary<IUser, Commentaire>();
-        //private List<Commentaire> commentaires = new List<Commentaire>();
+        private Dictionary<User, Commentaire> commentaires = new Dictionary<User, Commentaire>();
         public string urlImage { private set; get; }
 
         /// <summary>
         /// 
         /// </summary>
-        public IEnumerable<Ingredient> ingredientIEnumerable
-        {
-            get
-            {
-                return ingredients;
-            }
-        }
-
-        //public IEnumerable<Commentaire> commentairesIEnumerable
-        //{
-        //    get
-        //    {
-        //        return commentaires;
-        //    }
-        //}
+        public IEnumerable<IIngredient> Ingredient { get { return ingredients; } }
 
         /// <summary>
         /// 

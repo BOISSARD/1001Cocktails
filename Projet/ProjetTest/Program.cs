@@ -4,13 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ProjetLibrary;
+using ProjetData;
 
 namespace ProjetTest
 {
     class Program
     {
-        //static void Main(string[] args)
-        //{
+        static void Main(string[] args)
+        {
         //    // Création du livre
         //    Manager manager = new Manager();
         //    Ingredient i1 = new Ingredient("Vodka", 60, Unite.cl);
@@ -37,6 +38,9 @@ namespace ProjetTest
         //    // Affichage du livre
         //    Console.WriteLine(livre.ToString());
         //    Console.ReadLine();
-        //}
+
+            Manager manager = new Manager(new DataManager());
+            manager.sauvegarder();
+        }
     } 
 }

@@ -51,6 +51,7 @@
     </Compile>
     <Compile Include="Commentaire.cs" />
     <Compile Include="IDataManager.cs" />
+    <Compile Include="IIngredient.cs" />
     <Compile Include="Ingredient.cs" />
     <Compile Include="IUser.cs" />
     <Compile Include="Manager.cs" />

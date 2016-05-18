@@ -1,26 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml;
+using System.Xml.Linq;
 using ProjetLibrary;
 
 namespace ProjetData
 {
-    class DataManager : IDataManager
+    public class DataManager : IDataManager
     {
-        List<User> IDataManager.getUser()
+        public void DataManager()
         {
-            List<User> Users = new List<User>();
 
-            return Users;
         }
 
-        //sefsefsefsefe IDataManager.getLivreCocktails()
-        //{
-        //    sefsefsefsefe livre = new sefsefsefsefe();
+        public void SaveUser(List<IUser> list)
+        {
+            DirectoryInfo dirInfo = Directory.GetParent(Directory.GetCurrentDirectory());
+            string dirData = dirInfo.FullName + "\\ProjetData\\XML\\";
+            XDocument usersFile = new XDocument();
 
-        //    return livre;
-        //}
+            usersFile.Save(dirData + "Users.xml");
+        }
     }
 }

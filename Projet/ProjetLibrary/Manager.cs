@@ -8,39 +8,41 @@ namespace ProjetLibrary
 {
     public class Manager
     {
-        private Dictionary<string, Cocktail> livre = new Dictionary<string, Cocktail>();
-        public IEnumerable<IUser> utilisateurs { get { return utilisateurs; } }
+        private List<Cocktail> livre = new List<Cocktail>();
+        //public IEnumerable<ICocktail>
+        private List<User> utilisateurs = new List<User>();
+        public IEnumerable<IUser> User { get { return utilisateurs; } }
+        private IDataManager dataManager;
 
-        public Manager()
+        public Manager(IDataManager dataManager) 
         {
+            this.dataManager = dataManager;
         }
-
-
-
+        
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder("");
-            foreach (Cocktail c in livre.Values)
+            foreach (Cocktail c in livre)
             {
                 sb.AppendFormat("{0}\n", c.ToString());
             }
             return sb.ToString();
-            //return "";
         }
 
-        public Ingredient ajouterIngredient(string nom,int quantite,Unite unite)
+        public void ajouterUser(string pseudo, string mail, string mdp)
         {
-            return new Ingredient(nom,quantite,unite);
+            utilisateurs.Add(new User(pseudo,mail,mdp));
         }
 
-        //public Commentaire ajouterCommentaire()
-        //{
+        public void ajouterCocktail(string nom, string recette, List<Ingredient> ing, string image)
+        {
+            List<Ingredient> ing; 
+            livre.Add(new Cocktail(nom,recette,ing,image));
+        }
 
-        //}
-
-        //public Cocktail ajouterCocktail(string nom,string recette,List<Ingredient> ing,List<Commentaire> comm,string url)
-        //{
-
-        //}
+        public void sauvegarder()
+        {
+            dataManager.saveUser(utilisateurs);
+        }
     }
 }
