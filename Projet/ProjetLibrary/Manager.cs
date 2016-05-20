@@ -34,6 +34,8 @@ namespace ProjetLibrary
             utilisateurs.Add(new User(pseudo,mail,mdp));
         }
 
+   
+
         public void ajouterCocktail(string nom, string recette, List<IIngredient> ing, string image)
         {
             List<Ingredient> ingredients = new List<Ingredient>();

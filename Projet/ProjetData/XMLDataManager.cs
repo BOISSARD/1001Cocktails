@@ -29,20 +29,26 @@ namespace ProjetData
             dirData = dirInfo.FullName + "\\ProjetData\\" + url;
         }
 
-        public List<ICocktail> loadCocktail()
+
+        public void saveUser(IEnumerable<IUser> list)
         {
+            throw new NotImplementedException();
         }
+
+        public void saveCocktail(IEnumerable<ICocktail> list)
+        {
+            throw new NotImplementedException();
+        }
+
 
         public List<IUser> loadUser()
         {
+            throw new NotImplementedException();
         }
 
-        public void saveCocktail(List<Cocktail> list)
+        public List<ICocktail> loadCocktail()
         {
-        }
-
-        public void saveUser(List<User> list)
-        {
+            throw new NotImplementedException();
         }
     }
 }

@@ -15,8 +15,8 @@ namespace ProjetLibrary
 
         List<ICocktail> loadCocktail();
 
-        void saveUser(List<User> list);
+        void saveUser(IEnumerable<IUser> list);
 
-        void saveCocktail(List<Cocktail> list);
+        void saveCocktail(IEnumerable<ICocktail> list);
     }
 }

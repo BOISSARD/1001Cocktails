@@ -1,1 +1,10 @@
 E:\CSharp\Cocktails\cocktails\Projet\ProjetData\obj\Debug\ProjetData.csprojResolveAssemblyReference.cache
+U:\Projet C#\cocktails\Projet\ProjetData\obj\Debug\ProjetData.csprojResolveAssemblyReference.cache
+U:\Projet C#\cocktails\Projet\ProjetData\bin\Debug\Cocktail.cs
+U:\Projet C#\cocktails\Projet\ProjetData\bin\Debug\ProjetData.dll.config
+U:\Projet C#\cocktails\Projet\ProjetData\bin\Debug\ProjetData.dll
+U:\Projet C#\cocktails\Projet\ProjetData\bin\Debug\ProjetData.pdb
+U:\Projet C#\cocktails\Projet\ProjetData\bin\Debug\ProjetLibrary.dll
+U:\Projet C#\cocktails\Projet\ProjetData\bin\Debug\ProjetLibrary.pdb
+U:\Projet C#\cocktails\Projet\ProjetData\obj\Debug\ProjetData.dll
+U:\Projet C#\cocktails\Projet\ProjetData\obj\Debug\ProjetData.pdb
