@@ -2,3 +2,7 @@ E:\CSharp\Cocktails\cocktails\Projet\ProjetTest\bin\Debug\ProjetTest.exe.config
 E:\CSharp\Cocktails\cocktails\Projet\ProjetTest\obj\Debug\ProjetTest.exe
 E:\CSharp\Cocktails\cocktails\Projet\ProjetTest\obj\Debug\ProjetTest.pdb
 E:\CSharp\Cocktails\cocktails\Projet\ProjetTest\obj\Debug\ProjetTest.csprojResolveAssemblyReference.cache
+C:\travail\Cocktails\cocktails\Projet\ProjetTest\bin\Debug\ProjetTest.exe.config
+C:\travail\Cocktails\cocktails\Projet\ProjetTest\obj\Debug\ProjetTest.exe
+C:\travail\Cocktails\cocktails\Projet\ProjetTest\obj\Debug\ProjetTest.pdb
+C:\travail\Cocktails\cocktails\Projet\ProjetTest\obj\Debug\ProjetTest.csprojResolveAssemblyReference.cache

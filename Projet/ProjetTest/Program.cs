@@ -41,7 +41,11 @@ namespace ProjetTest
 
 
             Manager manager = new Manager(new XMLDataManager());
+            List<IIngredient> ing = new List<IIngredient>();
+
             manager.sauvegarder();
+
+            Console.ReadLine();
         }
     } 
 }

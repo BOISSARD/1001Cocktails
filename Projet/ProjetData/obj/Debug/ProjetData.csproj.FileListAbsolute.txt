@@ -1,1 +1,2 @@
 E:\CSharp\Cocktails\cocktails\Projet\ProjetData\obj\Debug\ProjetData.csprojResolveAssemblyReference.cache
+C:\travail\Cocktails\cocktails\Projet\ProjetData\obj\Debug\ProjetData.csprojResolveAssemblyReference.cache

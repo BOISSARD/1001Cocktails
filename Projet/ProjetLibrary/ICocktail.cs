@@ -10,6 +10,7 @@ namespace ProjetLibrary
     {
         string Nom { get; }
         string Recette { get; }
+        IEnumerable<IIngredient>
         string urlImage { get; }
     }
 }

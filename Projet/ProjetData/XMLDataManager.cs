@@ -12,7 +12,7 @@ namespace ProjetData
 {
     public class XMLDataManager : IDataManager
     {
-        public string url { private set; get; }
+        public string Url { private set; get; }
         DirectoryInfo dirInfo ;
         string dirData;
         XDocument userFile;
@@ -26,23 +26,30 @@ namespace ProjetData
 
         public XMLDataManager(string url) : this()
         {
+            Url = url;
             dirData = dirInfo.FullName + "\\ProjetData\\" + url;
         }
 
-        public List<ICocktail> loadCocktail()
+        public IEnumerable<ICocktail> loadCocktail()
         {
         }
 
-        public List<IUser> loadUser()
+        public IEnumerable<IUser> loadUser()
         {
         }
 
-        public void saveCocktail(List<Cocktail> list)
+        public void saveCocktail(IEnumerable<ICocktail> list)
         {
         }
 
-        public void saveUser(List<User> list)
+        public void saveUser(IEnumerable<IUser> list)
         {
+            var userElts = list.Select(user => new XElement("user",
+                                                            new XElement("peudo",user.Pseudo),
+                                                            new XElement("mail", user.Mail),
+                                                            new XElement("password",user.Password)));
+            userFile.Add(new XElement("users",userElts));
+            userFile.Save(dirData + "user.xml");
         }
     }
 }

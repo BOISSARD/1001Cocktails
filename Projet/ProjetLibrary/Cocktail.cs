@@ -8,29 +8,41 @@ using ProjetLibrary;
 namespace ProjetLibrary
 {
     /// <summary>
-    /// 
+    /// La classe cocktail qui implémente l'interface IEquatable afin de redéfinir la comparaison.
     /// </summary>
     class Cocktail : IEquatable<Cocktail>
     {
         /// <summary>
-        /// 
+        /// Nom est le nom du cocktail.
         /// </summary>
         public string Nom { private set; get;}
+        /// <summary>
+        /// Recette est du texte composé des étapes de la réalisation du cocktail.
+        /// </summary>
         public string Recette { private set; get; }
+        /// <summary>
+        /// ingredients est la liste d'ingrédients.
+        /// </summary>
         private List<Ingredient> ingredients = new List<Ingredient>();
+        /// <summary>
+        /// commentaires est la liste des commentaires laisser par un utilisateurs de type User.
+        /// </summary>
         private Dictionary<User, Commentaire> commentaires = new Dictionary<User, Commentaire>();
+        /// <summary>
+        /// urlImage est le chemin de l'image dans le projet.
+        /// </summary>
         public string urlImage { private set; get; }
 
         /// <summary>
-        /// 
+        /// la façade immuable de la liste d'ingrédients.
         /// </summary>
         public IEnumerable<IIngredient> Ingredient { get { return ingredients; } }
 
         /// <summary>
-        /// 
+        /// constructeur d'un cocktail.
         /// </summary>
-        /// <param name="nom"></param>
-        /// <param name="ingredients"></param>
+        /// <param name="nom">prenant un nom</param>
+        /// <param name="ingredients">et une liste d'ingrédients</param>
         public Cocktail(string nom, List<Ingredient> ingredients)
         {
             this.Nom = nom;
@@ -38,11 +50,24 @@ namespace ProjetLibrary
             ingredients.ForEach(i => this.ingredients.Add(new Ingredient(i.Nom, i.Quantite, i.Unite)));
         }
 
+        /// <summary>
+        /// constructeur numéro 2.
+        /// </summary>
+        /// <param name="nom"></param>
+        /// <param name="recette">prenant une recette</param>
+        /// <param name="ingredients"></param>
         public Cocktail(string nom, string recette, List<Ingredient> ingredients) : this(nom, ingredients)
         {
             this.Recette = recette;
         }
 
+        /// <summary>
+        /// constructeur numéro 3.
+        /// </summary>
+        /// <param name="nom"></param>
+        /// <param name="recette"></param>
+        /// <param name="ingredients"></param>
+        /// <param name="url"></param>
         public Cocktail(string nom, string recette, List<Ingredient> ingredients, string url) : this(nom, recette, ingredients)
         {
             this.urlImage = url;
