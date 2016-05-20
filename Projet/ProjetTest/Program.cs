@@ -40,8 +40,18 @@ namespace ProjetTest
         //    //    Console.ReadLine();
 
 
+<<<<<<< HEAD
         //    Manager manager = new Manager(new XMLDataManager());
         //    manager.sauvegarder();
         //}
+=======
+            Manager manager = new Manager(new XMLDataManager());
+            List<IIngredient> ing = new List<IIngredient>();
+
+            manager.sauvegarder();
+
+            Console.ReadLine();
+        }
+>>>>>>> 56526eba7afa16ecaa3dc946479fdc61675c8382
     } 
 }

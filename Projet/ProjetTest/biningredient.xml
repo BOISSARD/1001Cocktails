@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ingredients>
+  <ingredient>
+    <nom>sucre</nom>
+    <quantite>10</quantite>
+    <unite>g</unite>
+  </ingredient>
+  <ingredient>
+    <nom>sel</nom>
+    <quantite>5</quantite>
+    <unite>g</unite>
+  </ingredient>
+  <ingredient>
+    <nom>eau</nom>
+    <quantite>1</quantite>
+    <unite>l</unite>
+  </ingredient>
+</ingredients>

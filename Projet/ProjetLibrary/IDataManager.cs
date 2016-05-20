@@ -9,11 +9,11 @@ namespace ProjetLibrary
 {
     public interface IDataManager
     {
-        string url { get; }
+        string Url { get; }
 
-        List<IUser> loadUser();
+        IEnumerable<IUser> loadUser();
 
-        List<ICocktail> loadCocktail();
+        IEnumerable<ICocktail> loadCocktail();
 
         void saveUser(IEnumerable<IUser> list);
 

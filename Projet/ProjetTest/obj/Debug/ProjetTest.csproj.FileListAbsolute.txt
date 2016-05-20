@@ -2,6 +2,7 @@ E:\CSharp\Cocktails\cocktails\Projet\ProjetTest\bin\Debug\ProjetTest.exe.config
 E:\CSharp\Cocktails\cocktails\Projet\ProjetTest\obj\Debug\ProjetTest.exe
 E:\CSharp\Cocktails\cocktails\Projet\ProjetTest\obj\Debug\ProjetTest.pdb
 E:\CSharp\Cocktails\cocktails\Projet\ProjetTest\obj\Debug\ProjetTest.csprojResolveAssemblyReference.cache
+<<<<<<< HEAD
 U:\Projet C#\cocktails\Projet\ProjetTest\bin\Debug\ProjetTest.exe.config
 U:\Projet C#\cocktails\Projet\ProjetTest\obj\Debug\ProjetTest.exe
 U:\Projet C#\cocktails\Projet\ProjetTest\obj\Debug\ProjetTest.pdb
@@ -24,3 +25,9 @@ C:\travail\cocktails\Projet\ProjetTest\bin\Debug\ProjetLibrary.dll
 C:\travail\cocktails\Projet\ProjetTest\bin\Debug\ProjetData.pdb
 C:\travail\cocktails\Projet\ProjetTest\bin\Debug\ProjetLibrary.pdb
 C:\travail\cocktails\Projet\ProjetTest\obj\Debug\ProjetTest.csprojResolveAssemblyReference.cache
+=======
+C:\travail\Cocktails\cocktails\Projet\ProjetTest\bin\Debug\ProjetTest.exe.config
+C:\travail\Cocktails\cocktails\Projet\ProjetTest\obj\Debug\ProjetTest.exe
+C:\travail\Cocktails\cocktails\Projet\ProjetTest\obj\Debug\ProjetTest.pdb
+C:\travail\Cocktails\cocktails\Projet\ProjetTest\obj\Debug\ProjetTest.csprojResolveAssemblyReference.cache
+>>>>>>> 56526eba7afa16ecaa3dc946479fdc61675c8382

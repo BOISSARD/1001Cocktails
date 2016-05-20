@@ -4,11 +4,16 @@
 winexe
 C#
 .cs
+<<<<<<< HEAD
 U:\Projet C#\cocktails\Projet\Projet\obj\Debug\
+=======
+C:\travail\Cocktails\cocktails\Projet\Projet\obj\Debug\
+>>>>>>> 56526eba7afa16ecaa3dc946479fdc61675c8382
 Projet
 none
 false
 DEBUG;TRACE
+<<<<<<< HEAD
 U:\Projet C#\cocktails\Projet\Projet\App.xaml
 10-1217053015
 
@@ -17,4 +22,14 @@ U:\Projet C#\cocktails\Projet\Projet\App.xaml
 BoutonConnecte.xaml;BoutonVisiteur.xaml;Description.xaml;Ingredient.xaml;NewCocktail.xaml;Commentaire.xaml;Connexion.xaml;CreaCompte.xaml;MainWindow.xaml;Supprimer.xaml;
 
 True
+=======
+C:\travail\Cocktails\cocktails\Projet\Projet\App.xaml
+10-1217053015
+
+14-584862354
+131475962981
+BoutonConnecte.xaml;BoutonVisiteur.xaml;Description.xaml;Ingredient.xaml;NewCocktail.xaml;Commentaire.xaml;Connexion.xaml;CreaCompte.xaml;MainWindow.xaml;Supprimer.xaml;
+
+False
+>>>>>>> 56526eba7afa16ecaa3dc946479fdc61675c8382
 

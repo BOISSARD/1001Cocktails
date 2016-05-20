@@ -1,6 +1,7 @@
 E:\CSharp\Cocktails\cocktails\Projet\ProjetLibrary\obj\Debug\ProjetLibrary.csprojResolveAssemblyReference.cache
 E:\CSharp\Cocktails\cocktails\Projet\ProjetLibrary\obj\Debug\ProjetLibrary.dll
 E:\CSharp\Cocktails\cocktails\Projet\ProjetLibrary\obj\Debug\ProjetLibrary.pdb
+<<<<<<< HEAD
 U:\Projet C#\cocktails\Projet\ProjetLibrary\obj\Debug\ProjetLibrary.csprojResolveAssemblyReference.cache
 U:\Projet C#\cocktails\Projet\ProjetLibrary\obj\Debug\ProjetLibrary.dll
 U:\Projet C#\cocktails\Projet\ProjetLibrary\obj\Debug\ProjetLibrary.pdb
@@ -13,3 +14,8 @@ C:\travail\cocktails\Projet\ProjetLibrary\bin\Debug\ProjetLibrary.pdb
 C:\travail\cocktails\Projet\ProjetLibrary\obj\Debug\ProjetLibrary.csprojResolveAssemblyReference.cache
 C:\travail\cocktails\Projet\ProjetLibrary\obj\Debug\ProjetLibrary.dll
 C:\travail\cocktails\Projet\ProjetLibrary\obj\Debug\ProjetLibrary.pdb
+=======
+C:\travail\Cocktails\cocktails\Projet\ProjetLibrary\obj\Debug\ProjetLibrary.csprojResolveAssemblyReference.cache
+C:\travail\Cocktails\cocktails\Projet\ProjetLibrary\obj\Debug\ProjetLibrary.dll
+C:\travail\Cocktails\cocktails\Projet\ProjetLibrary\obj\Debug\ProjetLibrary.pdb
+>>>>>>> 56526eba7afa16ecaa3dc946479fdc61675c8382
