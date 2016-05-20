@@ -1,5 +1,6 @@
-﻿ using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,18 +26,25 @@ namespace ProjetLibrary
         /// </summary>
         private List<Ingredient> ingredients = new List<Ingredient>();
         /// <summary>
+        /// la façade immuable de la liste d'ingrédients.
+        /// </summary>
+        public IEnumerable<IIngredient> IngredientIEnum { get { return ingredients; } }
+        /// <summary>
         /// commentaires est la liste des commentaires laisser par un utilisateurs de type User.
         /// </summary>
         private Dictionary<User, Commentaire> commentaires = new Dictionary<User, Commentaire>();
+        public ReadOnlyDictionary<IUser, ICommentaire> CommentaireIEnum
+        {
+            get
+            {
+                return new ReadOnlyDictionary<IUser, ICommentaire>(commentaires.ToDictionary(kvp => kvp.Key as IUser, kvp => kvp.Value as ICommentaire));
+            }
+        }
         /// <summary>
         /// urlImage est le chemin de l'image dans le projet.
         /// </summary>
         public string urlImage { private set; get; }
 
-        /// <summary>
-        /// la façade immuable de la liste d'ingrédients.
-        /// </summary>
-        public IEnumerable<IIngredient> IngredientIEnum { get { return ingredients; } }
 
         /// <summary>
         /// constructeur d'un cocktail.
