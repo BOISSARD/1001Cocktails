@@ -81,6 +81,11 @@ namespace ProjetLibrary
             }
         }
 
+        public IIngredient creerIngredient(string nom, int quantite, Unite unite)
+        {
+            return new Ingredient(nom, quantite, unite);
+        }
+
         public void ajouterCocktail(string nom, string recette, List<IIngredient> ing, string image)
         {
             List<Ingredient> ingredients = new List<Ingredient>();

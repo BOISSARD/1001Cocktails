@@ -10,48 +10,28 @@ namespace ProjetTest
 {
     class Program
     {
-        //static void Main(string[] args)
-        //{
-        //    //    // Création du livre
-        //    //    Manager manager = new Manager();
-        //    //    IngredientIEnum i1 = new IngredientIEnum("Vodka", 60, Unite.cl);
-        //    //    //Console.WriteLine(i1.ToString());
-
-        //    //    // Création d'une première liste d'ingrédients
-        //    //    List<IngredientIEnum> ingredients = new List<IngredientIEnum>();
-        //    //    ingredients.Add(i1);
-        //    //    ingredients.Add(new IngredientIEnum("Orange", 1, Unite.zeste));
-        //    //    // Création d'un premier cocktail avec la première liste
-        //    //    Cocktail c1 = new Cocktail("Vodkorange", ingredients);
-        //    //    // Ajout du cocktail dans le livre
-        //    //    livre.ajouterCocktail(c1);
-
-        //    //    // Création d'une deuxième liste d'ingrédients
-        //    //    List<IngredientIEnum> ing = new List<IngredientIEnum>();
-        //    //    ing.Add(new IngredientIEnum("Coca", 50, Unite.cl));
-        //    //    ing.Add(new IngredientIEnum("Whisky", 10, Unite.cl));
-        //    //    ing.Add(new IngredientIEnum("Sucre", 2, Unite.cuillere));
-        //    //    // Ajout du deuxième cocktail contenant la deuxième liste dans le livre
-        //    //    livre.ajouterCocktail(new Cocktail("blalbla", ing));
-
-        //    //    ingredients.Clear();
-        //    //    // Affichage du livre
-        //    //    Console.WriteLine(livre.ToString());
-        //    //    Console.ReadLine();
-
-
-<<<<<<< HEAD
-        //    Manager manager = new Manager(new XMLDataManager());
-        //    manager.sauvegarder();
-        //}
-=======
+        static void Main(string[] args)
+        {
             Manager manager = new Manager(new XMLDataManager());
-            List<IIngredient> ing = new List<IIngredient>();
+
+            manager.ajouterUser("arthur", "miours.misanglier@hotmail.com", "logre");
+            manager.ajouterUser("perceval", "provencal.legaulois@gmail.com", "cestpasfaux");
+            manager.ajouterUser("kadok", "akadok@gmail.com", "elleestoulapoulette");
+
+            IIngredient ing1 = manager.creerIngredient("vodka", 10, Unite.cl);
+            IIngredient ing2 = manager.creerIngredient("jus d'orange", 20, Unite.cl);
+            IIngredient ing3 = manager.creerIngredient("jus de pomme", 20, Unite.cl);
+            List<IIngredient> liste1 = new List<IIngredient>();
+            liste1.Add(ing1);
+            liste1.Add(ing2);
+            List<IIngredient> liste2 = new List<IIngredient>();
+            liste2.Add(ing1);
+            liste2.Add(ing3);
+
+            manager.ajouterCocktail("vodka-Orange", "Mélangez la vodka et le jus d'orange", liste1, "http://image.org");
+            manager.ajouterCocktail("vodka-Pomme", "Mélangez la vodka et le jus de pomme", liste2, "http://image.org");
 
             manager.sauvegarder();
-
-            Console.ReadLine();
         }
->>>>>>> 56526eba7afa16ecaa3dc946479fdc61675c8382
-    } 
-}
+    }
+} 

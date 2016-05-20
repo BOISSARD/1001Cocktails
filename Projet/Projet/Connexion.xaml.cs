@@ -27,7 +27,7 @@ namespace Projet
 
         private void Connect(object sender, RoutedEventArgs e)
         {
-            User user = new User(login.Text, password.Password);
+            //User user = new User(login.Text, password.Password);
             if (true)
             {
                 new MainWindow(true).Show();

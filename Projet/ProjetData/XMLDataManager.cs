@@ -16,12 +16,14 @@ namespace ProjetData
         DirectoryInfo dirInfo ;
         string dirData;
         XDocument userFile;
+        XDocument cocktailFile;
 
         public XMLDataManager()
         {
             dirInfo = Directory.GetParent(Directory.GetCurrentDirectory());
             dirData = dirInfo.FullName + "\\ProjetData\\XML";
             userFile = new XDocument();
+            cocktailFile = new XDocument();
         }
 
         public XMLDataManager(string url) : this()
@@ -35,13 +37,24 @@ namespace ProjetData
             throw new NotImplementedException();
         }
 
-        public void saveCocktail(IEnumerable<ICocktail> list)
-        {
-        }
-
         public IEnumerable<IUser> loadUser()
         {
             throw new NotImplementedException();
+        }
+
+        public void saveCocktail(IEnumerable<ICocktail> list)
+        {
+            var cocktailElts = list.Select(cocktail => new XElement("cocktail",
+                                        new XElement("nom", cocktail.Nom),
+                                        new XElement("recette", cocktail.Recette),
+                                        new XElement("ingredients", cocktail.IngredientIEnum.Select(ing => new XElement("ingredient",
+                                                                                                new XElement("nom_ingredient", ing.Nom),
+                                                                                                new XElement("quantite", ing.Quantite),
+                                                                                                new XElement("unite", ing.Unite)))),
+                                        new XElement("url", cocktail.urlImage)));
+
+            cocktailFile.Add(new XElement("cocktails", cocktailElts));
+            cocktailFile.Save(dirData + "cocktail.xml");
         }
 
         public void saveUser(IEnumerable<IUser> list)
