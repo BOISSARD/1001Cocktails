@@ -36,7 +36,7 @@ namespace ProjetLibrary
         /// <summary>
         /// la façade immuable de la liste d'ingrédients.
         /// </summary>
-        public IEnumerable<IIngredient> Ingredient { get { return ingredients; } }
+        public IEnumerable<IIngredient> IngredientIEnum { get { return ingredients; } }
 
         /// <summary>
         /// constructeur d'un cocktail.

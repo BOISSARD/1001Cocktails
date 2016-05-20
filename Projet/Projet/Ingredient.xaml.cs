@@ -18,7 +18,7 @@ using ProjetLibrary;
 namespace Projet
 {
     /// <summary>
-    /// Logique d'interaction pour Ingredient.xaml
+    /// Logique d'interaction pour IngredientIEnum.xaml
     /// </summary>
     public partial class Ingredient : UserControl
     {
