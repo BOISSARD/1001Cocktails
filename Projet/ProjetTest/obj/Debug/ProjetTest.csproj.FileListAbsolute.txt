@@ -1,3 +1,4 @@
 E:\CSharp\Cocktails\cocktails\Projet\ProjetTest\bin\Debug\ProjetTest.exe.config
 E:\CSharp\Cocktails\cocktails\Projet\ProjetTest\obj\Debug\ProjetTest.exe
 E:\CSharp\Cocktails\cocktails\Projet\ProjetTest\obj\Debug\ProjetTest.pdb
+E:\CSharp\Cocktails\cocktails\Projet\ProjetTest\obj\Debug\ProjetTest.csprojResolveAssemblyReference.cache
