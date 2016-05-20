@@ -32,9 +32,7 @@ namespace ProjetLibrary
         public void ajouterUser(string pseudo, string mail, string mdp)
         {
             utilisateurs.Add(new User(pseudo,mail,mdp));
-        }
-
-   
+        }   
 
         public void ajouterCocktail(string nom, string recette, List<IIngredient> ing, string image)
         {
