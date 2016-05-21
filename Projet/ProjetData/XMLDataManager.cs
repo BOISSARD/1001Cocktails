@@ -10,38 +10,72 @@ using ProjetLibrary;
 
 namespace ProjetData
 {
+    /// <summary>
+    /// La classe XMLDataManager implémente IDataManager.
+    /// </summary>
     public class XMLDataManager : IDataManager
     {
+        /// <summary>
+        /// Nom du répertoire où sera enregistré les fichiers xml.
+        /// </summary>
         public string Url { private set; get; }
-        DirectoryInfo dirInfo ;
+        DirectoryInfo dirInfo;
+        /// <summary>
+        /// Chemin complet du répertoire où sera enregistré les fichiers xml.
+        /// </summary>
         string dirData;
+        /// <summary>
+        /// Fichier xml d'enregistrement des utilisateurs.
+        /// </summary>
         XDocument userFile;
+        /// <summary>
+        /// Fichier xml d'enregistrement des cocktails.
+        /// </summary>
         XDocument cocktailFile;
 
+        /// <summary>
+        /// Constructeur de ce DataManager numéro 1.
+        /// </summary>
         public XMLDataManager()
         {
             dirInfo = Directory.GetParent(Directory.GetCurrentDirectory());
-            dirData = dirInfo.FullName + "\\ProjetData\\XML";
+            dirData = dirInfo.FullName;// + "\\ProjetData\\XML";
             userFile = new XDocument();
             cocktailFile = new XDocument();
         }
 
+        /// <summary>
+        /// Constructeur numéro 2.
+        /// </summary>
+        /// <param name="url">prend le nom du répertoire où sera enregistré les fichiers xml.</param>
         public XMLDataManager(string url) : this()
         {
             Url = url;
             dirData = dirInfo.FullName + "\\ProjetData\\" + url;
         }
 
+        /// <summary>
+        /// Méthode de chargement des cocktails
+        /// </summary>
+        /// <returns>en retournant une collection de cocktails</returns>
         public IEnumerable<ICocktail> loadCocktail()
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Méthode de chargement des utilisateurs
+        /// </summary>
+        /// <returns>en retournant une collection d'utilisateurs</returns>
         public IEnumerable<IUser> loadUser()
         {
             throw new NotImplementedException();
         }
 
+        /// <summary>
+        /// Méthode de sauvegarde des cocktails
+        /// </summary>
+        /// <param name="list">prend une collection de Cocktail en passant par la façade immuable ICocktail</param>
         public void saveCocktail(IEnumerable<ICocktail> list)
         {
             var cocktailElts = list.Select(cocktail => new XElement("cocktail",
@@ -57,6 +91,10 @@ namespace ProjetData
             cocktailFile.Save(dirData + "cocktail.xml");
         }
 
+        /// <summary>
+        /// Méthode de sauvegarde des utilisateurs
+        /// </summary>
+        /// <param name="list">prend une collection de User en passant par IUser</param>
         public void saveUser(IEnumerable<IUser> list)
         {
             var userElts = list.Select(user => new XElement("user",

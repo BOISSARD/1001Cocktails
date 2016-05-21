@@ -9,12 +9,13 @@ using ProjetLibrary;
 namespace ProjetLibrary
 {
     /// <summary>
-    /// La classe cocktail qui implémente l'interface IEquatable afin de redéfinir la comparaison.
+    /// La classe Cocktail qui implémente l'interface IEquatable afin de redéfinir la comparaison.
+    /// Et qui implémente l'interface ICocktail afin d'avoir une façade immuable.
     /// </summary>
     class Cocktail : ICocktail, IEquatable<Cocktail>
     {
         /// <summary>
-        /// Nom est le nom du cocktail.
+        /// Nom est le nom du cocktail, il est unique pour tous les cocktails.
         /// </summary>
         public string Nom { private set; get;}
         /// <summary>
@@ -90,6 +91,10 @@ namespace ProjetLibrary
             }*/
         }
 
+        /// <summary>
+        /// Méthode pour ajouter un ingrédient au cocktail.
+        /// </summary>
+        /// <param name="ingredient">prent un ingrédient</param>
         public void ajouterIngredients(Ingredient ingredient)
         {
             if (ingredients == null)
@@ -99,6 +104,10 @@ namespace ProjetLibrary
             ingredients.Add(ingredient);
         }
 
+        /// <summary>
+        /// Méthode pour supprimer un ingrédient au cocktail.
+        /// </summary>
+        /// <param name="ingredient"></param>
         public void supprimerIngredients(Ingredient ingredient)
         {
             if (ingredients.Contains(ingredient))
@@ -107,11 +116,20 @@ namespace ProjetLibrary
             }
         }
 
+        /// <summary>
+        /// Redéfinition de la méthode GetHashCode.
+        /// </summary>
+        /// <returns>un entier : le code de hashage</returns>
         public override int GetHashCode()
         {
             return Nom.GetHashCode();
         }
 
+        /// <summary>
+        /// Redéfinition de la méthode Equals.
+        /// </summary>
+        /// <param name="obj">prenant un objet de type object</param>
+        /// <returns>un booléen</returns>
         public override bool Equals(object obj)
         {
             if (object.ReferenceEquals(obj, null)) return false;
@@ -120,11 +138,20 @@ namespace ProjetLibrary
             return this.Equals(obj as Cocktail);
         }
 
+        /// <summary>
+        /// Création de la méthode Equals.
+        /// </summary>
+        /// <param name="com">prenant un objet de type Cocktail</param>
+        /// <returns>un booléen</returns>
         public bool Equals(Cocktail cocktail)
         {
             return this.Nom.Equals(cocktail.Nom);
         }
 
+        /// <summary>
+        /// Redéfinition de la méthode ToString.
+        /// </summary>
+        /// <returns>rune chaîne de caractère</returns>
         public override string ToString()
         {
             StringBuilder sb = new StringBuilder(Nom);

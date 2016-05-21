@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace ProjetLibrary
 {
+    /// <summary>
+    /// Enumeration des unités pour nos ingrédients
+    /// </summary>
     public enum Unite
     {
         unite,
