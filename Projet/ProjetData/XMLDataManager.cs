@@ -69,6 +69,13 @@ namespace ProjetData
         /// <returns>en retournant une collection d'utilisateurs</returns>
         public IEnumerable<IUser> loadUser()
         {
+            //IEnumerable<IUser> liste = userFile.Descendants("user")
+            //        .Select(u => new IUser()
+            //        {
+            //            Pseudo = u.Attribute("pseudo").Value,
+            //            Mail = u.Attribute("mail").Value,
+            //            Password = u.Attribute("password").Value
+            //        });
             throw new NotImplementedException();
         }
 

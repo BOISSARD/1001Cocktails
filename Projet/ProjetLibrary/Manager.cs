@@ -32,13 +32,15 @@ namespace ProjetLibrary
         {
             private set
             {
-                CurrentUser = value as User;
+                currentUser = value as User;
             }
             get
             {
-                return CurrentUser;
+                return currentUser;
             }
         }
+        private User currentUser;
+
         /// <summary>
         /// Propriété calculé qui retourne true si le currentUser différent de null.
         /// </summary>
@@ -171,6 +173,14 @@ namespace ProjetLibrary
         {
             dataManager.saveUser(utilisateurs);
             dataManager.saveCocktail(livre);
+        }
+
+        /// <summary>
+        /// Méthode permettant de charger les listes livre et utilisateurs.
+        /// </summary>
+        public void charger()
+        {
+
         }
 
         /// <summary>

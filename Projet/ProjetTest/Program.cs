@@ -52,6 +52,8 @@ namespace ProjetTest
                 Console.WriteLine(" + " + c.ToString());
             }
 
+            m.sauvegarder();
+
             Console.ReadLine();
         }
     }
