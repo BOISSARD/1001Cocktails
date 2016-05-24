@@ -39,7 +39,7 @@ namespace ProjetData
         public XMLDataManager()
         {
             dirInfo = Directory.GetParent(Directory.GetCurrentDirectory());
-            dirData = dirInfo.FullName;// + "\\ProjetData\\XML";
+            dirData = dirInfo.FullName + "\\ProjetData\\XML\\";
             userFile = new XDocument();
             cocktailFile = new XDocument();
         }
