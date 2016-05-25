@@ -27,16 +27,16 @@ namespace Projet
 
         private void Connect(object sender, RoutedEventArgs e)
         {
-            //User user = new User(login.Text, password.Password);
+            User user = new User(login.Text, password.Password);
             if (true)
             {
                 new MainWindow(true).Show();
                 this.Close();
             }
-            /*else
+            else
             {
                 MessageBox.Show("Identifiant et/ou mot de passe incorrect !");
-            }*/
+            }
         }
 
         private void Visit(object sender, RoutedEventArgs e)

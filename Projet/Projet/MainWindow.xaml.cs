@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ProjetLibrary;
+using ProjetData;
 
 namespace Projet
 {
@@ -26,23 +27,11 @@ namespace Projet
         {
             InitializeComponent();
 
-            //Cocktail c1 = new Cocktail("VodkaOrange","Mélange la vodka au jus d'orange", new List<ProjetLibrary.IngredientIEnum>(){
-            //    new ProjetLibrary.IngredientIEnum("Vodka",10,Unite.cl),
-            //    new ProjetLibrary.IngredientIEnum("Jus d'Orange",25,Unite.cl)
-            //});
-
-            //Cocktail c2 = new Cocktail("VodkaPomme", "Mélange la vodka au jus de pomme", new List<ProjetLibrary.IngredientIEnum>(){
-            //    new ProjetLibrary.IngredientIEnum("Vodka",10,Unite.cl),
-            //    new ProjetLibrary.IngredientIEnum("Jus de Pomme",25,Unite.cl)
-            //});
-
-            //List<Cocktail> list = new List<Cocktail>();
-            //list.Add(c1);
+            Manager manager = new Manager(new XMLDataManager());
         }
 
-        public MainWindow(bool type)
+        public MainWindow(bool type) : this()
         {
-            InitializeComponent();
             if (type)
             {
                 connecte.Visibility = Visibility.Visible;

@@ -9,7 +9,7 @@ namespace ProjetLibrary
     /// <summary>
     /// La classe commentaire implémente l'interface IEquatable afin de redéfinir la comparaison.
     /// </summary>
-    class Commentaire : IEquatable<Commentaire>
+    public class Commentaire : IEquatable<Commentaire>
     {
         /// <summary>
         /// Titre est le titre du commentaire.

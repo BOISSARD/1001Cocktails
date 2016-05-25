@@ -5,6 +5,8 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using ProjetLibrary;
+using ProjetData;
 
 namespace Projet
 {
@@ -13,5 +15,6 @@ namespace Projet
     /// </summary>
     public partial class App : Application
     {
+        public Manager manager = new Manager(new XMLDataManager());
     }
 }

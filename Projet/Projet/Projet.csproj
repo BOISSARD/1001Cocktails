@@ -157,6 +157,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ProjetData\ProjetData.csproj">
+      <Project>{c9debd02-f2c9-4c39-9625-124f26965e1d}</Project>
+      <Name>ProjetData</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ProjetLibrary\ProjetLibrary.csproj">
       <Project>{8d54b0e8-f164-45cf-abcf-6e4052b9c309}</Project>
       <Name>ProjetLibrary</Name>

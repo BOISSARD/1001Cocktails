@@ -29,18 +29,19 @@ namespace ProjetLibrary
         /// <summary>
         /// la façade immuable de la liste d'ingrédients.
         /// </summary>
-        public IEnumerable<IIngredient> IngredientIEnum { get { return ingredients; } }
+        public ReadOnlyCollection<Ingredient> IngredientRead { private set; get; }
         /// <summary>
         /// commentaires est la liste des commentaires laisser par un utilisateurs de type User.
         /// </summary>
         private Dictionary<User, Commentaire> commentaires = new Dictionary<User, Commentaire>();
-        public ReadOnlyDictionary<IUser, ICommentaire> CommentaireIEnum
+        public ReadOnlyDictionary<User, Commentaire> CommentaireRead
         {
             get
             {
-                return new ReadOnlyDictionary<IUser, ICommentaire>(commentaires.ToDictionary(kvp => kvp.Key as IUser, kvp => kvp.Value as ICommentaire));
+                return new ReadOnlyDictionary<User, Commentaire>(commentaires.ToDictionary(kvp => kvp.Key as User, kvp => kvp.Value as Commentaire));
             }
         }
+
         /// <summary>
         /// urlImage est le chemin de l'image dans le projet.
         /// </summary>

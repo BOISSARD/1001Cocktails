@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
@@ -67,16 +69,15 @@ namespace ProjetData
         /// Méthode de chargement des utilisateurs
         /// </summary>
         /// <returns>en retournant une collection d'utilisateurs</returns>
-        public IEnumerable<IUser> loadUser()
+        public List<User> loadUser()
         {
-            //IEnumerable<IUser> liste = userFile.Descendants("user")
-            //        .Select(u => new IUser()
-            //        {
-            //            Pseudo = u.Attribute("pseudo").Value,
-            //            Mail = u.Attribute("mail").Value,
-            //            Password = u.Attribute("password").Value
-            //        });
-            throw new NotImplementedException();
+            List<User> liste = new List<User>();
+            liste = userFile.Descendants("user").Select(user => new User(
+                user.Element("pseudo").Value,
+                user.Element("mail").Value,
+                user.Element("password").Value
+            )).ToList();
+            return liste;
         }
 
         /// <summary>
@@ -88,7 +89,7 @@ namespace ProjetData
             var cocktailElts = list.Select(cocktail => new XElement("cocktail",
                                         new XElement("nom", cocktail.Nom),
                                         new XElement("recette", cocktail.Recette),
-                                        new XElement("ingredients", cocktail.IngredientIEnum.Select(ing => new XElement("ingredient",
+                                        new XElement("ingredients", cocktail.IngredientRead.Select(ing => new XElement("ingredient",
                                                                                                 new XElement("nom_ingredient", ing.Nom),
                                                                                                 new XElement("quantite", ing.Quantite),
                                                                                                 new XElement("unite", ing.Unite)))),
@@ -102,13 +103,13 @@ namespace ProjetData
         /// Méthode de sauvegarde des utilisateurs
         /// </summary>
         /// <param name="list">prend une collection de User en passant par IUser</param>
-        public void saveUser(IEnumerable<IUser> list)
+        public void saveUser(ReadOnlyCollection<User> list)
         {
             var userElts = list.Select(user => new XElement("user",
-                                                            new XElement("peudo",user.Pseudo),
+                                                            new XElement("peudo", user.Pseudo),
                                                             new XElement("mail", user.Mail),
-                                                            new XElement("password",user.Password)));
-            userFile.Add(new XElement("users",userElts));
+                                                            new XElement("password", user.Password)));
+            userFile.Add(new XElement("users", userElts));
             userFile.Save(dirData + "user.xml");
         }
     }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Runtime.Serialization;
 
 namespace ProjetLibrary
 {
@@ -10,7 +11,7 @@ namespace ProjetLibrary
     /// La classe User qui implémente l'interface IEquatable afin de redéfinir la comparaison.
     /// Et qui implémente l'interface IUser afin d'avoir une façade immuable.
     /// </summary>
-    class User : IUser, IEquatable<User>
+    public class User : IEquatable<User>
     {
         /// <summary>
         /// Pseudo est le pseudo du cocktail, il est unique pour tous les cocktails.

@@ -23,11 +23,11 @@ namespace ProjetLibrary
         /// <summary>
         /// Getter de la liste d'ingrédient.
         /// </summary>
-        IEnumerable<IIngredient> IngredientIEnum { get; }
+        ReadOnlyCollection<Ingredient>IngredientRead { get; }
         /// <summary>
         /// Getter du dictionnaire de commentaires.
         /// </summary>
-        ReadOnlyDictionary<IUser, ICommentaire> CommentaireIEnum { get; }
+        ReadOnlyDictionary<User, Commentaire> CommentaireRead { get; }
         /// <summary>
         /// Getter urlImage.
         /// </summary>

@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Collections.ObjectModel;
 using ProjetLibrary;
+using System.IO;
 
 namespace ProjetLibrary
 {
@@ -20,7 +22,7 @@ namespace ProjetLibrary
         /// Méthode loadUser permettant de charger la liste d'utilisateurs.
         /// </summary>
         /// <returns>une collection de IUser</returns>
-        IEnumerable<IUser> loadUser();
+        List<User> loadUser();
         /// <summary>
         /// Méthode loadCocktail permettant de charger la liste livre.        
         /// </summary>
@@ -30,7 +32,7 @@ namespace ProjetLibrary
         /// Méthode saveUSer permettant de sauvergarder la liste d'utilisateurs.
         /// </summary>
         /// <param name="list">prend une collection de IUser</param>
-        void saveUser(IEnumerable<IUser> list);
+        void saveUser(ReadOnlyCollection<User> list);
         /// <summary>
         /// Méthode saveCocktail permettant de sauvergarder la liste de cocktails livre.
         /// </summary>

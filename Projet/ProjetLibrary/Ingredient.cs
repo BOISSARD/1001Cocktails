@@ -10,7 +10,7 @@ namespace ProjetLibrary
     /// La classe Ingredient qui implémente l'interface IEquatable afin de redéfinir la comparaison.
     /// Et qui implémente l'interface IIngredient afin d'avoir une façade immuable.
     /// </summary>
-    class Ingredient : IIngredient, IEquatable<Ingredient>
+    public class Ingredient : IEquatable<Ingredient>
     {
         /// <summary>
         /// Nom est le nom de l'ingrédient .

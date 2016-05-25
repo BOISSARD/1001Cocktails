@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,21 +15,42 @@ namespace ProjetLibrary
         /// <summary>
         /// livre est une liste de cocktail.
         /// </summary>
-        private List<Cocktail> livre = new List<Cocktail>();
-        public IEnumerable<ICocktail> CocktailIEnum { get { return livre; } }
+        private List<Cocktail> livre = new List<Cocktail>(){
+            new Cocktail("Mojito", new List<Ingredient>(){
+                    new Ingredient("Menthe",10,Unite.morceau), new Ingredient("Rhum",10,Unite.cl)
+            })
+        };
+        public IEnumerable<ICocktail> CocktailIEnum { private set; get; }
         /// <summary>
         /// utilisateurs est la liste des utilisateurs inscrit.
         /// </summary>
         private List<User> utilisateurs = new List<User>();
-        public IEnumerable<IUser> UserIEnum { get { return utilisateurs; } }
+        public ReadOnlyCollection<User> UserRead 
+        {
+            private set { utilisateurs = new List<User>(value); }
+            get { return utilisateurs.AsReadOnly(); } 
+        }
+
         /// <summary>
         /// dataManager est le DataManager afin de faire le lien avec le ProjetData.
         /// </summary>
         private IDataManager dataManager;
+
+        /// <summary>
+        /// Constructeur de Manager.
+        /// </summary>
+        /// <param name="dataManager">qui prend un DataManager</param>
+        public Manager(IDataManager dataManager)
+        {
+            this.dataManager = dataManager;
+            /// Créer un utilisateur par défault.
+            utilisateurs.Add(new User("Admin", "admin@gmail.com", "admin63"));
+        }
+
         /// <summary>
         /// currentUser de type User est l'utilisateur inscrit qui utilise l'application.
         /// </summary>
-        public IUser CurrentUser
+        public User CurrentUser
         {
             private set
             {
@@ -50,17 +72,6 @@ namespace ProjetLibrary
             {
                 return CurrentUser != null;
             }
-        }
-
-        /// <summary>
-        /// Constructeur de Manager.
-        /// </summary>
-        /// <param name="dataManager">qui prend un DataManager</param>
-        public Manager(IDataManager dataManager)
-        {
-            this.dataManager = dataManager;
-            /// Créer un utilisateur par défault.
-            utilisateurs.Add(new User("Admin", "admin@gmail.com", "admin63"));
         }
 
         /// <summary>
@@ -125,26 +136,13 @@ namespace ProjetLibrary
         }
 
         /// <summary>
-        /// Méthode permettant de créer un ingrédient.
-        /// Utile pour la création de cocktails.
-        /// </summary>
-        /// <param name="nom">prend un nom</param>
-        /// <param name="quantite">prend une quantité</param>
-        /// <param name="unite">prend une unité</param>
-        /// <returns>un ingrédient de type IIngredient</returns>
-        public IIngredient creerIngredient(string nom, int quantite, Unite unite)
-        {
-            return new Ingredient(nom, quantite, unite);
-        }
-
-        /// <summary>
         /// Méthode ajouterCocktail qui permet d'ajouter un cocktail à la liste de cocktails livre.
         /// </summary>
         /// <param name="nom">prenant un nom</param>
         /// <param name="recette">une recette</param>
         /// <param name="ing">une liste d'ingrédients</param>
         /// <param name="image">le chemin de l'image désiré</param>
-        public void ajouterCocktail(string nom, string recette, List<IIngredient> ing, string image)
+        public void ajouterCocktail(string nom, string recette, List<Ingredient> ing, string image)
         {
             if (CurrentUser != null)
             {
@@ -171,8 +169,8 @@ namespace ProjetLibrary
         /// </summary>
         public void sauvegarder()
         {
-            dataManager.saveUser(utilisateurs);
-            dataManager.saveCocktail(livre);
+            dataManager.saveUser(UserRead);
+            //dataManager.saveCocktail(livre);
         }
 
         /// <summary>
@@ -180,7 +178,11 @@ namespace ProjetLibrary
         /// </summary>
         public void charger()
         {
-
+            dataManager.loadUser().ForEach(u => this.ajouterUser(u.Pseudo, u.Mail, u.Password));
+            //foreach (User u in dataManager.loadUser())
+            //{
+            //    this.ajouterUser(u.Pseudo,u.Mail,u.Password);
+            //}
         }
 
         /// <summary>
