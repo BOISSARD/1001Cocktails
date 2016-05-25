@@ -1,12 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.IO;
 using System.Linq;
-using System.Runtime.Serialization;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml;
 using System.Xml.Linq;
 using ProjetLibrary;
 
@@ -60,9 +55,20 @@ namespace ProjetData
         /// Méthode de chargement des cocktails
         /// </summary>
         /// <returns>en retournant une collection de cocktails</returns>
-        public IEnumerable<ICocktail> loadCocktail()
+        public IEnumerable<ICocktail> loadCocktail(FabriqueCocktail fab)
         {
-            throw new NotImplementedException();
+            IEnumerable<ICocktail> liste = new List<ICocktail>();
+            liste = cocktailFile.Descendants("cocktail").Select(cocktail => fab.creerCocktail
+            (
+               cocktail.Element("nom").Value,
+               cocktail.Element("recette").Value,
+               cocktail.Element("ingredients").Descendants("ingredient").Select(ing => new Ingredient(ing.Element("nom_ingredient").Value,
+                                                                                                      ing.Element("quantite").Value,
+                                                                                                      ing.Element("unite").Value)),
+               cocktail.Element("url").Value
+            ));
+
+            return liste;
         }
 
         /// <summary>
