@@ -28,6 +28,7 @@ namespace Projet
             InitializeComponent();
 
             Manager manager = new Manager(new XMLDataManager());
+
         }
 
         public MainWindow(bool type) : this()
