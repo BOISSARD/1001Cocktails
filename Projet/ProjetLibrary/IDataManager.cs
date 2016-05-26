@@ -27,7 +27,7 @@ namespace ProjetLibrary
         /// Méthode loadCocktail permettant de charger la liste livre.        
         /// </summary>
         /// <returns></returns>
-        IEnumerable<ICocktail> loadCocktail(FabriqueCocktail fab);
+        IEnumerable<ICocktail> loadCocktail();
         /// <summary>
         /// Méthode saveUSer permettant de sauvergarder la liste d'utilisateurs.
         /// </summary>

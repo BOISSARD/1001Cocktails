@@ -15,12 +15,29 @@ namespace ProjetLibrary
         /// <summary>
         /// livre est une liste de cocktail.
         /// </summary>
-        private List<Cocktail> livre = new List<Cocktail>(){
-            new Cocktail("Mojito", new List<Ingredient>(){
-                    new Ingredient("Menthe",10,Unite.morceau), new Ingredient("Rhum",10,Unite.cl)
+        private List<Cocktail> livre = new List<Cocktail>();/*{
+            new cocktail("mojito", new list<ingredient>(){
+                    new ingredient("menthe",10,unite.morceau), new ingredient("rhum",10,unite.cl)
             })
-        };
-        public IEnumerable<ICocktail> CocktailIEnum { private set; get; }
+        };*/
+        public IEnumerable<ICocktail> CocktailIEnum {
+            //private set
+            //{
+            //    livre = (List<Cocktail>)value;
+            //}
+            get
+            {
+                if (livre != null)
+                    return livre;
+                else {
+                    livre.Add(new Cocktail("Echec", "Pas de cocktails", new List<Ingredient>(){
+                                                                                new Ingredient("Pas d'ingrédient", 0, Unite.unite),
+                                                                                new Ingredient("Pas d'ingrédient", 0, Unite.unite) } 
+                    ));
+                    return livre;
+                }
+            }
+        }
         /// <summary>
         /// utilisateurs est la liste des utilisateurs inscrit.
         /// </summary>
@@ -170,7 +187,7 @@ namespace ProjetLibrary
         public void sauvegarder()
         {
             dataManager.saveUser(UserRead);
-            //dataManager.saveCocktail(livre);
+            dataManager.saveCocktail(livre);
         }
 
         /// <summary>
@@ -179,10 +196,12 @@ namespace ProjetLibrary
         public void charger()
         {
             dataManager.loadUser().ForEach(u => this.ajouterUser(u.Pseudo, u.Mail, u.Password));
-            //foreach (User u in dataManager.loadUser())
-            //{
-            //    this.ajouterUser(u.Pseudo,u.Mail,u.Password);
-            //}
+            //livre = dataManager.loadCocktail() as List<Cocktail>;
+            livre = new List<Cocktail>();
+            foreach (Cocktail c in dataManager.loadCocktail())
+            {
+                livre.Add(c);
+            }
         }
 
         /// <summary>

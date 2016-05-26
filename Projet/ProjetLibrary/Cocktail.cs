@@ -29,7 +29,17 @@ namespace ProjetLibrary
         /// <summary>
         /// la façade immuable de la liste d'ingrédients.
         /// </summary>
-        public ReadOnlyCollection<Ingredient> IngredientRead { private set; get; }
+        public ReadOnlyCollection<Ingredient> IngredientRead
+        {
+            private set
+            {
+                ingredients = value.ToList();
+            }
+            get
+            {
+                return ingredients.AsReadOnly();
+            }
+        }
         /// <summary>
         /// commentaires est la liste des commentaires laisser par un utilisateurs de type User.
         /// </summary>

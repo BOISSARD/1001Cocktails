@@ -12,16 +12,10 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
-        <ListView Grid.Column="0" Name="List" Margin="20">
-            <ListView.View>
-                <GridView ColumnHeaderContainerStyle="{StaticResource GridHeader}">
-                    <!--<GridViewColumn Header="Image"/>-->
-                    <GridViewColumn Header="Nom" DisplayMemberBinding="{Binding nom}"/>
-                </GridView>
-            </ListView.View>
+        <ListView Grid.Column="0" Name="List" Margin="20" ItemsSource="{Binding livre}">
             <ListView.ItemTemplate>
                 <DataTemplate>
-                    
+                    <TextBlock Text="{Binding Source=nom}"/>
                 </DataTemplate>                
             </ListView.ItemTemplate>
         </ListView>

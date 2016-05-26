@@ -29,6 +29,9 @@ namespace Projet
 
             Manager manager = new Manager(new XMLDataManager());
 
+            DataContext = manager;
+
+            manager.charger();
         }
 
         public MainWindow(bool type) : this()

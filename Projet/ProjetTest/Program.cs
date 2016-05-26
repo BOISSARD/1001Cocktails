@@ -38,15 +38,15 @@ namespace ProjetTest
 
             Console.WriteLine();
 
-            //IIngredient ing1 = m.creerIngredient("Vodka", 10, Unite.cl);
-            //IIngredient ing2 = m.creerIngredient("jus d'orange", 20, Unite.cl);
-            //IIngredient ing3 = m.creerIngredient("jus de pomme", 20, Unite.cl);
-            //List<IIngredient> liste1 = new List<IIngredient>();
-            //liste1.Add(ing1);
-            //liste1.Add(ing2);
-            //List<IIngredient> liste2 = new List<IIngredient>();
-            //liste2.Add(ing1);
-            //liste2.Add(ing3);
+            Ingredient ing1 = new Ingredient("Vodka", 10, Unite.cl);
+            Ingredient ing2 = new Ingredient("jus d'orange", 20, Unite.cl);
+            Ingredient ing3 = new Ingredient("jus de pomme", 20, Unite.cl);
+            List<Ingredient> liste1 = new List<Ingredient>();
+            liste1.Add(ing1);
+            liste1.Add(ing2);
+            List<Ingredient> liste2 = new List<Ingredient>();
+            liste2.Add(ing1);
+            liste2.Add(ing3);
 
             //m.ajouterCocktail("Vodka-Orange", "Mélangez la vodka et le jus d'orange", liste1, "http://image.org");
             //m.ajouterCocktail("Vodka-Pomme", "Mélangez la vodka et le jus de pomme", liste2, "http://image.org");
@@ -56,7 +56,7 @@ namespace ProjetTest
                 Console.WriteLine(" + " + c.ToString());
             }
 
-            m.sauvegarder();
+         //   m.sauvegarder();
 
             Console.ReadLine();
         }
