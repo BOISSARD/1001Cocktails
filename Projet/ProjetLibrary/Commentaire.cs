@@ -24,18 +24,18 @@ namespace ProjetLibrary
         /// </summary>
         public short Note
         {
-            private set
-            {
-                if (value >= 0 && value <= 10)
-                {
-                    Note = value;
-                }
-                else return;
-            }
-            get
-            {
-                return Note;
-            }
+            private set;
+            //{
+            //    if (value >= 0 && value <= 10)
+            //    {
+            //        Note = value;
+            //    }
+            //    else return;
+            //}
+            get;
+            //{
+            //    return Note;
+            //}
         }
 
         /// <summary>

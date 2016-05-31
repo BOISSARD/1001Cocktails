@@ -76,7 +76,53 @@ namespace ProjetLibrary
         /// <returns>rune chaîne de caractère</returns>
         public override string ToString()
         {
-            return string.Format("{0} {1} {2}", Nom, Quantite.ToString(), Unite.ToString());
+            string unit;
+            if(Quantite <= 1)
+            {
+                return string.Format("{0} : {1} {2}", Nom, Quantite.ToString(), Unite.ToString());
+            }
+            else if(Unite == Unite.unite)
+            {
+                return string.Format("{0} : {1}", Nom, Quantite.ToString());
+            }
+            else
+            {
+                switch (Unite)
+                {
+                    case Unite.baton:
+                        unit = "batons";
+                        break;
+                    case Unite.cuillere:
+                        unit = "cuilleres";
+                        break;
+                    case Unite.feuille:
+                        unit = "feuilles";
+                        break;
+                    case Unite.goutte:
+                        unit = "gouttes";
+                        break;
+                    case Unite.morceau:
+                        unit = "morceaux";
+                        break;
+                    case Unite.sachet:
+                        unit = "sachets";
+                        break;
+                    case Unite.trait:
+                        unit = "traits";
+                        break;
+                    case Unite.tranche:
+                        unit = "tranches";
+                        break;
+                    case Unite.zeste:
+                        unit = "zestes";
+                        break;
+                    default :
+                        unit = Unite.ToString();
+                        break;
+                }
+                return string.Format("{0} : {1} {2}", Nom, Quantite.ToString(), unit);
+            }
         }
+
     }
 }
