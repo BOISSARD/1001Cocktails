@@ -21,21 +21,13 @@ namespace ProjetLibrary
             })
         };*/
         public IEnumerable<ICocktail> CocktailIEnum {
-            //private set
-            //{
-            //    livre = (List<Cocktail>)value;
-            //}
+            private set
+            {
+                livre = (List<Cocktail>)value;
+            }
             get
             {
-                if (livre != null)
-                    return livre;
-                else {
-                    livre.Add(new Cocktail("Echec", "Pas de cocktails", new List<Ingredient>(){
-                                                                                new Ingredient("Pas d'ingrédient", 0, Unite.unite),
-                                                                                new Ingredient("Pas d'ingrédient", 0, Unite.unite) } 
-                    ));
-                    return livre;
-                }
+                return livre;
             }
         }
         /// <summary>
@@ -44,8 +36,8 @@ namespace ProjetLibrary
         private List<User> utilisateurs = new List<User>();
         public ReadOnlyCollection<User> UserRead 
         {
-            private set { utilisateurs = new List<User>(value); }
-            get { return utilisateurs.AsReadOnly(); } 
+            private set;
+            get; 
         }
 
         /// <summary>
@@ -62,6 +54,9 @@ namespace ProjetLibrary
             this.dataManager = dataManager;
             /// Créer un utilisateur par défault.
             utilisateurs.Add(new User("Admin", "admin@gmail.com", "admin63"));
+            livre.Add(new Cocktail("Mojito", "Mélanger le rhum à la menthe", new List<Ingredient>() { new Ingredient("Rhum",20,Unite.cl), new Ingredient("Menthes",5,Unite.feuille) },"image"));
+            livre.Add(new Cocktail("Pina Colada", "Mélanger le rhum avec le lait de coco et le jus d'ananas", new List<Ingredient>() { new Ingredient("Rhum", 10, Unite.cl), new Ingredient("Lait de coco", 5, Unite.cl), new Ingredient("Jus d'ananas", 5, Unite.cl), new Ingredient("Jus de pêche", 5, Unite.cl), new Ingredient("Orange", 1, Unite.tranche) }, "image"));
+            UserRead = new ReadOnlyCollection<User>(utilisateurs);
         }
 
         /// <summary>
@@ -197,7 +192,7 @@ namespace ProjetLibrary
         {
             dataManager.loadUser().ForEach(u => this.ajouterUser(u.Pseudo, u.Mail, u.Password));
             //livre = dataManager.loadCocktail() as List<Cocktail>;
-            livre = new List<Cocktail>();
+            //livre = new List<Cocktail>();
             foreach (Cocktail c in dataManager.loadCocktail())
             {
                 livre.Add(c);

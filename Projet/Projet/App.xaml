@@ -35,6 +35,14 @@
             <Setter Property="FontSize" Value="13"/>
             <Setter Property="FontWeight" Value="Medium"/>
             <Setter Property="TextDecorations" Value="None"/>
+            <Setter Property="Foreground" Value="{StaticResource color3}"/>
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="descrip">
+            <Setter Property="FontSize" Value="14"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="TextDecorations" Value="None"/>
+            <Setter Property="Foreground" Value="{StaticResource color4}"/>
         </Style>
 
         <Style TargetType="TextBox">

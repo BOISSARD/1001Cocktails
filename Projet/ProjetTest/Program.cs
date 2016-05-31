@@ -15,7 +15,7 @@ namespace ProjetTest
             Manager m = new Manager(new XMLDataManager());
             m.connexion("Admin", "admin63");
             Console.WriteLine();
-            Console.WriteLine("Utilisateur actuelle :");
+            Console.WriteLine("Utilisateur actuel :");
             Console.WriteLine(m.CurrentUser);
             if(m.CurrentUser == null)
             {
@@ -30,7 +30,7 @@ namespace ProjetTest
             //m.ajouterUser("Jacky", "jack", "jj");
 
             Console.WriteLine();
-            Console.WriteLine("Utilisateur lu :");
+            Console.WriteLine("Utilisateurs lu :");
             foreach (User user in m.UserRead)
             {
                 Console.WriteLine(user);
@@ -51,12 +51,13 @@ namespace ProjetTest
             //m.ajouterCocktail("Vodka-Orange", "Mélangez la vodka et le jus d'orange", liste1, "http://image.org");
             //m.ajouterCocktail("Vodka-Pomme", "Mélangez la vodka et le jus de pomme", liste2, "http://image.org");
 
+            Console.WriteLine("Cocktails lu  :");
             foreach (ICocktail c in m.CocktailIEnum)
             {
                 Console.WriteLine(" + " + c.ToString());
             }
 
-         //   m.sauvegarder();
+            //m.sauvegarder();
 
             Console.ReadLine();
         }

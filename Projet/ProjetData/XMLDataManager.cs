@@ -117,7 +117,7 @@ namespace ProjetData
                 user.Element("pseudo").Value,
                 user.Element("mail").Value,
                 user.Element("password").Value
-            )).ToList();
+            )).ToList();//.ForEach(c => liste.Add(c));
             return liste;
         }
 
@@ -148,7 +148,7 @@ namespace ProjetData
         public void saveUser(ReadOnlyCollection<User> list)
         {
             var userElts = list.Select(user => new XElement("user",
-                                                            new XElement("peudo", user.Pseudo),
+                                                            new XElement("pseudo", user.Pseudo),
                                                             new XElement("mail", user.Mail),
                                                             new XElement("password", user.Password)));
             userFile.Add(new XElement("users", userElts));
