@@ -61,7 +61,7 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
-        <ListView Grid.Column="0" Name="List" Margin="20" ItemsSource="{Binding CocktailIEnum}">
+        <ListView Grid.Column="0" Name="Liste" Margin="20" ItemsSource="{Binding CocktailIEnum}">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Nom}" Style="{StaticResource ResourceKey=textBase}"/>
@@ -75,8 +75,8 @@
                 </Grid.RowDefinitions>
             <ContentControl Content="{Binding CocktailIEnum}"
                         ContentTemplate="{StaticResource Description}"/>
-            <local:BoutonConnecte Grid.Row="1" Visibility="Hidden" x:Name="connecte"/>
-            <local:BoutonVisiteur Grid.Row="1" Visibility="Visible" x:Name="visiteur"/>
+            <local:BoutonConnecte Grid.Row="1" Visibility="Visible" x:Name="connecte"/>
+            <local:BoutonVisiteur Grid.Row="1" Visibility="Hidden" x:Name="visiteur"/>
         </Grid>
     </Grid>
 </Window>

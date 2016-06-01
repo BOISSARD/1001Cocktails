@@ -20,15 +20,25 @@ namespace Projet
     /// </summary>
     public partial class Connexion : Window
     {
+        private Manager MyManager
+        {
+            get
+            {
+                return ((Application.Current as App).Resources["MyManager"] as ObjectDataProvider).Data as Manager;
+            }
+        }
+
         public Connexion()
         {
             InitializeComponent();
+
+            DataContext = MyManager;
+            MyManager.charger();
         }
 
         private void Connect(object sender, RoutedEventArgs e)
         {
-            User user = new User(login.Text, password.Password);
-            if (true)
+            if (MyManager.connexion(login.Text, password.Password))
             {
                 new MainWindow(true).Show();
                 this.Close();

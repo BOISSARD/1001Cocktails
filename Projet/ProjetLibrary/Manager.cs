@@ -49,10 +49,10 @@ namespace ProjetLibrary
         {
             this.dataManager = dataManager;
             /// Créer un utilisateur par défault.
-            utilisateurs.Add(new User("Admin", "admin@gmail.com", "admin63"));
-            Dictionary<User, Commentaire> dic = new Dictionary<User, Commentaire>();
-            dic.Add(utilisateurs.Single(),new Commentaire("Bon", 9));
-            livre.Add(new Cocktail("Mojito", "Mélanger le rhum à la menthe", new List<Ingredient>() { new Ingredient("Rhum", 20, Unite.cl), new Ingredient("Menthes", 5, Unite.feuille) }, new Dictionary<User, Commentaire>(), "image"));
+            //utilisateurs.Add(new User("Admin", "admin@gmail.com", "admin63"));
+            //Dictionary<User, Commentaire> dic = new Dictionary<User, Commentaire>();
+            //dic.Add(utilisateurs.Single(),new Commentaire("Bon", 9));
+            //livre.Add(new Cocktail("Mojito", "Mélanger le rhum à la menthe", new List<Ingredient>() { new Ingredient("Rhum", 20, Unite.cl), new Ingredient("Menthes", 5, Unite.feuille) }, new Dictionary<User, Commentaire>(), "image"));
             //livre.Add(new Cocktail("Pina Colada", "Mélanger le rhum avec le lait de coco et le jus d'ananas", new List<Ingredient>() { new Ingredient("Rhum", 10, Unite.cl), new Ingredient("Lait de coco", 5, Unite.cl), new Ingredient("Jus d'ananas", 5, Unite.cl), new Ingredient("Jus de pêche", 5, Unite.cl), new Ingredient("Orange", 1, Unite.tranche), new Ingredient("Fraise", 3, Unite.morceau) }, "image"));
             UserRead = new ReadOnlyCollection<User>(utilisateurs);
         }
@@ -127,9 +127,10 @@ namespace ProjetLibrary
         /// <param name="mdp">un pseudo</param>
         public void ajouterUser(string pseudo, string mail, string mdp)
         {
-            if (CurrentUser != null)
+            User user = new User(pseudo, mail, mdp);
+            if (!utilisateurs.Contains(user))
             {
-                utilisateurs.Add(new User(pseudo, mail, mdp));
+                utilisateurs.Add(user);
             }
         }
 
@@ -194,7 +195,8 @@ namespace ProjetLibrary
             //livre = new List<Cocktail>();
             foreach (Cocktail c in dataManager.loadCocktail())
             {
-                livre.Add(c);
+                if(!livre.Contains(c))
+                    livre.Add(c);
             }
         }
 

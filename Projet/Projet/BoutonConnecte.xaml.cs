@@ -37,7 +37,8 @@ namespace Projet
 
         private void Suppr(object sender, RoutedEventArgs e)
         {
-           
+            //if()
+            new Supprimer().Show();
         }
 
         private void Comment(object sender, RoutedEventArgs e)

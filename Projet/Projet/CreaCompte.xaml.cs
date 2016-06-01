@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ProjetLibrary;
 
 namespace Projet
 {
@@ -19,14 +20,42 @@ namespace Projet
     /// </summary>
     public partial class CreaCompte : Window
     {
+        private Manager MyManager
+        {
+            get
+            {
+                return ((Application.Current as App).Resources["MyManager"] as ObjectDataProvider).Data as Manager;
+            }
+        }
+
         public CreaCompte()
         {
             InitializeComponent();
+
+            DataContext = MyManager;
         }
 
         private void Creer(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            if (mdp1.Password != mdp2.Password)
+            {
+                MessageBox.Show("Les mot de passe ne sont pas égaux !");
+            }
+            else
+            { 
+                User newUser = new User(pseudo.Text,mail.Text,mdp1.Password);
+                if (!MyManager.UserRead.Contains(newUser))
+                {
+                    MyManager.ajouterUser(pseudo.Text, mail.Text, mdp1.Password);
+                    MessageBox.Show("Le compte a bien été créé");
+                    new Connexion().Show();
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Identifiant déjà utilisé !");
+                }
+            }
         }
 
         private void Annuler(object sender, RoutedEventArgs e)

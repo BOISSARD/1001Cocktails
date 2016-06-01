@@ -22,16 +22,19 @@ namespace Projet
     /// </summary>
     public partial class MainWindow : Window
     {
+        private Manager MyManager
+        {
+            get
+            {
+                return ((Application.Current as App).Resources["MyManager"] as ObjectDataProvider).Data as Manager;
+            }
+        }
 
         public MainWindow()
         {
             InitializeComponent();
 
-            Manager manager = new Manager(new XMLDataManager());
-
-            DataContext = manager;
-
-            manager.charger();
+            DataContext = MyManager;
         }
 
         public MainWindow(bool type) : this()
@@ -46,6 +49,11 @@ namespace Projet
                 connecte.Visibility = Visibility.Hidden;
                 visiteur.Visibility = Visibility.Visible;
             }
+        }
+
+       private void Suppr(object sender, RoutedEventArgs e)
+        {
+            new Supprimer().Show();
         }
     }
 }

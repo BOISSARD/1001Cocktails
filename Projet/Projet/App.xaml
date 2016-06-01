@@ -1,6 +1,9 @@
 ﻿<Application x:Class="Projet.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:Projet"
+             xmlns:core="clr-namespace:ProjetLibrary;assembly=ProjetLibrary"
+             xmlns:stub="clr-namespace:ProjetData;assembly=ProjetData"
              StartupUri="Connexion.xaml">
     <Application.Resources>
 
@@ -274,6 +277,12 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        
+        <ObjectDataProvider x:Key="MyManager" ObjectType="{x:Type core:Manager}">
+            <ObjectDataProvider.ConstructorParameters>
+                <stub:XMLDataManager/>
+            </ObjectDataProvider.ConstructorParameters>
+        </ObjectDataProvider>
 
     </Application.Resources>
 </Application>
