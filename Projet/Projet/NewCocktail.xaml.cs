@@ -20,12 +20,16 @@ namespace Projet
     /// </summary>
     public partial class NewCocktail : Window
     {
-    //    static string nom;
-    //    static string recette;
-        static int nbIng, exNbIng = 1;
-    //    /*static string nomIngredient = "";
-    //    static int quantiteIngredient = 0;
-    //    static Unite uniteIngredient = Unite.unite;*/
+        private Manager MyManager
+        {
+            get
+            {
+                return ((Application.Current as App).Resources["MyManager"] as ObjectDataProvider).Data as Manager;
+            }
+        }
+        private static int nbIng, exNbIng = 1;
+        private string nom, url, recette;
+        private List<Ingredient> ingredients = new List<Ingredient>();
 
         public NewCocktail()
         {
@@ -40,10 +44,22 @@ namespace Projet
 
         private void Ajout(object sender, RoutedEventArgs e)
         {
-           /* nom = nomC.Text;
+            nom = nomC.Text;
             recette = recetteC.Text;
-            Cocktail c = new Cocktail(nom, recette);
-            this.Close();*/
+            foreach (NewIngredient o in ListIng.Items)
+            {
+                ingredients.Add(o.getIngredient());
+            }
+            if ((nom != null || nom != "") && (recette != null || recette != "") && (ingredients.ElementAt(0).Nom != null/* || ingredients.ElementAt(0).Nom != ""*/))
+            {
+                MyManager.ajouterCocktail(nom,recette,ingredients);
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Test");
+                return;
+            }
         }
 
         private void nbIngredientsC_DropDownClosed_1(object sender, EventArgs e)
@@ -68,7 +84,7 @@ namespace Projet
             {
                 for (int i = exNbIng+1; i <= nbIng; i++)
                 {
-                    Ingredient ing = new Ingredient() { Name = "ingredient" + nbIng };
+                    NewIngredient ing = new NewIngredient() { Name = "ingredient" + nbIng };
                     ListIng.Items.Add(ing);
                     if (i == 2 || i == 3)
                     {

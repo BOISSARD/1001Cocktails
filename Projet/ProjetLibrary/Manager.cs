@@ -165,6 +165,23 @@ namespace ProjetLibrary
         }
 
         /// <summary>
+        /// Méthode ajouterCocktail qui permet d'ajouter un cocktail à la liste de cocktails livre.
+        /// </summary>
+        /// <param name="nom">prenant un nom</param>
+        /// <param name="recette">une recette</param>
+        /// <param name="ing">une liste d'ingrédients</param>
+        public void ajouterCocktail(string nom, string recette, List<Ingredient> ing)
+        {
+            List<Ingredient> ingredients = new List<Ingredient>();
+            ing.ForEach(i => ingredients.Add(new Ingredient(i.Nom, i.Quantite, i.Unite)));
+            Cocktail c = new Cocktail(nom, recette, ingredients);
+            if (CurrentUser != null && !livre.Contains(c))
+            {
+                livre.Add(c);
+            }
+        }
+
+        /// <summary>
         /// Méthode supprimerCocktail qui permet de supprimer un cocktail de livre.
         /// </summary>
         /// <param name="nom">Besoin uniquement du nom du cocktail</param>

@@ -11,6 +11,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using ProjetLibrary;
 
 namespace Projet
 {
@@ -22,6 +23,13 @@ namespace Projet
         public Supprimer()
         {
             InitializeComponent();
+        }
+
+
+        public Supprimer(ICocktail c)
+        {
+            InitializeComponent();
+            text.Text = c.ToString();
         }
 
         private void Annuler(object sender, RoutedEventArgs e)

@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="Projet.Ingredient"
+﻿<UserControl x:Class="Projet.NewIngredient"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -20,7 +20,7 @@
             </CollectionViewSource.Source>
         </CollectionViewSource>
     </UserControl.Resources>
-    
+
     <Grid Grid.Row="4" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="3" Name="ingredient">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -44,3 +44,4 @@
         </ComboBox>
     </Grid>
 </UserControl>
+

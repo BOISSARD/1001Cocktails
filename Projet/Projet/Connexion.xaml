@@ -15,8 +15,8 @@
             <RowDefinition Height="7*"/>
             <RowDefinition Height="7*"/>
         </Grid.RowDefinitions>
-        <TextBox Margin="30,5,30,2" Grid.Row="0" VerticalContentAlignment="Center" Name="login"/>
-        <PasswordBox Margin="30,2,30,5" Grid.Row="1" VerticalContentAlignment="Center" Name="password"/>
+        <TextBox Margin="30,5,30,2" Grid.Row="0" VerticalContentAlignment="Center" Name="login" Text="Admin"/>
+        <PasswordBox Margin="30,2,30,5" Grid.Row="1" VerticalContentAlignment="Center" Name="password" Password="admin63"/>
         <Button Content="Se connecter" Grid.Row="2" Margin="30,8" Click="Connect"/>
         <Button Content="Visiter" Grid.Row="3" Margin="30,8" Click="Visit"/>
         <Button Content="Créer un compte" Grid.Row="4" Margin="30,8" Click="CreatCompte"/>

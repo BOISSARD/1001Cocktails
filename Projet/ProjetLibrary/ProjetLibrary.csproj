@@ -50,7 +50,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
     <Compile Include="Commentaire.cs" />
-    <Compile Include="FabriqueCocktail.cs" />
+    <Compile Include="Fabrique.cs" />
     <Compile Include="ICocktail.cs" />
     <Compile Include="IDataManager.cs" />
     <Compile Include="Ingredient.cs" />

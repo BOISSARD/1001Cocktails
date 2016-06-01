@@ -60,51 +60,17 @@ namespace ProjetData
         {
             cocktailFile = XDocument.Load(dirData + "cocktails.xml");
             IEnumerable<ICocktail> liste = new List<ICocktail>();
-            liste = cocktailFile.Descendants("cocktail").Select(cocktail => FabriqueCocktail.creerCocktail
+            liste = cocktailFile.Descendants("cocktail").Select(cocktail => Fabrique.creerCocktail
             (
                cocktail.Element("nom").Value,
                cocktail.Element("recette").Value,
                cocktail.Element("ingredients").Descendants("ingredient").Select(ing => new Ingredient(ing.Element("nom").Value,
                                                                                                       Convert.ToInt32(ing.Element("quantite").Value),
-                                                                                                      recupUnite(ing.Element("unite").Value))).ToList(),
+                                                                                                      Fabrique.convertToUnite(ing.Element("unite").Value))).ToList(),
                cocktail.Element("url").Value
             ));
 
             return liste;
-        }
-
-
-        public Unite recupUnite(string unite)
-        {
-            switch (unite)
-            {
-                case "baton":
-                    return Unite.baton;
-                case "cl":
-                    return Unite.cl;
-                case "cuillere":
-                    return Unite.cuillere;
-                case "feuille":
-                    return Unite.feuille;
-                case "g":
-                    return Unite.g;
-                case "goutte":
-                    return Unite.goutte;
-                case "l":
-                    return Unite.l;
-                case "morceau":
-                    return Unite.morceau;
-                case "sachet":
-                    return Unite.sachet;
-                case "tranche":
-                    return Unite.tranche;
-                case "trait":
-                    return Unite.trait;
-                case "zeste":
-                    return Unite.zeste;
-                default :
-                    return Unite.unite;
-            }
         }
 
         /// <summary>
