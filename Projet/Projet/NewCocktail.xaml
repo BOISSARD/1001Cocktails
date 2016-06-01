@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Projet"
         mc:Ignorable="d" 
         Title="NewCocktail" Height="520" Width="400" Style="{StaticResource fenetre}">
-
+    
     <Grid Name="grid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="74*"/>
@@ -18,7 +18,7 @@
             <RowDefinition Height="40*"/>
             <RowDefinition Height="40*"/>
             <RowDefinition Height="44*"/>
-            <RowDefinition Height="88*"/>
+            <RowDefinition Height="84*"/>
             <RowDefinition Height="45*"/>
             <RowDefinition Height="120*"/>
             <RowDefinition Height="55*"/>
@@ -41,10 +41,10 @@
             <ComboBoxItem Content="10"/>
         </ComboBox>
         <ListBox Grid.Column="0" Grid.Row="4" Grid.ColumnSpan="3" Name="ListIng">
-            <local:Ingredient x:Name="ingredient1" Height="84" Width="350"/>
+            <local:Ingredient x:Name="ingredient1" Height="84" Width="350" HorizontalContentAlignment="Stretch"/>
         </ListBox>
         <TextBlock Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="5" Text="Recette :" VerticalAlignment="Center" Margin="15,13,0,13"/>
-        <TextBox Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="6" Margin="10,0" VerticalContentAlignment="Center" Name="recetteC"/>
+        <TextBox Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="6" Margin="10,0" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" TextWrapping="Wrap" Name="recetteC"/>
         <Button Grid.Column="0" Grid.Row="7" Content="Ajouter" Margin="10,10" Click="Ajout"/>
         <Button Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="7" Content="Annuler" Margin="10,10" Click="Annuler"/>
     </Grid>

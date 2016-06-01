@@ -4,9 +4,23 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:Projet"
+             xmlns:core="clr-namespace:ProjetLibrary;assembly=ProjetLibrary"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 
              Height="84" Width="350" Style="{StaticResource usercontrol}">
 
+    <UserControl.Resources>
+        <CollectionViewSource x:Key="enumValues">
+            <CollectionViewSource.Source>
+                <ObjectDataProvider MethodName="GetValues" ObjectType="{x:Type sys:Enum}">
+                    <ObjectDataProvider.MethodParameters>
+                        <x:Type TypeName="core:Unite"/>
+                    </ObjectDataProvider.MethodParameters>
+                </ObjectDataProvider>
+            </CollectionViewSource.Source>
+        </CollectionViewSource>
+    </UserControl.Resources>
+    
     <Grid Grid.Row="4" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="3" Name="ingredient">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -17,10 +31,16 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <TextBlock Grid.Column="0" Grid.Row="0" Text="Nom ingrédient :" VerticalAlignment="Center" Margin="15,10,0,10" Style="{StaticResource textBase}"/>
+        <TextBlock Grid.Column="0" Grid.Row="0" Text="Nom ingrédient :" VerticalAlignment="Center" Margin="15,10,0,10" Style="{StaticResource textAjout}"/>
         <TextBox Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="0" Margin="5,5" VerticalContentAlignment="Center" Name="nomIngredientC"/>
-        <TextBlock Grid.Column="0" Grid.Row="1" Text="Quantité :" VerticalAlignment="Center" Margin="15,10,0,10" Style="{StaticResource textBase}"/>
+        <TextBlock Grid.Column="0" Grid.Row="1" Text="Quantité :" VerticalAlignment="Center" Margin="15,10,0,10" Style="{StaticResource textAjout}"/>
         <TextBox Grid.Column="1" Grid.Row="1" Margin="5,5" VerticalContentAlignment="Center" Name="quantiteIngredientC"/>
-        <ComboBox Grid.Column="2" Grid.Row="1" Margin="5,5" Name="unitesIngredientC"/>
+        <ComboBox Grid.Column="2" Grid.Row="1" Margin="5,5" Name="unitesIngredientC" ItemsSource="{Binding Source={StaticResource enumValues}}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding}"  Style="{StaticResource ResourceKey=textAjout}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
     </Grid>
 </UserControl>

@@ -25,6 +25,10 @@ namespace Projet
         public Ingredient()
         {
             InitializeComponent();
+
+            Unite u = new Unite();
+
+            DataContext = u;
         }
     }
 }

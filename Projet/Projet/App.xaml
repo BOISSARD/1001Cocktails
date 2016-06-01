@@ -11,7 +11,7 @@
         <SolidColorBrush x:Key="color3" Color="#FDFDFD"/> 
         <!-- #94BCDD    #FBB36B -->
         <SolidColorBrush x:Key="color4" Color="#C4D7ED"/>
-        <!-- #F1D6BA    #ABBC85-->
+        <!-- #F1D6BA    #ABBC85 -->
         <SolidColorBrush x:Key="color5" Color="#849B89"/>
         <!-- #FFF4D4 -->
 
@@ -35,7 +35,14 @@
             <Setter Property="FontSize" Value="13"/>
             <Setter Property="FontWeight" Value="Medium"/>
             <Setter Property="TextDecorations" Value="None"/>
-            <Setter Property="Foreground" Value="{StaticResource color3}"/>
+            <Setter Property="Foreground" Value="{StaticResource color1}"/>
+        </Style>
+
+        <Style TargetType="TextBlock" x:Key="textAjout">
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="FontWeight" Value="Medium"/>
+            <Setter Property="TextDecorations" Value="None"/>
+            <Setter Property="Foreground" Value="{StaticResource color2}"/>
         </Style>
 
         <Style TargetType="TextBlock" x:Key="descrip">
@@ -49,6 +56,8 @@
             <Setter Property="Background" Value="{StaticResource color4}"/>
             <Setter Property="BorderBrush" Value="{StaticResource color1}"/>
             <Setter Property="TextDecorations" Value="None"/>
+            <Setter Property="FontSize" Value="13"/>
+            <Setter Property="Foreground" Value="{StaticResource color2}"/>
         </Style>
         
         <Style TargetType="PasswordBox">
