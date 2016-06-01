@@ -15,11 +15,7 @@ namespace ProjetLibrary
         /// <summary>
         /// livre est une liste de cocktail.
         /// </summary>
-        private List<Cocktail> livre = new List<Cocktail>();/*{
-            new cocktail("mojito", new list<ingredient>(){
-                    new ingredient("menthe",10,unite.morceau), new ingredient("rhum",10,unite.cl)
-            })
-        };*/
+        private List<Cocktail> livre = new List<Cocktail>();
         public IEnumerable<ICocktail> CocktailIEnum {
             private set
             {
@@ -56,8 +52,8 @@ namespace ProjetLibrary
             utilisateurs.Add(new User("Admin", "admin@gmail.com", "admin63"));
             Dictionary<User, Commentaire> dic = new Dictionary<User, Commentaire>();
             dic.Add(utilisateurs.Single(),new Commentaire("Bon", 9));
-            livre.Add(new Cocktail("Mojito", "Mélanger le rhum à la menthe", new List<Ingredient>() { new Ingredient("Rhum",20,Unite.cl), new Ingredient("Menthes",5,Unite.feuille) }, new Dictionary<User, Commentaire>(), "image"));
-            livre.Add(new Cocktail("Pina Colada", "Mélanger le rhum avec le lait de coco et le jus d'ananas", new List<Ingredient>() { new Ingredient("Rhum", 10, Unite.cl), new Ingredient("Lait de coco", 5, Unite.cl), new Ingredient("Jus d'ananas", 5, Unite.cl), new Ingredient("Jus de pêche", 5, Unite.cl), new Ingredient("Orange", 1, Unite.tranche), new Ingredient("Fraise", 3, Unite.morceau) }, "image"));
+            //livre.Add(new Cocktail("Mojito", "Mélanger le rhum à la menthe", new List<Ingredient>() { new Ingredient("Rhum", 20, Unite.cl), new Ingredient("Menthes", 5, Unite.feuille) }, new Dictionary<User, Commentaire>(), "image"));
+            //livre.Add(new Cocktail("Pina Colada", "Mélanger le rhum avec le lait de coco et le jus d'ananas", new List<Ingredient>() { new Ingredient("Rhum", 10, Unite.cl), new Ingredient("Lait de coco", 5, Unite.cl), new Ingredient("Jus d'ananas", 5, Unite.cl), new Ingredient("Jus de pêche", 5, Unite.cl), new Ingredient("Orange", 1, Unite.tranche), new Ingredient("Fraise", 3, Unite.morceau) }, "image"));
             UserRead = new ReadOnlyCollection<User>(utilisateurs);
         }
 
@@ -158,11 +154,12 @@ namespace ProjetLibrary
         /// <param name="image">le chemin de l'image désiré</param>
         public void ajouterCocktail(string nom, string recette, List<Ingredient> ing, string image)
         {
-            if (CurrentUser != null)
+            List<Ingredient> ingredients = new List<Ingredient>();
+            ing.ForEach(i => ingredients.Add(new Ingredient(i.Nom, i.Quantite, i.Unite)));
+            Cocktail c = new Cocktail(nom, recette, ingredients, image);
+            if (CurrentUser != null && !livre.Contains(c))
             {
-                List<Ingredient> ingredients = new List<Ingredient>();
-                ing.ForEach(i => ingredients.Add(new Ingredient(i.Nom, i.Quantite, i.Unite)));
-                livre.Add(new Cocktail(nom, recette, ingredients, image));
+                livre.Add(c);
             }
         }
 

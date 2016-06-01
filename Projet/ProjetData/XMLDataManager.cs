@@ -58,14 +58,15 @@ namespace ProjetData
         /// <returns>en retournant une collection de cocktails</returns>
         public IEnumerable<ICocktail> loadCocktail()
         {
+            cocktailFile = XDocument.Load(dirData + "cocktails.xml");
             IEnumerable<ICocktail> liste = new List<ICocktail>();
             liste = cocktailFile.Descendants("cocktail").Select(cocktail => FabriqueCocktail.creerCocktail
             (
                cocktail.Element("nom").Value,
                cocktail.Element("recette").Value,
-               cocktail.Element("ingredients").Descendants("ingredient").Select(ing => new Ingredient(ing.Element("nom_ingredient").Value,
+               cocktail.Element("ingredients").Descendants("ingredient").Select(ing => new Ingredient(ing.Element("nom").Value,
                                                                                                       Convert.ToInt32(ing.Element("quantite").Value),
-                                                                                                      recupUnite(ing.Element("unite").Value))) as List<Ingredient>,
+                                                                                                      recupUnite(ing.Element("unite").Value))).ToList(),
                cocktail.Element("url").Value
             ));
 
@@ -112,6 +113,7 @@ namespace ProjetData
         /// <returns>en retournant une collection d'utilisateurs</returns>
         public List<User> loadUser()
         {
+            userFile = XDocument.Load(dirData + "users.xml");
             List<User> liste = new List<User>();
             liste = userFile.Descendants("user").Select(user => new User(
                 user.Element("pseudo").Value,
@@ -138,7 +140,7 @@ namespace ProjetData
                                                                                                 new XElement("unite", ing.Unite)))),
                                         new XElement("url", cocktail.urlImage)));
             cocktailFile.Add(new XElement("cocktails", cocktailElts));
-            cocktailFile.Save(dirData + "cocktail.xml");
+            cocktailFile.Save(dirData + "cocktails.xml");
         }
 
         /// <summary>
@@ -152,7 +154,7 @@ namespace ProjetData
                                                             new XElement("mail", user.Mail),
                                                             new XElement("password", user.Password)));
             userFile.Add(new XElement("users", userElts));
-            userFile.Save(dirData + "user.xml");
+            userFile.Save(dirData + "users.xml");
         }
     }
 }
