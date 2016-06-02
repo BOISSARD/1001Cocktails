@@ -67,6 +67,8 @@ namespace ProjetData
                cocktail.Element("ingredients").Descendants("ingredient").Select(ing => new Ingredient(ing.Element("nom").Value,
                                                                                                       Convert.ToInt32(ing.Element("quantite").Value),
                                                                                                       Fabrique.convertToUnite(ing.Element("unite").Value))).ToList(),
+               //cocktail.Element("commentaires").Descendants("commentaire").Select(com => new ReadOnlyCollection<User, Commentaire>(com.Element("username").Value,
+                                                                                                        
                cocktail.Element("url").Value
             ));
 
@@ -104,6 +106,14 @@ namespace ProjetData
                                                                                                 new XElement("nom", ing.Nom),
                                                                                                 new XElement("quantite", ing.Quantite),
                                                                                                 new XElement("unite", ing.Unite)))),
+                                        new XElement("commentaires", cocktail.CommentaireRead.Select(com =>
+                                                                                            new XElement("commentaire",
+                                                                                                new XElement("username", com.Key.Pseudo),
+                                                                                                new XElement("mail", com.Key.Mail),
+                                                                                                new XElement("password", com.Key.Password),
+                                                                                                new XElement("titre", com.Value.Titre),
+                                                                                                new XElement("texte", com.Value.Texte),
+                                                                                                new XElement("note", com.Value.Note)))),
                                         new XElement("url", cocktail.urlImage)));
             cocktailFile.Add(new XElement("cocktails", cocktailElts));
             cocktailFile.Save(dirData + "cocktails.xml");

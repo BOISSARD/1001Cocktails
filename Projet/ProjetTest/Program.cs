@@ -41,15 +41,23 @@ namespace ProjetTest
             Ingredient ing1 = new Ingredient("Vodka", 10, Unite.cl);
             Ingredient ing2 = new Ingredient("jus d'orange", 20, Unite.cl);
             Ingredient ing3 = new Ingredient("jus de pomme", 20, Unite.cl);
+            Ingredient ing4 = new Ingredient("Red Bull", 10, Unite.cl);
             List<Ingredient> liste1 = new List<Ingredient>();
             liste1.Add(ing1);
             liste1.Add(ing2);
             List<Ingredient> liste2 = new List<Ingredient>();
             liste2.Add(ing1);
             liste2.Add(ing3);
+            List<Ingredient> liste3 = new List<Ingredient>();
+            liste3.Add(ing1);
+            liste3.Add(ing4);
+
+            Dictionary<User, Commentaire> dic = new Dictionary<User, Commentaire>();
+            dic.Add(new User u1 = new User("ecureil", "1234"), new Commentaire c1 = new Commentaire("Bon","Bon",9);
 
             //m.ajouterCocktail("Vodka-Orange", "Mélangez la vodka et le jus d'orange", liste1, "http://image.org");
             //m.ajouterCocktail("Vodka-Pomme", "Mélangez la vodka et le jus de pomme", liste2, "http://image.org");
+            m.ajouterCocktail("Vodka-RedBull", "Mélanger la vodka et le redbull", liste3, "http://image.org");
 
             Console.WriteLine("Cocktails lu  :");
             foreach (ICocktail c in m.CocktailIEnum)
@@ -57,7 +65,7 @@ namespace ProjetTest
                 Console.WriteLine(" + " + c.ToString());
             }
 
-            //m.sauvegarder();
+            m.sauvegarder();
 
             Console.ReadLine();
         }
