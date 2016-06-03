@@ -17,7 +17,7 @@ namespace ProjetLibrary
         /// <summary>
         /// Nom est le nom du cocktail, il est unique pour tous les cocktails.
         /// </summary>
-        public string Nom { private set; get;}
+        public string Nom { private set; get; }
         /// <summary>
         /// Recette est du texte composé des étapes de la réalisation du cocktail.
         /// </summary>
@@ -68,7 +68,7 @@ namespace ProjetLibrary
             this.Nom = nom;
             this.Recette = "Pas de recette !";
             if (ingredients == null)
-                this.ingredients.Add(new Ingredient("Pas d ingredient",0,Unite.unite));
+                this.ingredients.Add(new Ingredient("Pas d ingredient", 0, Unite.unite));
             else
                 ingredients.ForEach(i => this.ingredients.Add(new Ingredient(i.Nom, i.Quantite, i.Unite)));
         }
@@ -96,13 +96,20 @@ namespace ProjetLibrary
             this.urlImage = url;
         }
 
-        public Cocktail(string nom, string recette , List<Ingredient> ingredients, Dictionary<User, Commentaire> commentaires, string url) : this(nom, recette, ingredients, url)
+        /// <summary>
+        /// constructeur numéro 4.
+        /// </summary>
+        /// <param name="nom"></param>
+        /// <param name="recette"></param>
+        /// <param name="ingredients"></param>
+        /// <param name="commentaires"></param>
+        /// <param name="url"></param>
+        public Cocktail(string nom, string recette, List<Ingredient> ingredients, Dictionary<User, Commentaire> commentaires, string url) : this(nom, recette, ingredients, url)
         {
-            /*
-            foreach (var com in commentaires.Values)
+            foreach (var com in commentaires)
             {
-                this.commentaires.Add(com,com)
-            }*/
+                this.commentaires.Add(com.Key, com.Value);
+            }
         }
 
         /// <summary>

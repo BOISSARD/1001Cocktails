@@ -16,7 +16,8 @@ namespace ProjetLibrary
         /// livre est une liste de cocktail.
         /// </summary>
         private List<Cocktail> livre = new List<Cocktail>();
-        public IEnumerable<ICocktail> CocktailIEnum {
+        public IEnumerable<ICocktail> CocktailIEnum
+        {
             private set
             {
                 livre = (List<Cocktail>)value;
@@ -30,10 +31,10 @@ namespace ProjetLibrary
         /// utilisateurs est la liste des utilisateurs inscrit.
         /// </summary>
         private List<User> utilisateurs = new List<User>();
-        public ReadOnlyCollection<User> UserRead 
+        public ReadOnlyCollection<User> UserRead
         {
             private set;
-            get; 
+            get;
         }
 
         /// <summary>
@@ -152,12 +153,9 @@ namespace ProjetLibrary
         /// <param name="nom">prenant un nom</param>
         /// <param name="recette">une recette</param>
         /// <param name="ing">une liste d'ingrédients</param>
-        /// <param name="image">le chemin de l'image désiré</param>
-        public void ajouterCocktail(string nom, string recette, List<Ingredient> ing, string image)
+        public void ajouterCocktail(string nom, string recette, List<Ingredient> ing)
         {
-            List<Ingredient> ingredients = new List<Ingredient>();
-            ing.ForEach(i => ingredients.Add(new Ingredient(i.Nom, i.Quantite, i.Unite)));
-            Cocktail c = new Cocktail(nom, recette, ingredients, image);
+            Cocktail c = new Cocktail(nom, recette, ing);
             if (CurrentUser != null && !livre.Contains(c))
             {
                 livre.Add(c);
@@ -170,11 +168,27 @@ namespace ProjetLibrary
         /// <param name="nom">prenant un nom</param>
         /// <param name="recette">une recette</param>
         /// <param name="ing">une liste d'ingrédients</param>
-        public void ajouterCocktail(string nom, string recette, List<Ingredient> ing)
+        /// <param name="image">le chemin de l'image désiré</param>
+        public void ajouterCocktail(string nom, string recette, List<Ingredient> ing, string image)
         {
-            List<Ingredient> ingredients = new List<Ingredient>();
-            ing.ForEach(i => ingredients.Add(new Ingredient(i.Nom, i.Quantite, i.Unite)));
-            Cocktail c = new Cocktail(nom, recette, ingredients);
+            Cocktail c = new Cocktail(nom, recette, ing, image);
+            if (CurrentUser != null && !livre.Contains(c))
+            {
+                livre.Add(c);
+            }
+        }
+
+        /// <summary>
+        /// Méthode ajouterCocktail qui permet d'ajouter un cocktail à la liste de cocktails livre.
+        /// </summary>
+        /// <param name="nom">prenant un nom</param>
+        /// <param name="recette">une recette</param>
+        /// <param name="ing">une liste d'ingrédients</param>
+        /// <param name="com">un dictionnaire d'ingrédients</param>
+        /// <param name="image">le chemin de l'image désiré</param>
+        public void ajouterCocktail(string nom, string recette, List<Ingredient> ing, Dictionary<User, Commentaire> com, string image)
+        {
+            Cocktail c = new Cocktail(nom, recette, ing, com, image);
             if (CurrentUser != null && !livre.Contains(c))
             {
                 livre.Add(c);
@@ -212,7 +226,7 @@ namespace ProjetLibrary
             //livre = new List<Cocktail>();
             foreach (Cocktail c in dataManager.loadCocktail())
             {
-                if(!livre.Contains(c))
+                if (!livre.Contains(c))
                     livre.Add(c);
             }
         }
