@@ -30,10 +30,18 @@ namespace ProjetLibrary
         /// Constructeur de User numéro 1.
         /// </summary>
         /// <param name="pseudo">prend un pseudo</param>
-        /// <param name="password">et un mot de passe</param>
-        public User(string pseudo, string password)
+        public User(string pseudo)
         {
             this.Pseudo = pseudo;
+        }
+
+        /// <summary>
+        /// Constructeur de User numéro 2.
+        /// </summary>
+        /// <param name="pseudo">prend un pseudo</param>
+        /// <param name="password">et un mot de passe</param>
+        public User(string pseudo, string password) : this(pseudo)
+        {
             this.Password = password;
         }
 

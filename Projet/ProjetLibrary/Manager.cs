@@ -50,7 +50,7 @@ namespace ProjetLibrary
         {
             this.dataManager = dataManager;
             /// Créer un utilisateur par défault.
-            //utilisateurs.Add(new User("Admin", "admin@gmail.com", "admin63"));
+            utilisateurs.Add(new User("Admin", "admin@gmail.com", "admin63"));
             //Dictionary<User, Commentaire> dic = new Dictionary<User, Commentaire>();
             //dic.Add(utilisateurs.Single(),new Commentaire("Bon", 9));
             //livre.Add(new Cocktail("Mojito", "Mélanger le rhum à la menthe", new List<Ingredient>() { new Ingredient("Rhum", 20, Unite.cl), new Ingredient("Menthes", 5, Unite.feuille) }, new Dictionary<User, Commentaire>(), "image"));
@@ -148,6 +148,16 @@ namespace ProjetLibrary
         }
 
         /// <summary>
+        /// Méthode permetant de récupérer un user grâce à son pseudo
+        /// </summary>
+        /// <param name="pseudo"></param>
+        /// <returns>le user</returns>
+        public User recupUser(string pseudo)
+        {
+            return utilisateurs.Where(u => u.Pseudo == pseudo).SingleOrDefault();
+        }
+
+        /// <summary>
         /// Méthode ajouterCocktail qui permet d'ajouter un cocktail à la liste de cocktails livre.
         /// </summary>
         /// <param name="nom">prenant un nom</param>
@@ -186,9 +196,16 @@ namespace ProjetLibrary
         /// <param name="ing">une liste d'ingrédients</param>
         /// <param name="com">un dictionnaire d'ingrédients</param>
         /// <param name="image">le chemin de l'image désiré</param>
-        public void ajouterCocktail(string nom, string recette, List<Ingredient> ing, Dictionary<User, Commentaire> com, string image)
+        public void ajouterCocktail(string nom, string recette, List<Ingredient> ing, ReadOnlyDictionary<User, Commentaire> com, string image)
         {
-            Cocktail c = new Cocktail(nom, recette, ing, com, image);
+            Dictionary<User, Commentaire> commentaires = new Dictionary<User, Commentaire>();
+            foreach(var co in com)
+            {
+                if (utilisateurs.Contains(co.Key))
+                    commentaires.Add(utilisateurs.ElementAt(utilisateurs.IndexOf(co.Key)), co.Value);
+                else commentaires.Add(co.Key, co.Value);
+            }
+            Cocktail c = new Cocktail(nom, recette, ing, commentaires, image);
             if (CurrentUser != null && !livre.Contains(c))
             {
                 livre.Add(c);
@@ -226,8 +243,8 @@ namespace ProjetLibrary
             //livre = new List<Cocktail>();
             foreach (Cocktail c in dataManager.loadCocktail())
             {
-                if (!livre.Contains(c))
-                    livre.Add(c);
+                //livre.Add(c);
+                this.ajouterCocktail(c.Nom,c.Recette,c.IngredientRead.ToList(),c.CommentaireRead,c.urlImage);
             }
         }
 

@@ -17,6 +17,9 @@ namespace ProjetData
         /// Nom du répertoire où sera enregistré les fichiers xml.
         /// </summary>
         public string Url { private set; get; }
+        /// <summary>
+        /// Info de l'emplacement du répertoire
+        /// </summary>
         DirectoryInfo dirInfo;
         /// <summary>
         /// Chemin complet du répertoire où sera enregistré les fichiers xml.
@@ -67,8 +70,11 @@ namespace ProjetData
                cocktail.Element("ingredients").Descendants("ingredient").Select(ing => new Ingredient(ing.Element("nom").Value,
                                                                                                       Convert.ToInt32(ing.Element("quantite").Value),
                                                                                                       Fabrique.convertToUnite(ing.Element("unite").Value))).ToList(),
-               //cocktail.Element("commentaires").Descendants("commentaire").Select(com => new ReadOnlyCollection<User, Commentaire>(com.Element("username").Value,
-                                                                                                        
+               cocktail.Element("commentaires").Descendants("commentaire").ToDictionary(item => new User(item.Attribute("pseudo").Value),
+                                                                                        item => new Commentaire(item.Element("titre").Value,
+                                                                                                                item.Element("texte").Value,
+                                                                                                                Convert.ToInt16(item.Element("note").Value)                                                                                                                )
+                                                                                       ),
                cocktail.Element("url").Value
             ));
 
@@ -87,7 +93,7 @@ namespace ProjetData
                 user.Element("pseudo").Value,
                 user.Element("mail").Value,
                 user.Element("password").Value
-            )).ToList();//.ForEach(c => liste.Add(c));
+            )).ToList();
             return liste;
         }
 
@@ -108,9 +114,7 @@ namespace ProjetData
                                                                                                 new XElement("unite", ing.Unite)))),
                                         new XElement("commentaires", cocktail.CommentaireRead.Select(com =>
                                                                                             new XElement("commentaire",
-                                                                                                new XElement("username", com.Key.Pseudo),
-                                                                                                new XElement("mail", com.Key.Mail),
-                                                                                                new XElement("password", com.Key.Password),
+                                                                                                new XAttribute("pseudo", com.Key.Pseudo),
                                                                                                 new XElement("titre", com.Value.Titre),
                                                                                                 new XElement("texte", com.Value.Texte),
                                                                                                 new XElement("note", com.Value.Note)))),

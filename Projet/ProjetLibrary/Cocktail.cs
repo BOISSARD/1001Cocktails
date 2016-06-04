@@ -108,7 +108,7 @@ namespace ProjetLibrary
         {
             foreach (var com in commentaires)
             {
-                this.commentaires.Add(com.Key, com.Value);
+                this.commentaires.Add(com.Key, new Commentaire(com.Value.Titre, com.Value.Texte, com.Value.Note));
             }
         }
 

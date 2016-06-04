@@ -50,5 +50,15 @@ namespace ProjetLibrary
                     return Unite.unite;
             }
         }
+
+        //public static KeyValuePair<User,Commentaire> creerUserCom(string pseudo, string titre, string texte, short note)
+        //{
+        //    return new KeyValuePair<Manager.recupUser(pseudo), Commentaire>();
+        //}
+
+        //public static User recupUser(string pseudo)
+        //{
+        //    return Manager.utilisateurs.Where(u => u.Pseudo == pseudo).SingleOrDefault();
+        //}
     }
 }

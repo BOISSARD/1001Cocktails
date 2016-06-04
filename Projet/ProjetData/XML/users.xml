@@ -5,19 +5,4 @@
     <mail>admin@gmail.com</mail>
     <password>admin63</password>
   </user>
-  <user>
-    <pseudo>Ben</pseudo>
-    <mail>dragon@gmail.com</mail>
-    <password>blabla</password>
-  </user>
-  <user>
-    <pseudo>Clem</pseudo>
-    <mail>cleboi</mail>
-    <password>coucou</password>
-  </user>
-  <user>
-    <pseudo>Jacky</pseudo>
-    <mail>jack</mail>
-    <password>jj</password>
-  </user>
 </users>
