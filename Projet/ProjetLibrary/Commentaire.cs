@@ -46,6 +46,7 @@ namespace ProjetLibrary
         public Commentaire(string titre, short note)
         {
             this.Titre = titre;
+            this.Texte = "";
             this.Note = note;
         }
 
