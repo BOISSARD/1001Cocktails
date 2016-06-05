@@ -1,6 +1,92 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <cocktails>
   <cocktail>
+    <nom>Mojito</nom>
+    <recette>Mélanger le rhum à la menthe</recette>
+    <ingredients>
+      <ingredient>
+        <nom>Rhum</nom>
+        <quantite>20</quantite>
+        <unite>cl</unite>
+      </ingredient>
+      <ingredient>
+        <nom>Menthes</nom>
+        <quantite>5</quantite>
+        <unite>feuille</unite>
+      </ingredient>
+    </ingredients>
+    <commentaires>
+      <commentaire pseudo="Admin">
+        <titre>Bon</titre>
+        <texte></texte>
+        <note>9</note>
+      </commentaire>
+    </commentaires>
+    <url>http://www.esprits-feminins.fr/wp-content/uploads/2012/07/mojito_gesneden_600x600.jpg</url>
+  </cocktail>
+  <cocktail>
+    <nom>Pina Colada</nom>
+    <recette>Mélanger le rhum avec le lait de coco et le jus d'ananas</recette>
+    <ingredients>
+      <ingredient>
+        <nom>Rhum</nom>
+        <quantite>10</quantite>
+        <unite>cl</unite>
+      </ingredient>
+      <ingredient>
+        <nom>Lait de coco</nom>
+        <quantite>5</quantite>
+        <unite>cl</unite>
+      </ingredient>
+      <ingredient>
+        <nom>Jus d'ananas</nom>
+        <quantite>5</quantite>
+        <unite>cl</unite>
+      </ingredient>
+      <ingredient>
+        <nom>Jus de pêche</nom>
+        <quantite>5</quantite>
+        <unite>cl</unite>
+      </ingredient>
+      <ingredient>
+        <nom>Orange</nom>
+        <quantite>1</quantite>
+        <unite>tranche</unite>
+      </ingredient>
+      <ingredient>
+        <nom>Fraise</nom>
+        <quantite>3</quantite>
+        <unite>morceau</unite>
+      </ingredient>
+    </ingredients>
+    <commentaires />
+    <url>http://az659704.vo.msecnd.net/v1/image/c_lpad,w_1500,h_1500/v1400603728/cocktail_bora_bora-1.png</url>
+  </cocktail>
+  <cocktail>
+    <nom>Vodka-Orange</nom>
+    <recette>Mélangez la vodka et le jus d'orange</recette>
+    <ingredients>
+      <ingredient>
+        <nom>Vodka</nom>
+        <quantite>10</quantite>
+        <unite>cl</unite>
+      </ingredient>
+      <ingredient>
+        <nom>jus d'orange</nom>
+        <quantite>20</quantite>
+        <unite>cl</unite>
+      </ingredient>
+    </ingredients>
+    <commentaires>
+      <commentaire pseudo="Clem">
+        <titre>Bon</titre>
+        <texte></texte>
+        <note>9</note>
+      </commentaire>
+    </commentaires>
+    <url>http://image.org</url>
+  </cocktail>
+  <cocktail>
     <nom>Vodka-Pomme</nom>
     <recette>Mélangez la vodka et le jus de pomme</recette>
     <ingredients>
@@ -12,6 +98,24 @@
       <ingredient>
         <nom>jus de pomme</nom>
         <quantite>20</quantite>
+        <unite>cl</unite>
+      </ingredient>
+    </ingredients>
+    <commentaires />
+    <url>http://image.org</url>
+  </cocktail>
+  <cocktail>
+    <nom>Vodka-RedBull</nom>
+    <recette>Mélanger la vodka et le redbull</recette>
+    <ingredients>
+      <ingredient>
+        <nom>Vodka</nom>
+        <quantite>10</quantite>
+        <unite>cl</unite>
+      </ingredient>
+      <ingredient>
+        <nom>Red Bull</nom>
+        <quantite>10</quantite>
         <unite>cl</unite>
       </ingredient>
     </ingredients>

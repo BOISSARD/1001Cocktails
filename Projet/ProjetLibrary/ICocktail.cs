@@ -31,6 +31,6 @@ namespace ProjetLibrary
         /// <summary>
         /// Getter urlImage.
         /// </summary>
-        string urlImage { get; }
+        string UrlImage { get; }
     }
 }

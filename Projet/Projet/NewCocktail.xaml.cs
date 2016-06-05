@@ -37,6 +37,17 @@ namespace Projet
             nbIngredientsC.SelectedIndex = 0;
         }
 
+        public NewCocktail(ICocktail c) : this()
+        {
+            nbIng = c.IngredientRead.Count();
+            nom = c.Nom;
+            recette = c.Recette;
+            foreach (Ingredient i in c.IngredientRead)
+            {
+                ingredients.Add(i);
+            }
+        }
+
         private void Annuler(object sender, RoutedEventArgs e)
         {
             this.Close();
@@ -62,7 +73,7 @@ namespace Projet
             }
         }
 
-        private void nbIngredientsC_DropDownClosed_1(object sender, EventArgs e)
+        private void nbIngredientsC_DropDownClosed(object sender, EventArgs e)
         {
             nbIng = nbIngredientsC.SelectedIndex + 1;
 

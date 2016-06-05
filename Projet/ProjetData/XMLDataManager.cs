@@ -70,11 +70,11 @@ namespace ProjetData
                cocktail.Element("ingredients").Descendants("ingredient").Select(ing => new Ingredient(ing.Element("nom").Value,
                                                                                                       Convert.ToInt32(ing.Element("quantite").Value),
                                                                                                       Fabrique.convertToUnite(ing.Element("unite").Value))).ToList(),
-               cocktail.Element("commentaires").Descendants("commentaire").ToDictionary(item => new User(item.Attribute("pseudo").Value),
+               /*cocktail.Element("commentaires").Descendants("commentaire").ToDictionary(item => new User(item.Attribute("pseudo").Value),
                                                                                         item => new Commentaire(item.Element("titre").Value,
                                                                                                                 item.Element("texte").Value,
                                                                                                                 Convert.ToInt16(item.Element("note").Value)                                                                                                                )
-                                                                                       ),
+                                                                                       ),*/
                cocktail.Element("url").Value
             ));
 
@@ -118,7 +118,7 @@ namespace ProjetData
                                                                                                 new XElement("titre", com.Value.Titre),
                                                                                                 new XElement("texte", com.Value.Texte),
                                                                                                 new XElement("note", com.Value.Note)))),
-                                        new XElement("url", cocktail.urlImage)));
+                                        new XElement("url", cocktail.UrlImage)));
             cocktailFile.Add(new XElement("cocktails", cocktailElts));
             cocktailFile.Save(dirData + "cocktails.xml");
         }

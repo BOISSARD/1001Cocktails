@@ -55,7 +55,7 @@ namespace ProjetLibrary
         /// <summary>
         /// urlImage est le chemin de l'image dans le projet.
         /// </summary>
-        public string urlImage { private set; get; }
+        public string UrlImage { private set; get; }
 
 
         /// <summary>
@@ -93,7 +93,7 @@ namespace ProjetLibrary
         /// <param name="url"></param>
         public Cocktail(string nom, string recette, List<Ingredient> ingredients, string url) : this(nom, recette, ingredients)
         {
-            this.urlImage = url;
+            this.UrlImage = url;
         }
 
         /// <summary>

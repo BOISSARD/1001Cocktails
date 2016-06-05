@@ -28,7 +28,7 @@
         <TextBlock Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Text="Nom :" VerticalAlignment="Center" Margin="15,12,0,12"/>
         <TextBox Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Margin="5" VerticalContentAlignment="Center" Name="nomC"/>
         <TextBlock Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Text="Nombre d'ingrédients :" VerticalAlignment="Center" Margin="15,13,0,7"/>
-        <ComboBox Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" Margin="35,5" Name="nbIngredientsC" DropDownClosed="nbIngredientsC_DropDownClosed_1">
+        <ComboBox Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" Margin="35,5" Name="nbIngredientsC" DropDownClosed="nbIngredientsC_DropDownClosed">
             <ComboBoxItem Content="1"/>
             <ComboBoxItem Content="2"/>
             <ComboBoxItem Content="3"/>

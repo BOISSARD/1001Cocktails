@@ -50,10 +50,5 @@ namespace Projet
                 visiteur.Visibility = Visibility.Visible;
             }
         }
-
-       private void Suppr(object sender, RoutedEventArgs e)
-        {
-            new Supprimer().Show();
-        }
     }
 }
