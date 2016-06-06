@@ -20,12 +20,20 @@ namespace Projet
     /// </summary>
     public partial class Commentaire : Window
     {
+        private Manager MyManager
+        {
+            get
+            {
+                return ((Application.Current as App).Resources["MyManager"] as ObjectDataProvider).Data as Manager;
+            }
+        }
+        private ICocktail co;
+        private short laNote;
+
         public Commentaire()
         {
             InitializeComponent();
         }
-
-        private ICocktail co;
 
         public Commentaire(ICocktail c) : this()
         {
@@ -37,9 +45,23 @@ namespace Projet
             this.Close();
         }
 
+        private void Poster(object sender, RoutedEventArgs e)
+        {   if (!co.CommentaireRead.ContainsKey(new User(Pseudo.Text)))
+            {
+                if (MyManager.CurrentUser != null)
+                    co.laisserCommentaire(MyManager.CurrentUser, new ProjetLibrary.Commentaire(Titre.Text, Texte.Text, laNote));
+                else co.laisserCommentaire(new User(Pseudo.Text), new ProjetLibrary.Commentaire(Titre.Text, Texte.Text, laNote));
+            }
+            else
+            {
+                MessageBox.Show("Vous avez déjà laisser un commentaire pour ce cocktaail");
+            }
+            this.Close();
+        }
+
         private void ChoixValeurNote(object sender, RoutedEventArgs e)
         {
-            short laNote = (short)note.Value;
+            laNote = (short)note.Value;
             float laVraieNote = (float)laNote / 2;
             valNote.Text = laVraieNote.ToString("0.0");
         }

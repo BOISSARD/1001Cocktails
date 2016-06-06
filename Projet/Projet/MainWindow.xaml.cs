@@ -34,6 +34,8 @@ namespace Projet
         {
             InitializeComponent();
 
+            connecte.Main = this;
+
             DataContext = MyManager;
             MyManager.chargerCocktails();
         }
@@ -50,6 +52,11 @@ namespace Projet
                 connecte.Visibility = Visibility.Hidden;
                 visiteur.Visibility = Visibility.Visible;
             }
+        }
+
+        private void MyComment(object sender, MouseButtonEventArgs e)
+        {
+           // if (com.)
         }
     }
 }

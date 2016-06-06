@@ -137,6 +137,11 @@ namespace ProjetLibrary
             }
         }
 
+        public void laisserCommentaire(User u,Commentaire c)
+        {
+            commentaires.Add(u, new Commentaire(c.Titre, c.Texte, c.Note));
+        }
+
         /// <summary>
         /// Redéfinition de la méthode GetHashCode.
         /// </summary>

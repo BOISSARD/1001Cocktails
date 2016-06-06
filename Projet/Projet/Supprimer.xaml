@@ -17,7 +17,7 @@
             <RowDefinition/>
         </Grid.RowDefinitions>
         <TextBlock Grid.Column="0" Grid.ColumnSpan="2" Text="Confirmer la suppression ?" VerticalAlignment="Center" HorizontalAlignment="Center" Name="text"/>
-        <Button Grid.Column="0" Grid.Row="1" Content="Confirmer" Margin="12,12"/>
+        <Button Grid.Column="0" Grid.Row="1" Content="Confirmer" Margin="12,12" Click="Valider"/>
         <Button Grid.Column="1" Grid.Row="1" Content="Annuler" Margin="12,12" Click="Annuler"/>
     </Grid>
 </Window>

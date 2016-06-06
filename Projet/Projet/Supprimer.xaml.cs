@@ -20,20 +20,37 @@ namespace Projet
     /// </summary>
     public partial class Supprimer : Window
     {
+        private MainWindow main;
+        private string nom;
+        private Manager MyManager
+        {
+            get
+            {
+                return ((Application.Current as App).Resources["MyManager"] as ObjectDataProvider).Data as Manager;
+            }
+        }
+
         public Supprimer()
         {
             InitializeComponent();
+            main = this.Parent as MainWindow;
         }
 
 
         public Supprimer(ICocktail c)
         {
             InitializeComponent();
-            text.Text = c.ToString();
+            nom = c.Nom;
         }
 
         private void Annuler(object sender, RoutedEventArgs e)
         {
+            this.Close();
+        }
+
+        private void Valider(object sender, RoutedEventArgs e)
+        {
+            MyManager.supprimerCocktail(nom);
             this.Close();
         }
     }

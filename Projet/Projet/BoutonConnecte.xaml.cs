@@ -29,37 +29,45 @@ namespace Projet
             }
         }
 
-        private MainWindow main;
+        //private Window main;
+        public MainWindow Main { set; get; }
+        ICocktail cocktail;
 
         public BoutonConnecte()
         {
             InitializeComponent();
 
             DataContext = MyManager;
-            main = this.Parent as MainWindow;
+        }
+
+        public BoutonConnecte(MainWindow w) : this()
+        {
+            Main = w;
         }
 
         private void Ajout(object sender, RoutedEventArgs e)
         {
             //new NewCocktail().Show();
-            MyManager.ajouterCocktail("Test", "Ceci est un putin de test", new List<Ingredient>() { new Ingredient("ingredient", 5, Unite.unite) });
+            MyManager.ajouterCocktail("Test", "Ceci est un test", new List<Ingredient>() { new Ingredient("ingredient", 0, Unite.unite) });
             MyManager.chargerCocktails();
         }
 
         private void Modif(object sender, RoutedEventArgs e)
         {
-            //ICocktail c = (this.Parent as MainWindow).Liste.SelectedValue as ICocktail;
-            //new NewCocktail(c);
+            new NewCocktail(Main.Liste.SelectedValue as ICocktail);
         }
 
         private void Suppr(object sender, RoutedEventArgs e)
         {
-            new Supprimer().Show();
+            new Supprimer(Main.Liste.SelectedValue as ICocktail).Show();
         }
 
         private void Comment(object sender, RoutedEventArgs e)
         {
-            new Commentaire(main.Liste.SelectedValue as ICocktail).Show();
+            if ((Main.Liste.SelectedValue as ICocktail).CommentaireRead.ContainsKey(MyManager.CurrentUser))
+                MessageBox.Show("Vous avez déjà laisser un commentaire pour ce cocktaail");
+            else
+                new Commentaire(Main.Liste.SelectedValue as ICocktail).Show();
         }
     }
 }

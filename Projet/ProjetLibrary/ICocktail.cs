@@ -32,5 +32,7 @@ namespace ProjetLibrary
         /// Getter urlImage.
         /// </summary>
         string UrlImage { get; }
+
+        void laisserCommentaire(User u, Commentaire c);
     }
 }
