@@ -35,6 +35,7 @@ namespace Projet
             InitializeComponent();
 
             DataContext = MyManager;
+            MyManager.chargerCocktails();
         }
 
         public MainWindow(bool type) : this()

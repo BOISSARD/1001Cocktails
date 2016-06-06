@@ -33,7 +33,7 @@ namespace Projet
             InitializeComponent();
 
             DataContext = MyManager;
-            MyManager.charger();
+            MyManager.chargerUsers();
         }
 
         private void Connect(object sender, RoutedEventArgs e)

@@ -70,11 +70,11 @@ namespace ProjetData
                cocktail.Element("ingredients").Descendants("ingredient").Select(ing => new Ingredient(ing.Element("nom").Value,
                                                                                                       Convert.ToInt32(ing.Element("quantite").Value),
                                                                                                       Fabrique.convertToUnite(ing.Element("unite").Value))).ToList(),
-               /*cocktail.Element("commentaires").Descendants("commentaire").ToDictionary(item => new User(item.Attribute("pseudo").Value),
+               cocktail.Element("commentaires").Descendants("commentaire").ToDictionary(item => new User(item.Attribute("pseudo").Value),
                                                                                         item => new Commentaire(item.Element("titre").Value,
                                                                                                                 item.Element("texte").Value,
                                                                                                                 Convert.ToInt16(item.Element("note").Value)                                                                                                                )
-                                                                                       ),*/
+                                                                                       ),
                cocktail.Element("url").Value
             ));
 

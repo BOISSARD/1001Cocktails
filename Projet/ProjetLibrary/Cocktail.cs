@@ -67,9 +67,9 @@ namespace ProjetLibrary
         {
             this.Nom = nom;
             this.Recette = "Pas de recette !";
-            if (ingredients == null)
-                this.ingredients.Add(new Ingredient("Pas d ingredient", 0, Unite.unite));
-            else
+            //if (ingredients == null)
+            //    this.ingredients.Add(new Ingredient("Pas d ingredient", 0, Unite.unite));
+            //else
                 ingredients.ForEach(i => this.ingredients.Add(new Ingredient(i.Nom, i.Quantite, i.Unite)));
         }
 

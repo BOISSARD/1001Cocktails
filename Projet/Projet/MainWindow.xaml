@@ -87,8 +87,8 @@
                 </Grid.RowDefinitions>
             <ContentControl Content="{Binding CocktailIEnum}"
                         ContentTemplate="{StaticResource Description}"/>
-            <local:BoutonConnecte Grid.Row="1" Visibility="Collapsed" x:Name="connecte"/>
-            <local:BoutonVisiteur Grid.Row="1" Visibility="Collapsed" x:Name="visiteur"/>
+            <local:BoutonConnecte Grid.Row="1" Visibility="Hidden" x:Name="connecte"/>
+            <local:BoutonVisiteur Grid.Row="1" Visibility="Visible" x:Name="visiteur"/>
         </Grid>
     </Grid>
 </Window>

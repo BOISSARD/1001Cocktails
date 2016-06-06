@@ -41,15 +41,15 @@ namespace Projet
 
         private void Ajout(object sender, RoutedEventArgs e)
         {
-            new NewCocktail().Show();
-            //MyManager.charger();
-            //MyManager.ajouterCocktail("Test","Ceci est un putin de test",new List<Ingredient>() { new Ingredient("ingredient",5,Unite.unite) });
+            //new NewCocktail().Show();
+            MyManager.ajouterCocktail("Test", "Ceci est un putin de test", new List<Ingredient>() { new Ingredient("ingredient", 5, Unite.unite) });
+            MyManager.chargerCocktails();
         }
 
         private void Modif(object sender, RoutedEventArgs e)
         {
-            ICocktail c = (this.Parent as MainWindow).Liste.SelectedValue as ICocktail;
-            new NewCocktail(c);
+            //ICocktail c = (this.Parent as MainWindow).Liste.SelectedValue as ICocktail;
+            //new NewCocktail(c);
         }
 
         private void Suppr(object sender, RoutedEventArgs e)
@@ -59,7 +59,7 @@ namespace Projet
 
         private void Comment(object sender, RoutedEventArgs e)
         {
-            new Commentaire().Show();
+            new Commentaire(main.Liste.SelectedValue as ICocktail).Show();
         }
     }
 }

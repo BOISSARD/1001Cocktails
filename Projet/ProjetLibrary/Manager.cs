@@ -49,12 +49,11 @@ namespace ProjetLibrary
         public Manager(IDataManager dataManager)
         {
             this.dataManager = dataManager;
-            /// Créer un utilisateur par défault.
             utilisateurs.Add(new User("Admin", "admin@gmail.com", "admin63"));
-            Dictionary<User, Commentaire> dic = new Dictionary<User, Commentaire>();
-            dic.Add(utilisateurs.Single(),new Commentaire("Bon", 9));
-            livre.Add(new Cocktail("Mojito", "Mélanger le rhum à la menthe", new List<Ingredient>() { new Ingredient("Rhum", 20, Unite.cl), new Ingredient("Menthes", 5, Unite.feuille) }, dic, "http://www.esprits-feminins.fr/wp-content/uploads/2012/07/mojito_gesneden_600x600.jpg"));
-            livre.Add(new Cocktail("Pina Colada", "Mélanger le rhum avec le lait de coco et le jus d'ananas", new List<Ingredient>() { new Ingredient("Rhum", 10, Unite.cl), new Ingredient("Lait de coco", 5, Unite.cl), new Ingredient("Jus d'ananas", 5, Unite.cl), new Ingredient("Jus de pêche", 5, Unite.cl), new Ingredient("Orange", 1, Unite.tranche), new Ingredient("Fraise", 3, Unite.morceau) }, "http://az659704.vo.msecnd.net/v1/image/c_lpad,w_1500,h_1500/v1400603728/cocktail_bora_bora-1.png"));
+            //Dictionary<User, Commentaire> dic = new Dictionary<User, Commentaire>();
+            //dic.Add(utilisateurs.Single(),new Commentaire("Bon", 9));
+            //livre.Add(new Cocktail("Mojito", "Mélanger le rhum à la menthe", new List<Ingredient>() { new Ingredient("Rhum", 20, Unite.cl), new Ingredient("Menthes", 5, Unite.feuille) }, dic, "http://www.esprits-feminins.fr/wp-content/uploads/2012/07/mojito_gesneden_600x600.jpg"));
+            //livre.Add(new Cocktail("Pina Colada", "Mélanger le rhum avec le lait de coco et le jus d'ananas", new List<Ingredient>() { new Ingredient("Rhum", 10, Unite.cl), new Ingredient("Lait de coco", 5, Unite.cl), new Ingredient("Jus d'ananas", 5, Unite.cl), new Ingredient("Jus de pêche", 5, Unite.cl), new Ingredient("Orange", 1, Unite.tranche), new Ingredient("Fraise", 3, Unite.morceau) }, "http://az659704.vo.msecnd.net/v1/image/c_lpad,w_1500,h_1500/v1400603728/cocktail_bora_bora-1.png"));
             UserRead = new ReadOnlyCollection<User>(utilisateurs);
         }
 
@@ -263,13 +262,21 @@ namespace ProjetLibrary
         /// </summary>
         public void charger()
         {
+            chargerUsers();
+            chargerCocktails();
+        }
+
+        public void chargerUsers()
+        {
             dataManager.loadUser().ForEach(u => this.ajouterUser(u.Pseudo, u.Mail, u.Password));
-            //livre = dataManager.loadCocktail() as List<Cocktail>;
-            //livre = new List<Cocktail>();
+        }
+
+        public void chargerCocktails()
+        {
             foreach (Cocktail c in dataManager.loadCocktail())
             {
                 //livre.Add(c);
-                this.ajouterCocktail(c.Nom,c.Recette,c.IngredientRead.ToList(),c.CommentaireRead,c.UrlImage);
+                this.ajouterCocktail(c.Nom, c.Recette, c.IngredientRead.ToList(), c.CommentaireRead, c.UrlImage);
             }
         }
 

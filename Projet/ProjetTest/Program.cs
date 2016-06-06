@@ -14,8 +14,8 @@ namespace ProjetTest
         {
             Manager m = new Manager(new XMLDataManager());
 
-            //m.charger();
             m.connexion("Admin", "admin63");
+            m.charger();
 
             Console.WriteLine();
             Console.WriteLine("Utilisateur actuel :");
@@ -52,12 +52,12 @@ namespace ProjetTest
             liste3.Add(ing1);
             liste3.Add(ing4);
 
-            Dictionary<User, Commentaire> dic1 = new Dictionary<User, Commentaire>();
-            dic1.Add(m.recupUser("Clem"), new Commentaire("Bon",9));
+            //Dictionary<User, Commentaire> dic1 = new Dictionary<User, Commentaire>();
+            //dic1.Add(m.recupUser("Clem"), new Commentaire("Bon","C'est très bon !",9));
 
-            m.ajouterCocktail("Vodka-Orange", "Mélangez la vodka et le jus d'orange", liste1, dic1, "http://image.org");
-            m.ajouterCocktail("Vodka-Pomme", "Mélangez la vodka et le jus de pomme", liste2, "http://image.org");
-            m.ajouterCocktail("Vodka-RedBull", "Mélanger la vodka et le redbull", liste3, "http://image.org");
+            //m.ajouterCocktail("Vodka-Orange", "Mélangez la vodka et le jus d'orange", liste1, dic1, "http://image.org");
+            //m.ajouterCocktail("Vodka-Pomme", "Mélangez la vodka et le jus de pomme", liste2, "http://image.org"); 
+            //m.ajouterCocktail("Vodka-RedBull", "Mélanger la vodka et le redbull", liste3, "http://image.org");
 
             Console.WriteLine("Cocktails lu  :");
             foreach (ICocktail c in m.CocktailIEnum)
@@ -65,7 +65,7 @@ namespace ProjetTest
                 Console.WriteLine(" + " + c.ToString());
             }
 
-            m.sauvegarder();
+            //m.sauvegarder();
 
             Console.ReadLine();
         }
