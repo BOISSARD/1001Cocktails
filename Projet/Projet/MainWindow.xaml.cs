@@ -14,6 +14,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using ProjetLibrary;
 using ProjetData;
+using System.ComponentModel;
 
 namespace Projet
 {
@@ -54,9 +55,9 @@ namespace Projet
             }
         }
 
-        private void MyComment(object sender, MouseButtonEventArgs e)
+        void Fermer(object sender, CancelEventArgs e)
         {
-           // if (com.)
+            MessageBox.Show(MyManager.sauvegarder());
         }
     }
 }

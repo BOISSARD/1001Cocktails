@@ -142,6 +142,11 @@ namespace ProjetLibrary
             commentaires.Add(u, new Commentaire(c.Titre, c.Texte, c.Note));
         }
 
+        public Commentaire returnComment(User u)
+        {
+            return commentaires[u];
+        }
+
         /// <summary>
         /// Redéfinition de la méthode GetHashCode.
         /// </summary>

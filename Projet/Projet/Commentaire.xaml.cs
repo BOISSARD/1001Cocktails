@@ -38,6 +38,16 @@ namespace Projet
         public Commentaire(ICocktail c) : this()
         {
             co = c;
+            if(c.CommentaireRead.ContainsKey(MyManager.CurrentUser))
+            {
+                Titre.Text = c.returnComment(MyManager.CurrentUser).Titre;
+                Texte.Text = c.returnComment(MyManager.CurrentUser).Texte;
+                note.Value = c.returnComment(MyManager.CurrentUser).Note;
+            }
+            if(MyManager.CurrentUser != null)
+            {
+                Pseudo.Text = MyManager.CurrentUser.Pseudo;
+            }
         }
 
         private void Annuler(object sender, RoutedEventArgs e)

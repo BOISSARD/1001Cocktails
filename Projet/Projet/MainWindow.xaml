@@ -5,7 +5,8 @@
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:Projet"
         xmlns:import="clr-namespace:ProjetLibrary;assembly=ProjetLibrary"
-        Title="MainWindow" Height="550" Width="820" Style="{StaticResource fenetre}">
+        Title="MainWindow" Height="550" Width="820" Style="{StaticResource fenetre}"
+        Closing="Fermer">
 
     <Window.Resources>
         
@@ -43,7 +44,7 @@
                 <TextBlock Text="Recette :" Padding="15,5,5,5" Grid.Row="1" VerticalAlignment="Center"/>
                 <TextBlock Text="{Binding Recette}" Padding="15,5,5,5" Grid.Row="2" Style="{StaticResource descrip}"/>
                 <TextBlock Text="Avis :" Padding="15,5,5,5" Grid.Row="3" VerticalAlignment="Center"/>
-                <ListView Margin="10,0,10,10" Grid.Row="4" ItemsSource="{Binding CommentaireRead}" MouseDoubleClick="MyComment" Name="LesAvis">
+                <ListView Margin="10,0,10,10" Grid.Row="4" ItemsSource="{Binding CommentaireRead}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <Grid Width="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type ListView}},Path=ActualWidth}">

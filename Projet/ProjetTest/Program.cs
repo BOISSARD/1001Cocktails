@@ -14,8 +14,9 @@ namespace ProjetTest
         {
             Manager m = new Manager(new XMLDataManager());
 
+            //m.chargerUsers();
             m.connexion("Admin", "admin63");
-            m.charger();
+            //m.chargerCocktails();
 
             Console.WriteLine();
             Console.WriteLine("Utilisateur actuel :");
@@ -52,12 +53,15 @@ namespace ProjetTest
             liste3.Add(ing1);
             liste3.Add(ing4);
 
-            //Dictionary<User, Commentaire> dic1 = new Dictionary<User, Commentaire>();
-            //dic1.Add(m.recupUser("Clem"), new Commentaire("Bon","C'est très bon !",9));
-
-            //m.ajouterCocktail("Vodka-Orange", "Mélangez la vodka et le jus d'orange", liste1, dic1, "http://image.org");
-            //m.ajouterCocktail("Vodka-Pomme", "Mélangez la vodka et le jus de pomme", liste2, "http://image.org"); 
-            //m.ajouterCocktail("Vodka-RedBull", "Mélanger la vodka et le redbull", liste3, "http://image.org");
+            Dictionary<User, Commentaire> dic = new Dictionary<User, Commentaire>();
+            dic.Add(m.recupUser("Clem"), new Commentaire("Bon","C'est très bon !",9));
+            Dictionary < User, Commentaire > dic1 = new Dictionary<User, Commentaire>();
+            dic1.Add(m.recupUser("Jacky"), new Commentaire("Potable", 3));
+            m.ajouterCocktail("Mojito", "Mélanger le rhum à la menthe", new List<Ingredient>() { new Ingredient("Rhum", 20, Unite.cl), new Ingredient("Menthes", 5, Unite.feuille) }, dic, "http://www.esprits-feminins.fr/wp-content/uploads/2012/07/mojito_gesneden_600x600.jpg");
+            m.ajouterCocktail("Pina Colada", "Mélanger le rhum avec le lait de coco et le jus d'ananas", new List<Ingredient>() { new Ingredient("Rhum", 10, Unite.cl), new Ingredient("Lait de coco", 5, Unite.cl), new Ingredient("Jus d'ananas", 5, Unite.cl), new Ingredient("Jus de pêche", 5, Unite.cl), new Ingredient("Orange", 1, Unite.tranche), new Ingredient("Fraise", 3, Unite.morceau) }, "http://az659704.vo.msecnd.net/v1/image/c_lpad,w_1500,h_1500/v1400603728/cocktail_bora_bora-1.png");
+            m.ajouterCocktail("Vodka-Orange", "Mélangez la vodka et le jus d'orange", liste1, dic1, "http://image.org");
+            m.ajouterCocktail("Vodka-Pomme", "Mélangez la vodka et le jus de pomme", liste2, "http://image.org"); 
+            m.ajouterCocktail("Vodka-RedBull", "Mélanger la vodka et le redbull", liste3, "http://image.org");
 
             Console.WriteLine("Cocktails lu  :");
             foreach (ICocktail c in m.CocktailIEnum)
@@ -65,7 +69,7 @@ namespace ProjetTest
                 Console.WriteLine(" + " + c.ToString());
             }
 
-            //m.sauvegarder();
+            m.sauvegarder();
 
             Console.ReadLine();
         }

@@ -65,7 +65,13 @@ namespace Projet
         private void Comment(object sender, RoutedEventArgs e)
         {
             if ((Main.Liste.SelectedValue as ICocktail).CommentaireRead.ContainsKey(MyManager.CurrentUser))
-                MessageBox.Show("Vous avez déjà laisser un commentaire pour ce cocktaail");
+            {
+                var result = MessageBox.Show("Déjà commenter","Vous avez déjà laisser un commentaire pour ce cocktail.\nVoulez-vous le modifier ?",MessageBoxButton.YesNo);
+                if(result == MessageBoxResult.Yes)
+                {
+                    new Commentaire(Main.Liste.SelectedValue as ICocktail).Show();
+                }
+            }
             else
                 new Commentaire(Main.Liste.SelectedValue as ICocktail).Show();
         }

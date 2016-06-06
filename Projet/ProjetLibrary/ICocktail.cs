@@ -34,5 +34,7 @@ namespace ProjetLibrary
         string UrlImage { get; }
 
         void laisserCommentaire(User u, Commentaire c);
+
+        Commentaire returnComment(User u);
     }
 }
