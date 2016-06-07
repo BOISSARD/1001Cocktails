@@ -27,7 +27,7 @@ namespace ProjetLibrary
         /// Méthode loadCocktail permettant de charger la liste livre.        
         /// </summary>
         /// <returns></returns>
-        IEnumerable<ICocktail> loadCocktail();
+        ObservableCollection<ICocktail> loadCocktail();
         /// <summary>
         /// Méthode saveUSer permettant de sauvergarder la liste d'utilisateurs.
         /// </summary>
@@ -37,6 +37,6 @@ namespace ProjetLibrary
         /// Méthode saveCocktail permettant de sauvergarder la liste de cocktails livre.
         /// </summary>
         /// <param name="list">prend une collection de ICocktail</param>
-        void saveCocktail(IEnumerable<ICocktail> list);
+        void saveCocktail(ObservableCollection<ICocktail> list);
     }
 }

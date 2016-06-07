@@ -59,7 +59,7 @@ namespace ProjetData
         /// Méthode de chargement des cocktails
         /// </summary>
         /// <returns>en retournant une collection de cocktails</returns>
-        public IEnumerable<ICocktail> loadCocktail()
+        public ObservableCollection<ICocktail> loadCocktail()
         {
             cocktailFile = XDocument.Load(dirData + "cocktails.xml");
             IEnumerable<ICocktail> liste = new List<ICocktail>();
@@ -78,7 +78,7 @@ namespace ProjetData
                cocktail.Element("url").Value
             ));
 
-            return liste;
+            return new ObservableCollection<ICocktail>(liste);
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace ProjetData
         /// Méthode de sauvegarde des cocktails
         /// </summary>
         /// <param name="list">prend une collection de Cocktail en passant par la façade immuable ICocktail</param>
-        public void saveCocktail(IEnumerable<ICocktail> list)
+        public void saveCocktail(ObservableCollection<ICocktail> list)
         {
             var cocktailElts = list.Select(cocktail => 
                                     new XElement("cocktail",

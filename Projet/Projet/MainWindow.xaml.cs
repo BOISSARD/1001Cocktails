@@ -38,7 +38,14 @@ namespace Projet
             connecte.Main = this;
 
             DataContext = MyManager;
-            MyManager.chargerCocktails();
+            if (MyManager.CurrentUser == null)
+            {
+                MyManager.connexion("Admin","admin63");
+                MyManager.chargerCocktails();
+                MyManager.deconnexion();
+            }
+            else
+                MyManager.chargerCocktails();
         }
 
         public MainWindow(bool type) : this()
@@ -57,7 +64,8 @@ namespace Projet
 
         void Fermer(object sender, CancelEventArgs e)
         {
-            MessageBox.Show(MyManager.sauvegarder());
+            MessageBox.Show(MyManager.sauvegardError());
+            //MyManager.sauvegarder();
         }
     }
 }

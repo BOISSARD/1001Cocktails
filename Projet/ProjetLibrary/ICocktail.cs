@@ -36,5 +36,7 @@ namespace ProjetLibrary
         void laisserCommentaire(User u, Commentaire c);
 
         Commentaire returnComment(User u);
+
+        void supprimerCommentaire(User u);
     }
 }

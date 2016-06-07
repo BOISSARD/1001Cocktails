@@ -15,6 +15,6 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
         <Button Grid.Column="0" Content="Se Connecter" Margin="10" Padding="5" FontSize="14" Click="Connect" Name="connect"/>
-        <Button Grid.Column="1" Content="Commentaire" Margin="10" Padding="5" FontSize="14" Click="Comment" Name="comment"/>
+        <Button Grid.Column="1" Content="Commenter" Margin="10" Padding="5" FontSize="14" Click="Comment" Name="comment"/>
     </Grid>
 </UserControl>

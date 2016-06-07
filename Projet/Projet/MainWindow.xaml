@@ -74,7 +74,7 @@
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="2*"/>
         </Grid.ColumnDefinitions>
-        <ListView Grid.Column="0" Name="Liste" Margin="20" ItemsSource="{Binding CocktailIEnum}" IsSynchronizedWithCurrentItem="True" >
+        <ListView Grid.Column="0" Name="Liste" Margin="20" ItemsSource="{Binding CocktailsObs}" IsSynchronizedWithCurrentItem="True" >
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding Nom}" Style="{StaticResource ResourceKey=textBase}"/>
@@ -86,8 +86,9 @@
                     <RowDefinition Height="8*"/>
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
-            <ContentControl Content="{Binding CocktailIEnum}"
-                        ContentTemplate="{StaticResource Description}"/>
+            <ContentControl DataContext="{Binding SelectedItem, ElementName=Liste}"
+                            Content="{Binding }"
+                            ContentTemplate="{StaticResource Description}"/>
             <local:BoutonConnecte Grid.Row="1" Visibility="Hidden" x:Name="connecte"/>
             <local:BoutonVisiteur Grid.Row="1" Visibility="Visible" x:Name="visiteur"/>
         </Grid>

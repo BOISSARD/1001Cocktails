@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,17 +17,22 @@ namespace ProjetLibrary
         /// livre est une liste de cocktail.
         /// </summary>
         private List<Cocktail> livre = new List<Cocktail>();
+        public ObservableCollection<ICocktail> CocktailsObs
+        {
+            get
+            {
+                return new ObservableCollection<ICocktail>(livre);
+            }
+        }
         public IEnumerable<ICocktail> CocktailIEnum
         {
-            private set
-            {
-                livre = (List<Cocktail>)value;
-            }
             get
             {
                 return livre;
             }
         }
+
+
         /// <summary>
         /// utilisateurs est la liste des utilisateurs inscrit.
         /// </summary>
@@ -48,7 +54,7 @@ namespace ProjetLibrary
         /// <param name="dataManager">qui prend un DataManager</param>
         public Manager(IDataManager dataManager)
         {
-            this.dataManager = dataManager;            
+            this.dataManager = dataManager;
             UserRead = new ReadOnlyCollection<User>(utilisateurs);
 
             utilisateurs.Add(new User("Admin", "admin@gmail.com", "admin63"));
@@ -115,6 +121,23 @@ namespace ProjetLibrary
             }
         }
 
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void OnPropertyChanged(string propriete)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propriete));
+            }
+        }
+
+        public void miseAJour()
+        {
+            CocktailsObs.CollectionChanged += (o, args) => OnPropertyChanged("livre");
+            CocktailsObs.CollectionChanged += (o, args) => OnPropertyChanged("CocktailIEnum");
+            CocktailsObs.CollectionChanged += (o, args) => OnPropertyChanged("CocktailsObs");
+        }
+
         /// <summary>
         /// Méthode ajouterUser qui permet d'ajouter un utilisateur à la liste d'utilisateurs
         /// Prend les paramètres : 
@@ -166,6 +189,7 @@ namespace ProjetLibrary
             {
                 livre.Add(c);
             }
+            miseAJour();
         }
 
         /// <summary>
@@ -182,6 +206,7 @@ namespace ProjetLibrary
             {
                 livre.Add(c);
             }
+            miseAJour();
         }
 
         /// <summary>
@@ -206,6 +231,7 @@ namespace ProjetLibrary
             {
                 livre.Add(c);
             }
+            miseAJour();
         }
 
         /// <summary>
@@ -219,17 +245,6 @@ namespace ProjetLibrary
         public void ajouterCocktail(string nom, string recette, List<Ingredient> ing, Dictionary<User, Commentaire> com, string image)
         {
             Dictionary<User, Commentaire> commentaires = new Dictionary<User, Commentaire>();
-            //foreach (var co in com)
-            //{
-            //    if (utilisateurs.Contains(co.Key))
-            //        commentaires.Add(utilisateurs.ElementAt(utilisateurs.IndexOf(co.Key)), co.Value);
-            //    else commentaires.Add(co.Key, co.Value);
-            //}
-            //Cocktail c = new Cocktail(nom, recette, ing, commentaires, image);
-            //if (CurrentUser != null && !livre.Contains(c))
-            //{
-            //    livre.Add(c);
-            //}
             ajouterCocktail(nom, recette, ing, new ReadOnlyDictionary<User, Commentaire>(com), image);
         }
 
@@ -242,18 +257,25 @@ namespace ProjetLibrary
             if (CurrentUser != null)
             {
                 livre.RemoveAll(c => c.Nom == nom);
+                miseAJour();
             }
         }
 
         /// <summary>
         /// Méthode permettant de sauvergarder les listes livre et utilisateurs.
         /// </summary>
-        public string sauvegarder()
+        public void sauvegarder()
         {
+                dataManager.saveUser(UserRead);
+                dataManager.saveCocktail(CocktailsObs);
+        }
+
+        public string sauvegardError()
+        {
+
             try
             {
-                dataManager.saveUser(UserRead);
-                dataManager.saveCocktail(livre);
+                sauvegarder();
                 return "Sauvegarde terminée !";
             }
             catch (Exception e)

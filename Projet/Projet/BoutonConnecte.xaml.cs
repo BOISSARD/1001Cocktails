@@ -31,7 +31,6 @@ namespace Projet
 
         //private Window main;
         public MainWindow Main { set; get; }
-        ICocktail cocktail;
 
         public BoutonConnecte()
         {
@@ -50,23 +49,28 @@ namespace Projet
             //new NewCocktail().Show();
             MyManager.ajouterCocktail("Test", "Ceci est un test", new List<Ingredient>() { new Ingredient("ingredient", 0, Unite.unite) });
             MyManager.chargerCocktails();
+            Main.UpdateLayout();
         }
 
         private void Modif(object sender, RoutedEventArgs e)
         {
             new NewCocktail(Main.Liste.SelectedValue as ICocktail);
+
+            Main.UpdateLayout();
         }
 
         private void Suppr(object sender, RoutedEventArgs e)
         {
             new Supprimer(Main.Liste.SelectedValue as ICocktail).Show();
+
+            Main.UpdateLayout();
         }
 
         private void Comment(object sender, RoutedEventArgs e)
         {
             if ((Main.Liste.SelectedValue as ICocktail).CommentaireRead.ContainsKey(MyManager.CurrentUser))
             {
-                var result = MessageBox.Show("Déjà commenter","Vous avez déjà laisser un commentaire pour ce cocktail.\nVoulez-vous le modifier ?",MessageBoxButton.YesNo);
+                var result = MessageBox.Show("Vous avez déjà laisser un commentaire pour ce cocktail.\nVoulez-vous le modifier ?", "Déjà commenter", MessageBoxButton.YesNo);
                 if(result == MessageBoxResult.Yes)
                 {
                     new Commentaire(Main.Liste.SelectedValue as ICocktail).Show();
@@ -74,6 +78,8 @@ namespace Projet
             }
             else
                 new Commentaire(Main.Liste.SelectedValue as ICocktail).Show();
+
+            Main.UpdateLayout();
         }
     }
 }

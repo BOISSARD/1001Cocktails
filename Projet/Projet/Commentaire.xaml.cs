@@ -64,7 +64,9 @@ namespace Projet
             }
             else
             {
-                MessageBox.Show("Vous avez déjà laisser un commentaire pour ce cocktaail");
+                //MessageBox.Show("Vous avez déjà laisser un commentaire pour ce cocktail");
+                co.supprimerCommentaire(new User(Pseudo.Text));
+                Poster(sender,e);
             }
             this.Close();
         }

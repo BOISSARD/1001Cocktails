@@ -51,8 +51,7 @@ namespace Projet
 
         private void Visit(object sender, RoutedEventArgs e)
         {
-            MainWindow main = new MainWindow(false);
-            main.Show();
+            new MainWindow(false).Show();
             this.Close();
 
         }

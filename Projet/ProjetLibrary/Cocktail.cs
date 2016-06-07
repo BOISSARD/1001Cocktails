@@ -147,6 +147,11 @@ namespace ProjetLibrary
             return commentaires[u];
         }
 
+        public void supprimerCommentaire(User u)
+        {
+            commentaires.Remove(u);
+        }
+
         /// <summary>
         /// Redéfinition de la méthode GetHashCode.
         /// </summary>
