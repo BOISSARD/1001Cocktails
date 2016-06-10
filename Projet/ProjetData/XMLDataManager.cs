@@ -119,8 +119,8 @@ namespace ProjetData
                                                                                                 new XElement("texte", com.Value.Texte),
                                                                                                 new XElement("note", com.Value.Note)))),
                                         new XElement("url", cocktail.UrlImage)));
-            cocktailFile.Add(new XElement("cocktails", cocktailElts));
-            cocktailFile.Save(dirData + "cocktails.xml");
+            XDocument xdom = new XDocument(new XElement("cocktails", cocktailElts));
+            xdom.Save(dirData + "cocktails.xml");
         }
 
         /// <summary>
@@ -133,8 +133,8 @@ namespace ProjetData
                                                             new XElement("pseudo", user.Pseudo),
                                                             new XElement("mail", user.Mail),
                                                             new XElement("password", user.Password)));
-            userFile.Add(new XElement("users", userElts));
-            userFile.Save(dirData + "users.xml");
+            XDocument xdom = new XDocument(new XElement("users", userElts));
+            xdom.Save(dirData + "users.xml");
         }
     }
 }

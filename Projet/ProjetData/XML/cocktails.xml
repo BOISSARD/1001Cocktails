@@ -104,22 +104,4 @@
     <commentaires />
     <url>http://image.org</url>
   </cocktail>
-  <cocktail>
-    <nom>Vodka-RedBull</nom>
-    <recette>Mélanger la vodka et le redbull</recette>
-    <ingredients>
-      <ingredient>
-        <nom>Vodka</nom>
-        <quantite>10</quantite>
-        <unite>cl</unite>
-      </ingredient>
-      <ingredient>
-        <nom>Red Bull</nom>
-        <quantite>10</quantite>
-        <unite>cl</unite>
-      </ingredient>
-    </ingredients>
-    <commentaires />
-    <url>http://image.org</url>
-  </cocktail>
 </cocktails>
