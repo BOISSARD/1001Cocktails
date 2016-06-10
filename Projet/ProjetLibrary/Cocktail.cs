@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ProjetLibrary;
+using System.ComponentModel;
 
 namespace ProjetLibrary
 {
@@ -12,12 +13,24 @@ namespace ProjetLibrary
     /// La classe Cocktail qui implémente l'interface IEquatable afin de redéfinir la comparaison.
     /// Et qui implémente l'interface ICocktail afin d'avoir une façade immuable.
     /// </summary>
-    class Cocktail : ICocktail, IEquatable<Cocktail>
+    public class Cocktail : ICocktail, IEquatable<Cocktail>, INotifyPropertyChanged
     {
         /// <summary>
         /// Nom est le nom du cocktail, il est unique pour tous les cocktails.
         /// </summary>
-        public string Nom { private set; get; }
+        public string Nom {
+            set
+            {
+                nom = value;
+                OnPropretyChanged("nomMod");
+            }
+            get
+            {
+                return nom;
+            }
+        }
+
+        string nom;
         /// <summary>
         /// Recette est du texte composé des étapes de la réalisation du cocktail.
         /// </summary>
@@ -57,6 +70,13 @@ namespace ProjetLibrary
         /// </summary>
         public string UrlImage { private set; get; }
 
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        public void OnPropretyChanged(string p)
+        {
+
+        }
 
         /// <summary>
         /// constructeur d'un cocktail.
@@ -203,5 +223,6 @@ namespace ProjetLibrary
             }
             return sb.ToString();
         }
+
     }
 }

@@ -11,18 +11,30 @@ namespace ProjetLibrary
     /// <summary>
     /// La classe manager est le lien entre métier et le reste, ce qui est à l'extérieur du package ProjetLibrary.
     /// </summary>
-    public class Manager
+    public class Manager : INotifyPropertyChanged
     {
         /// <summary>
         /// livre est une liste de cocktail.
         /// </summary>
-        private List<Cocktail> livre = new List<Cocktail>();
+        private ObservableCollection<Cocktail> livre = new ObservableCollection<Cocktail>();
+        public ObservableCollection<Cocktail> Livre
+        {
+            get
+            {
+                return livre;
+            }
+        }
         public ObservableCollection<ICocktail> CocktailsObs
         {
             get
             {
                 return new ObservableCollection<ICocktail>(livre);
             }
+            /*private set 
+            {
+                livre = (List<Cocktail>)value.ToList();
+
+            }*/
         }
         public IEnumerable<ICocktail> CocktailIEnum
         {
@@ -32,7 +44,6 @@ namespace ProjetLibrary
             }
         }
 
-
         /// <summary>
         /// utilisateurs est la liste des utilisateurs inscrit.
         /// </summary>
@@ -41,6 +52,17 @@ namespace ProjetLibrary
         {
             private set;
             get;
+        }
+
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void OnPropertyChanged(string propriete)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propriete));
+            }
         }
 
         /// <summary>
@@ -121,23 +143,6 @@ namespace ProjetLibrary
             }
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void OnPropertyChanged(string propriete)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propriete));
-            }
-        }
-
-        public void miseAJour()
-        {
-            CocktailsObs.CollectionChanged += (o, args) => OnPropertyChanged("livre");
-            CocktailsObs.CollectionChanged += (o, args) => OnPropertyChanged("CocktailIEnum");
-            CocktailsObs.CollectionChanged += (o, args) => OnPropertyChanged("CocktailsObs");
-        }
-
         /// <summary>
         /// Méthode ajouterUser qui permet d'ajouter un utilisateur à la liste d'utilisateurs
         /// Prend les paramètres : 
@@ -189,7 +194,6 @@ namespace ProjetLibrary
             {
                 livre.Add(c);
             }
-            miseAJour();
         }
 
         /// <summary>
@@ -206,7 +210,6 @@ namespace ProjetLibrary
             {
                 livre.Add(c);
             }
-            miseAJour();
         }
 
         /// <summary>
@@ -231,7 +234,6 @@ namespace ProjetLibrary
             {
                 livre.Add(c);
             }
-            miseAJour();
         }
 
         /// <summary>
@@ -256,8 +258,14 @@ namespace ProjetLibrary
         {
             if (CurrentUser != null)
             {
-                livre.RemoveAll(c => c.Nom == nom);
-                miseAJour();
+                //livre.RemoveAll(c => c.Nom == nom);
+                for (int i = 0; i < livre.Count; i++)
+                {
+                    if (livre[i].Nom == nom)
+                    {
+                        livre.RemoveAt(i);
+                    }
+                }
             }
         }
 
@@ -266,8 +274,8 @@ namespace ProjetLibrary
         /// </summary>
         public void sauvegarder()
         {
-                dataManager.saveUser(UserRead);
                 dataManager.saveCocktail(CocktailsObs);
+                dataManager.saveUser(UserRead);
         }
 
         public string sauvegardError()

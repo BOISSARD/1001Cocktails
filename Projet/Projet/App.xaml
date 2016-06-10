@@ -95,6 +95,18 @@
             <Setter Property="ScrollViewer.HorizontalScrollBarVisibility" Value="Disabled"/>
         </Style>
 
+        <!--<Style TargetType="ListViewItem" x:Key="itemList">
+            <Setter
+            <Style.Triggers>
+                <MultiTrigger>
+                    <MultiTrigger.Conditions>
+                        <Condition Property="IsSelected" Value="true"/>
+                    </MultiTrigger.Conditions>
+                    <Setter Property="Foreground" Value="{StaticResource color2}"/>
+                </MultiTrigger>
+            </Style.Triggers>
+        </Style>-->
+        
         <Style TargetType="ListBox">
             <Setter Property="Background" Value="{StaticResource color3}"/>
             <Setter Property="BorderBrush" Value="{StaticResource color1}"/>
