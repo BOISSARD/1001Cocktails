@@ -20,8 +20,11 @@ namespace ProjetLibrary
         /// </summary>
         public string Nom
         {
-            set { nom = value;
-                OnPropretyChanged("nom"); }
+            set
+            {
+                nom = value;
+                OnPropretyChanged("nom");
+            }
             get { return nom; }
         }
         private string nom;
@@ -31,8 +34,11 @@ namespace ProjetLibrary
         /// </summary>
         public string Recette
         {
-            set { recette = value;
-                OnPropretyChanged("recette"); }
+            set
+            {
+                recette = value;
+                OnPropretyChanged("recette");
+            }
             get { return recette; }
         }
         private string recette;
@@ -78,8 +84,11 @@ namespace ProjetLibrary
         /// </summary>
         public string UrlImage
         {
-            set { urlImage = value;
-                OnPropretyChanged("urlImage"); }
+            set
+            {
+                urlImage = value;
+                OnPropretyChanged("urlImage");
+            }
             get { return urlImage; }
         }
         private string urlImage;
@@ -91,7 +100,7 @@ namespace ProjetLibrary
         public void OnPropretyChanged(string p)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
-            if(handler != null)
+            if (handler != null)
             {
                 handler(this, new PropertyChangedEventArgs(p));
             }
@@ -112,7 +121,7 @@ namespace ProjetLibrary
         /// </summary>
         /// <param name="nom">prenant un nom</param>
         /// <param name="ingredients">et une liste d'ingrédients</param>
-        public Cocktail(string nom, List<Ingredient> ingredients)
+        public Cocktail(string nom, List<Ingredient> ingredients) : this(nom)
         {
             ingredients.ForEach(i => this.ingredients.Add(new Ingredient(i.Nom, i.Quantite, i.Unite)));
         }
@@ -189,18 +198,18 @@ namespace ProjetLibrary
         /// </summary>
         /// <param name="u">un utilisateur</param>
         /// <param name="c">un commentaire</param>
-        public void laisserCommentaire(User u,Commentaire c)
+        public void laisserCommentaire(User u, Commentaire c)
         {
             /*try
             {*/
-                commentaires.Add(u, new Commentaire(c.Titre, c.Texte, c.Note));
-           /* }
-            #pragma warning disable CS0168 // La variable est déclarée mais jamais utilisée
-            catch (Exception e)
-            {
-                supprimerCommentaire(u);
-                commentaires.Add(u, new Commentaire(c.Titre, c.Texte, c.Note));
-            }*/
+            commentaires.Add(u, new Commentaire(c.Titre, c.Texte, c.Note));
+            /* }
+             #pragma warning disable CS0168 // La variable est déclarée mais jamais utilisée
+             catch (Exception e)
+             {
+                 supprimerCommentaire(u);
+                 commentaires.Add(u, new Commentaire(c.Titre, c.Texte, c.Note));
+             }*/
         }
 
         /// <summary>

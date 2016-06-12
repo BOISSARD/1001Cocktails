@@ -87,7 +87,7 @@ namespace ProjetLibrary
         /// <summary>
         /// Propriété calculé qui retourne true si le currentUser différent de null.
         /// </summary>
-        private bool Connected
+        public bool Connected
         {
             get
             {
@@ -209,7 +209,7 @@ namespace ProjetLibrary
         public void ajouterCocktail(string nom, string recette, List<Ingredient> ing, ReadOnlyDictionary<User, Commentaire> com, string image)
         {
             Dictionary<User, Commentaire> commentaires = new Dictionary<User, Commentaire>();
-            foreach(var co in com)
+            foreach (var co in com)
             {
                 if (utilisateurs.Contains(co.Key))
                     commentaires.Add(utilisateurs.ElementAt(utilisateurs.IndexOf(co.Key)), co.Value);
@@ -260,8 +260,8 @@ namespace ProjetLibrary
         /// </summary>
         public void sauvegarder()
         {
-                dataManager.saveCocktail(Livre);
-                dataManager.saveUser(UserRead);
+            dataManager.saveCocktail(Livre);
+            dataManager.saveUser(UserRead);
         }
 
         /// <summary>

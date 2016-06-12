@@ -39,13 +39,13 @@ namespace Projet
         {
             //DataContext = c;
             co = c;
-            if(c.CommentaireRead.ContainsKey(MyManager.CurrentUser))
+            if (c.CommentaireRead.ContainsKey(MyManager.CurrentUser))
             {
                 Titre.Text = c.returnComment(MyManager.CurrentUser).Titre;
                 Texte.Text = c.returnComment(MyManager.CurrentUser).Texte;
                 Note.Value = c.returnComment(MyManager.CurrentUser).Note;
             }
-            if(MyManager.CurrentUser != null)
+            if (MyManager.CurrentUser != null)
             {
                 Pseudo.Text = MyManager.CurrentUser.Pseudo;
             }
@@ -60,7 +60,7 @@ namespace Projet
         {
             if (!co.CommentaireRead.ContainsKey(new User(Pseudo.Text)))
             {
-                if (MyManager.CurrentUser != null)
+                if (MyManager.Connected)
                     co.laisserCommentaire(MyManager.CurrentUser, new ProjetLibrary.Commentaire(Titre.Text, Texte.Text, (short)Note.Value));
                 else co.laisserCommentaire(new User(Pseudo.Text), new ProjetLibrary.Commentaire(Titre.Text, Texte.Text, (short)Note.Value));
             }
@@ -68,7 +68,7 @@ namespace Projet
             {
                 //MessageBox.Show("Vous avez déjà laisser un commentaire pour ce cocktail");
                 co.supprimerCommentaire(new User(Pseudo.Text));
-                Poster(sender,e);
+                Poster(sender, e);
             }
             this.Close();
         }
