@@ -264,9 +264,12 @@ namespace ProjetLibrary
                 dataManager.saveUser(UserRead);
         }
 
+        /// <summary>
+        /// Méthode pour les gérer les erreurs de la sauvegarde.
+        /// </summary>
+        /// <returns>Le message d'erreur ou au contraire de réussite</returns>
         public string sauvegardError()
         {
-
             try
             {
                 sauvegarder();
@@ -287,16 +290,24 @@ namespace ProjetLibrary
             chargerCocktails();
         }
 
+        /// <summary>
+        /// Méthode permettant de charger les utilisateurs
+        /// </summary>
         public void chargerUsers()
         {
-            dataManager.loadUser().ForEach(u => this.ajouterUser(u.Pseudo, u.Mail, u.Password));
+            foreach (User u in dataManager.loadUser())
+            {
+                this.ajouterUser(u.Pseudo, u.Mail, u.Password);
+            }
         }
 
+        /// <summary>
+        /// Méthode permettant de charger l'ensemble des cocktails
+        /// </summary>
         public void chargerCocktails()
         {
             foreach (Cocktail c in dataManager.loadCocktail())
             {
-                //livre.Add(c);
                 this.ajouterCocktail(c.Nom, c.Recette, c.IngredientRead.ToList(), c.CommentaireRead, c.UrlImage);
             }
         }

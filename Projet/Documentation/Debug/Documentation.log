@@ -1,0 +1,76 @@
+﻿  'Document' n'est pas reconnu en tant que commande interne
+  ou externe, un programme exécutable ou un fichier de commandes.
+EXEC : error : Doxyfile not found and no input file specified!
+  Doxygen version 1.8.11
+  Copyright Dimitri van Heesch 1997-2015
+  
+  You can use doxygen in a number of ways:
+  
+  1) Use doxygen to generate a template configuration file:
+      Doxygen [-s] -g [configName]
+  
+      If - is used for configName doxygen will write to standard output.
+  
+  2) Use doxygen to update an old configuration file:
+      Doxygen [-s] -u [configName]
+  
+  3) Use doxygen to generate documentation using an existing configuration file:
+      Doxygen [configName]
+  
+      If - is used for configName doxygen will read from standard input.
+  
+  4) Use doxygen to generate a template file controlling the layout of the
+     generated documentation:
+      Doxygen -l [layoutFileName.xml]
+  
+  5) Use doxygen to generate a template style sheet file for RTF, HTML or Latex.
+      RTF:        Doxygen -w rtf styleSheetFile
+      HTML:       Doxygen -w html headerFile footerFile styleSheetFile [configFile]
+      LaTeX:      Doxygen -w latex headerFile footerFile styleSheetFile [configFile]
+  
+  6) Use doxygen to generate a rtf extensions file
+      RTF:   Doxygen -e rtf extensionsFile
+  
+  If -s is specified the comments of the configuration items in the config file will be omitted.
+  If configName is omitted `Doxyfile' will be used as a default.
+  
+  -v print version string
+EXEC : error : configuration file Doxyfile not found!
+  Doxygen version 1.8.11
+  Copyright Dimitri van Heesch 1997-2015
+  
+  You can use doxygen in a number of ways:
+  
+  1) Use doxygen to generate a template configuration file:
+      doxygen [-s] -g [configName]
+  
+      If - is used for configName doxygen will write to standard output.
+  
+  2) Use doxygen to update an old configuration file:
+      doxygen [-s] -u [configName]
+  
+  3) Use doxygen to generate documentation using an existing configuration file:
+      doxygen [configName]
+  
+      If - is used for configName doxygen will read from standard input.
+  
+  4) Use doxygen to generate a template file controlling the layout of the
+     generated documentation:
+      doxygen -l [layoutFileName.xml]
+  
+  5) Use doxygen to generate a template style sheet file for RTF, HTML or Latex.
+      RTF:        doxygen -w rtf styleSheetFile
+      HTML:       doxygen -w html headerFile footerFile styleSheetFile [configFile]
+      LaTeX:      doxygen -w latex headerFile footerFile styleSheetFile [configFile]
+  
+  6) Use doxygen to generate a rtf extensions file
+      RTF:   doxygen -e rtf extensionsFile
+  
+  If -s is specified the comments of the configuration items in the config file will be omitted.
+  If configName is omitted `Doxyfile' will be used as a default.
+  
+  -v print version string
+C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.MakeFile.Targets(37,5): error MSB3073: La commande "cd ../../
+C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.MakeFile.Targets(37,5): error MSB3073: Document/
+C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.MakeFile.Targets(37,5): error MSB3073: Doxygen
+C:\Program Files (x86)\MSBuild\Microsoft.Cpp\v4.0\V140\Microsoft.MakeFile.Targets(37,5): error MSB3073: doxygen Doxyfile" s'est arrêtée avec le code 1.

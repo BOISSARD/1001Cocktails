@@ -92,8 +92,9 @@
     <url>http://image.org</url>
   </cocktail>
   <cocktail>
-    <nom>Vodka-Pomme</nom>
-    <recette>Mélangez la vodka et le jus de pomme</recette>
+    <nom>Vodka-Pomme coucou</nom>
+    <recette>Mélangez la vodka et le jus de pomme.
+Coucou</recette>
     <ingredients>
       <ingredient>
         <nom>Vodka</nom>

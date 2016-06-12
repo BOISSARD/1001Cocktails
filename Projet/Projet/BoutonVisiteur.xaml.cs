@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ProjetLibrary;
 
 namespace Projet
 {
@@ -20,14 +21,32 @@ namespace Projet
     /// </summary>
     public partial class BoutonVisiteur : UserControl
     {
+        private Manager MyManager
+        {
+            get
+            {
+                return ((Application.Current as App).Resources["MyManager"] as ObjectDataProvider).Data as Manager;
+            }
+        }
+
+        //private Window main;
+        public MainWindow Main { set; get; }
+
         public BoutonVisiteur()
         {
             InitializeComponent();
+
+            DataContext = MyManager;
+        }
+
+        public BoutonVisiteur(MainWindow w) : this()
+        {
+            Main = w;
         }
 
         private void Comment(object sender, RoutedEventArgs e)
         {
-            new Commentaire().Show();
+            new Commentaire(Main.Liste.SelectedValue as Cocktail).ShowDialog();
         }
 
         private void Connect(object sender, RoutedEventArgs e)

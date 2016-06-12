@@ -22,21 +22,21 @@ namespace ProjetLibrary
         /// Méthode loadUser permettant de charger la liste d'utilisateurs.
         /// </summary>
         /// <returns>une collection de IUser</returns>
-        List<User> loadUser();
+        IEnumerable<User> loadUser();
         /// <summary>
         /// Méthode loadCocktail permettant de charger la liste livre.        
         /// </summary>
         /// <returns></returns>
-        ObservableCollection<Cocktail> loadCocktail();
+        IEnumerable<Cocktail> loadCocktail();
         /// <summary>
         /// Méthode saveUSer permettant de sauvergarder la liste d'utilisateurs.
         /// </summary>
         /// <param name="list">prend une collection de IUser</param>
-        void saveUser(ReadOnlyCollection<User> list);
+        void saveUser(IEnumerable<User> list);
         /// <summary>
         /// Méthode saveCocktail permettant de sauvergarder la liste de cocktails livre.
         /// </summary>
         /// <param name="list">prend une collection de ICocktail</param>
-        void saveCocktail(ObservableCollection<Cocktail> list);
+        void saveCocktail(IEnumerable<Cocktail> list);
     }
 }

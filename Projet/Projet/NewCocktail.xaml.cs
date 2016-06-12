@@ -29,7 +29,7 @@ namespace Projet
         }
         private static int nbIng, exNbIng = 1;
         private string nom, url, recette;
-        private List<Ingredient> ingredients = new List<Ingredient>();
+        //private List<Ingredient> ingredients = new List<Ingredient>();
         
 
         public NewCocktail()
@@ -70,13 +70,16 @@ namespace Projet
         {
             nom = nomC.Text;
             recette = recetteC.Text;
-            foreach (NewIngredient o in ListIng.Items)
+            if ((nom != null || nom != "") && (recette != null || recette != ""))
             {
-                ingredients.Add(o.getIngredient());
-            }
-            if ((nom != null || nom != "") && (recette != null || recette != "") && (ingredients.ElementAt(0).Nom != null/* || ingredients.ElementAt(0).Nom != ""*/))
-            {
-                MyManager.ajouterCocktail(nom,recette,ingredients);
+                Cocktail myCocktail = new Cocktail(nomC.Text);
+                myCocktail.Recette = recetteC.Text;
+                foreach (NewIngredient o in ListIng.Items)
+                {
+                    myCocktail.ajouterIngredient(o.getIngredient());
+                }
+
+                MyManager.ajouterCocktail(myCocktail.Nom,myCocktail.Recette,myCocktail.IngredientRead.ToList());
                 this.Close();
             }
             else

@@ -21,7 +21,7 @@ namespace ProjetLibrary
         public string Nom
         {
             set { nom = value;
-                OnPropretyChanged("nomMod"); }
+                OnPropretyChanged("nom"); }
             get { return nom; }
         }
         private string nom;
@@ -32,7 +32,7 @@ namespace ProjetLibrary
         public string Recette
         {
             set { recette = value;
-                OnPropretyChanged("recetteMod"); }
+                OnPropretyChanged("recette"); }
             get { return recette; }
         }
         private string recette;
@@ -52,6 +52,10 @@ namespace ProjetLibrary
                 return ingredients.AsReadOnly();
             }
         }
+
+        /// <summary>
+        /// Propriété calculé permettant de connaitre
+        /// </summary>
         public int nbIngredients
         {
             get { return ingredients.Count(); }
@@ -75,13 +79,15 @@ namespace ProjetLibrary
         public string UrlImage
         {
             set { urlImage = value;
-                OnPropretyChanged("urlImageMod"); }
+                OnPropretyChanged("urlImage"); }
             get { return urlImage; }
         }
         private string urlImage;
 
+        /// <summary>
+        /// Evenement permettant l'actualisation des listes dans la vue après modification d'une collection.
+        /// </summary>
         public event PropertyChangedEventHandler PropertyChanged;
-
         public void OnPropretyChanged(string p)
         {
             PropertyChangedEventHandler handler = PropertyChanged;
@@ -92,18 +98,23 @@ namespace ProjetLibrary
         }
 
         /// <summary>
+        /// Constructeur d'un cocktail sous sa forme la plus élémentaire
+        /// </summary>
+        /// <param name="nom">le nom</param>
+        public Cocktail(string nom)
+        {
+            this.Nom = nom;
+            this.Recette = "Pas de recette !";
+        }
+
+        /// <summary>
         /// constructeur d'un cocktail.
         /// </summary>
         /// <param name="nom">prenant un nom</param>
         /// <param name="ingredients">et une liste d'ingrédients</param>
         public Cocktail(string nom, List<Ingredient> ingredients)
         {
-            this.Nom = nom;
-            this.Recette = "Pas de recette !";
-            //if (ingredients == null)
-            //    this.ingredients.Add(new Ingredient("Pas d ingredient", 0, Unite.unite));
-            //else
-                ingredients.ForEach(i => this.ingredients.Add(new Ingredient(i.Nom, i.Quantite, i.Unite)));
+            ingredients.ForEach(i => this.ingredients.Add(new Ingredient(i.Nom, i.Quantite, i.Unite)));
         }
 
         /// <summary>
@@ -149,13 +160,16 @@ namespace ProjetLibrary
         /// Méthode pour ajouter un ingrédient au cocktail.
         /// </summary>
         /// <param name="ingredient">prent un ingrédient</param>
-        public void ajouterIngredients(Ingredient ingredient)
+        public void ajouterIngredient(Ingredient ingredient)
         {
             if (ingredients == null)
             {
                 ingredients = new List<Ingredient>();
             }
-            ingredients.Add(ingredient);
+            if (!ingredients.Contains(ingredient))
+            {
+                ingredients.Add(ingredient);
+            }
         }
 
         /// <summary>
@@ -170,6 +184,11 @@ namespace ProjetLibrary
             }
         }
 
+        /// <summary>
+        /// Méthode permettant d'ajouter un commentaire pour un utilisateur au dictionnaire.
+        /// </summary>
+        /// <param name="u">un utilisateur</param>
+        /// <param name="c">un commentaire</param>
         public void laisserCommentaire(User u,Commentaire c)
         {
             /*try
@@ -184,11 +203,20 @@ namespace ProjetLibrary
             }*/
         }
 
+        /// <summary>
+        /// Méthode permettant de récupérer la value dans le dictionnaire de commentaire
+        /// </summary>
+        /// <param name="u">en fonction de la clé de type User</param>
+        /// <returns>la value commentaire</returns>
         public Commentaire returnComment(User u)
         {
             return commentaires[u];
         }
 
+        /// <summary>
+        /// Méthode permettant de supprimer un commentaire (la KeyValuePair)
+        /// </summary>
+        /// <param name="u">en connaissant l'utilisateur</param>
         public void supprimerCommentaire(User u)
         {
             commentaires.Remove(u);
