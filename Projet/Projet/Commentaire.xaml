@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Projet"
         mc:Ignorable="d"
         Title="Commentaire" Height="400" Width="320" Style="{StaticResource fenetre}">
-    
+
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -14,7 +14,7 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="35*"/>
-            <RowDefinition Height="55*"/>
+            <RowDefinition Height="35*"/>
             <RowDefinition Height="35*"/>
             <RowDefinition Height="35*"/>
             <RowDefinition Height="90*"/>
@@ -23,14 +23,16 @@
         <TextBlock Text="Pseudo :" Grid.Column="0" Grid.Row="0" VerticalAlignment="Center" Margin="15,0,0,0"/>
         <TextBox Grid.Column="1" Grid.Row="0" Margin="10,5" VerticalContentAlignment="Center" Name="Pseudo"/>
         <TextBlock Text="Note :" Grid.Column="0" Grid.Row="1" VerticalAlignment="Center" Margin="15,0,0,0"/>
-        <Grid Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" Margin="10">
+        <!--<Grid Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="1" Margin="10">
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
-            <Slider Grid.Row="0" Maximum="10" Name="note" TickPlacement="BottomRight"  TickFrequency="1" IsSnapToTickEnabled="True" ValueChanged="ChoixValeurNote"/>
+            <Slider Grid.Row="0" Maximum="5" Name="note" TickPlacement="BottomRight"  TickFrequency="1" IsSnapToTickEnabled="True" ValueChanged="ChoixValeurNote"/>
+            <local:Rating x:Name="Note" Grid.Row="0" VerticalAlignment="Center" HorizontalAlignment="Center"/>
             <TextBlock Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Name="valNote" Style="{StaticResource textBase}"/>
-        </Grid>
+        </Grid>-->
+        <local:Rating Grid.Column="1" Grid.Row="1" x:Name="Note" Padding="10,0" HorizontalAlignment="Center" Margin="10,5" Background="{StaticResource color4}"/>
         <TextBlock Text="Titre :" Grid.Column="0" Grid.Row="2" VerticalAlignment="Center" Margin="15,0,0,0"/>
         <TextBox Grid.Column="1" Grid.Row="2" Margin="10,5" VerticalContentAlignment="Center" Name="Titre"/>
         <TextBlock Text="Votre commentaire :" Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" Margin="15,0,0,0"/>

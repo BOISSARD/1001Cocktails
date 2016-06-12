@@ -59,10 +59,10 @@ namespace ProjetData
         /// Méthode de chargement des cocktails
         /// </summary>
         /// <returns>en retournant une collection de cocktails</returns>
-        public ObservableCollection<ICocktail> loadCocktail()
+        public ObservableCollection<Cocktail> loadCocktail()
         {
             cocktailFile = XDocument.Load(dirData + "cocktails.xml");
-            IEnumerable<ICocktail> liste = new List<ICocktail>();
+            IEnumerable<Cocktail> liste = new List<Cocktail>();
             liste = cocktailFile.Descendants("cocktail").Select(cocktail => Fabrique.creerCocktail
             (
                cocktail.Element("nom").Value,
@@ -78,7 +78,7 @@ namespace ProjetData
                cocktail.Element("url").Value
             ));
 
-            return new ObservableCollection<ICocktail>(liste);
+            return new ObservableCollection<Cocktail>(liste);
         }
 
         /// <summary>
@@ -101,7 +101,7 @@ namespace ProjetData
         /// Méthode de sauvegarde des cocktails
         /// </summary>
         /// <param name="list">prend une collection de Cocktail en passant par la façade immuable ICocktail</param>
-        public void saveCocktail(ObservableCollection<ICocktail> list)
+        public void saveCocktail(ObservableCollection<Cocktail> list)
         {
             var cocktailElts = list.Select(cocktail => 
                                     new XElement("cocktail",

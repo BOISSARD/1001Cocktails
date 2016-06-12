@@ -2,7 +2,7 @@
 <cocktails>
   <cocktail>
     <nom>Mojito</nom>
-    <recette>Mélanger le rhum à la menthe</recette>
+    <recette>Mélanger le rhum à la menthes</recette>
     <ingredients>
       <ingredient>
         <nom>Rhum</nom>
@@ -19,7 +19,12 @@
       <commentaire pseudo="Clem">
         <titre>Bon</titre>
         <texte>C'est très bon !</texte>
-        <note>9</note>
+        <note>5</note>
+      </commentaire>
+      <commentaire pseudo="Admin">
+        <titre>Cool</titre>
+        <texte>Super cool !</texte>
+        <note>4</note>
       </commentaire>
     </commentaires>
     <url>http://www.esprits-feminins.fr/wp-content/uploads/2012/07/mojito_gesneden_600x600.jpg</url>
@@ -81,7 +86,7 @@
       <commentaire pseudo="Jacky">
         <titre>Potable</titre>
         <texte></texte>
-        <note>3</note>
+        <note>1</note>
       </commentaire>
     </commentaires>
     <url>http://image.org</url>

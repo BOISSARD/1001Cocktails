@@ -46,31 +46,31 @@ namespace Projet
 
         private void Ajout(object sender, RoutedEventArgs e)
         {
-            new NewCocktail().Show();
+            new NewCocktail().ShowDialog();
         }
 
         private void Modif(object sender, RoutedEventArgs e)
         {
-            new NewCocktail(Main.Liste.SelectedValue as Cocktail).Show();
+            new NewCocktail(Main.Liste.SelectedValue as Cocktail).ShowDialog();
         }
 
         private void Suppr(object sender, RoutedEventArgs e)
         {
-            new Supprimer(Main.Liste.SelectedValue as ICocktail).Show();
+            new Supprimer(Main.Liste.SelectedValue as Cocktail).ShowDialog();
         }
 
         private void Comment(object sender, RoutedEventArgs e)
         {
-            if ((Main.Liste.SelectedValue as ICocktail).CommentaireRead.ContainsKey(MyManager.CurrentUser))
+            if ((Main.Liste.SelectedValue as Cocktail).CommentaireRead.ContainsKey(MyManager.CurrentUser))
             {
                 var result = MessageBox.Show("Vous avez déjà laisser un commentaire pour ce cocktail.\nVoulez-vous le modifier ?", "Déjà commenter", MessageBoxButton.YesNo);
                 if(result == MessageBoxResult.Yes)
                 {
-                    new Commentaire(Main.Liste.SelectedValue as ICocktail).Show();
+                    new Commentaire(Main.Liste.SelectedValue as Cocktail).ShowDialog();
                 }
             }
             else
-                new Commentaire(Main.Liste.SelectedValue as ICocktail).Show();
+                new Commentaire(Main.Liste.SelectedValue as Cocktail).ShowDialog();
         }
     }
 }

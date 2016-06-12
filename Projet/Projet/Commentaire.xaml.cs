@@ -27,7 +27,7 @@ namespace Projet
                 return ((Application.Current as App).Resources["MyManager"] as ObjectDataProvider).Data as Manager;
             }
         }
-        private ICocktail co;
+        private Cocktail co;
         private short laNote;
 
         public Commentaire()
@@ -35,14 +35,15 @@ namespace Projet
             InitializeComponent();
         }
 
-        public Commentaire(ICocktail c) : this()
+        public Commentaire(Cocktail c) : this()
         {
+            //DataContext = c;
             co = c;
             if(c.CommentaireRead.ContainsKey(MyManager.CurrentUser))
             {
                 Titre.Text = c.returnComment(MyManager.CurrentUser).Titre;
                 Texte.Text = c.returnComment(MyManager.CurrentUser).Texte;
-                note.Value = c.returnComment(MyManager.CurrentUser).Note;
+                Note.Value = c.returnComment(MyManager.CurrentUser).Note;
             }
             if(MyManager.CurrentUser != null)
             {
@@ -56,11 +57,12 @@ namespace Projet
         }
 
         private void Poster(object sender, RoutedEventArgs e)
-        {   if (!co.CommentaireRead.ContainsKey(new User(Pseudo.Text)))
+        {
+            if (!co.CommentaireRead.ContainsKey(new User(Pseudo.Text)))
             {
                 if (MyManager.CurrentUser != null)
-                    co.laisserCommentaire(MyManager.CurrentUser, new ProjetLibrary.Commentaire(Titre.Text, Texte.Text, laNote));
-                else co.laisserCommentaire(new User(Pseudo.Text), new ProjetLibrary.Commentaire(Titre.Text, Texte.Text, laNote));
+                    co.laisserCommentaire(MyManager.CurrentUser, new ProjetLibrary.Commentaire(Titre.Text, Texte.Text, (short)Note.Value));
+                else co.laisserCommentaire(new User(Pseudo.Text), new ProjetLibrary.Commentaire(Titre.Text, Texte.Text, (short)Note.Value));
             }
             else
             {
@@ -73,9 +75,9 @@ namespace Projet
 
         private void ChoixValeurNote(object sender, RoutedEventArgs e)
         {
-            laNote = (short)note.Value;
+            laNote = (short)Note.Value;
             float laVraieNote = (float)laNote / 2;
-            valNote.Text = laVraieNote.ToString("0.0");
+            //valNote.Text = laVraieNote.ToString("0.0");
         }
     }
 }

@@ -30,10 +30,13 @@ namespace Projet
         private static int nbIng, exNbIng = 1;
         private string nom, url, recette;
         private List<Ingredient> ingredients = new List<Ingredient>();
+        
 
         public NewCocktail()
         {
             InitializeComponent();
+            this.Height = 520;
+            this.Width = 400;
             //nbIngredientsC.SelectedIndex = 0;
             //nomC.Text = nom;
         }
@@ -41,16 +44,21 @@ namespace Projet
         public NewCocktail(Cocktail c) : this()
         {
             DataContext = c;
-            MessageBox.Show("test test");
-           // nbIng = c.IngredientRead.Count();
-            //nom = c.Nom;
-            //recette = c.Recette;
+            int num = 0;
+            nbIng = c.IngredientRead.Count();
+            nbIngredientsC.SelectedIndex = nbIng - 1;
+            nbIngredientsC_DropDownClosed(new object(),new EventArgs());
             //foreach (Ingredient i in c.IngredientRead)
-           // {
+            //{
             //    ingredients.Add(i);
-                //ListIng.Item.
-           // }
-           // url = c.UrlImage;
+            //}
+            foreach(NewIngredient ni in ListIng.Items)
+            {
+                ni.nomIngredientC.Text = c.IngredientRead.ElementAt(num).Nom;
+                ni.quantiteIngredientC.Text = c.IngredientRead.ElementAt(num).Quantite.ToString();
+                ni.unitesIngredientC.SelectedValue = c.IngredientRead.ElementAt(num).Unite;
+                num++;
+            }
         }
 
         private void Annuler(object sender, RoutedEventArgs e)
@@ -60,27 +68,29 @@ namespace Projet
 
         private void Ajout(object sender, RoutedEventArgs e)
         {
-            //nom = nomC.Text;
-            //recette = recetteC.Text;
-            //foreach (NewIngredient o in ListIng.Items)
-            //{
-            //    ingredients.Add(o.getIngredient());
-            //}
-            //if ((nom != null || nom != "") && (recette != null || recette != "") && (ingredients.ElementAt(0).Nom != null/* || ingredients.ElementAt(0).Nom != ""*/))
-            //{
-            //    MyManager.ajouterCocktail(nom,recette,ingredients);
-            //    this.Close();
-            //}
-            //else
-            //{
-            //    MessageBox.Show("Test");
-            //    return;
-            //}
-            this.Close();
+            nom = nomC.Text;
+            recette = recetteC.Text;
+            foreach (NewIngredient o in ListIng.Items)
+            {
+                ingredients.Add(o.getIngredient());
+            }
+            if ((nom != null || nom != "") && (recette != null || recette != "") && (ingredients.ElementAt(0).Nom != null/* || ingredients.ElementAt(0).Nom != ""*/))
+            {
+                MyManager.ajouterCocktail(nom,recette,ingredients);
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Test");
+                return;
+            }
+            //this.Close();
         }
 
         private void nbIngredientsC_DropDownClosed(object sender, EventArgs e)
         {
+            //MessageBox.Show(sender.ToString());
+            //MessageBox.Show(e.ToString());
             nbIng = nbIngredientsC.SelectedIndex + 1;
 
             if (nbIng == exNbIng) return;

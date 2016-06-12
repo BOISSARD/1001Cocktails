@@ -59,6 +59,7 @@
                                 </Grid.ColumnDefinitions>
                                 <TextBlock Text="{Binding Value.Titre}" Grid.Column="0" Grid.Row="0" Padding="25,0" HorizontalAlignment="Left" Style="{StaticResource ResourceKey=textBase}"/>
                                 <TextBlock Text="{Binding Value.Note}" Grid.Column="1" Grid.Row="0" Padding="25,0" HorizontalAlignment="Center" Style="{StaticResource ResourceKey=textBase}"/>
+                                <!--<local:Rating Grid.Column="1" Grid.Row="0" Padding="25,0" HorizontalAlignment="Center" Height="15"/>-->
                                 <TextBlock Text="{Binding Key.Pseudo}" Grid.Column="2" Grid.Row="0" Padding="25,0,45,0" HorizontalAlignment="Right" Style="{StaticResource ResourceKey=textBase}"/>
                                 <TextBlock Text="{Binding Value.Texte}" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" Padding="25,0,45,0" HorizontalAlignment="Left" Style="{StaticResource ResourceKey=textBase}"/>
                             </Grid>

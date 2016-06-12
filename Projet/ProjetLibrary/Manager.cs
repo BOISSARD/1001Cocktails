@@ -23,24 +23,10 @@ namespace ProjetLibrary
             {
                 return livre;
             }
-        }
-        public ObservableCollection<ICocktail> CocktailsObs
-        {
-            get
+            set
             {
-                return new ObservableCollection<ICocktail>(livre);
-            }
-            /*private set 
-            {
-                livre = (List<Cocktail>)value.ToList();
-
-            }*/
-        }
-        public IEnumerable<ICocktail> CocktailIEnum
-        {
-            get
-            {
-                return livre;
+                livre = value;
+                OnPropertyChanged("Livre");
             }
         }
 
@@ -274,7 +260,7 @@ namespace ProjetLibrary
         /// </summary>
         public void sauvegarder()
         {
-                dataManager.saveCocktail(CocktailsObs);
+                dataManager.saveCocktail(Livre);
                 dataManager.saveUser(UserRead);
         }
 

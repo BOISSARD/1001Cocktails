@@ -64,7 +64,7 @@ namespace ProjetTest
             //m.ajouterCocktail("Vodka-RedBull", "Mélanger la vodka et le redbull", liste3, "http://image.org");
 
             Console.WriteLine("Cocktails lu  :");
-            foreach (ICocktail c in m.CocktailsObs)
+            foreach (ICocktail c in m.Livre)
             {
                 Console.WriteLine(" + " + c.ToString());
             }

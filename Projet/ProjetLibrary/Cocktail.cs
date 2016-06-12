@@ -13,35 +13,34 @@ namespace ProjetLibrary
     /// La classe Cocktail qui implémente l'interface IEquatable afin de redéfinir la comparaison.
     /// Et qui implémente l'interface ICocktail afin d'avoir une façade immuable.
     /// </summary>
-    public class Cocktail : ICocktail, IEquatable<Cocktail>, INotifyPropertyChanged
+    public class Cocktail : IEquatable<Cocktail>, INotifyPropertyChanged
     {
         /// <summary>
         /// Nom est le nom du cocktail, il est unique pour tous les cocktails.
         /// </summary>
-        public string Nom {
-            set
-            {
-                nom = value;
-                OnPropretyChanged("nomMod");
-            }
-            get
-            {
-                return nom;
-            }
+        public string Nom
+        {
+            set { nom = value;
+                OnPropretyChanged("nomMod"); }
+            get { return nom; }
         }
+        private string nom;
 
-        string nom;
         /// <summary>
         /// Recette est du texte composé des étapes de la réalisation du cocktail.
         /// </summary>
-        public string Recette { private set; get; }
+        public string Recette
+        {
+            set { recette = value;
+                OnPropretyChanged("recetteMod"); }
+            get { return recette; }
+        }
+        private string recette;
+
         /// <summary>
         /// ingredients est la liste d'ingrédients.
         /// </summary>
         private List<Ingredient> ingredients = new List<Ingredient>();
-        /// <summary>
-        /// la façade immuable de la liste d'ingrédients.
-        /// </summary>
         public ReadOnlyCollection<Ingredient> IngredientRead
         {
             private set
@@ -53,6 +52,11 @@ namespace ProjetLibrary
                 return ingredients.AsReadOnly();
             }
         }
+        public int nbIngredients
+        {
+            get { return ingredients.Count(); }
+        }
+
         /// <summary>
         /// commentaires est la liste des commentaires laisser par un utilisateurs de type User.
         /// </summary>
@@ -68,14 +72,23 @@ namespace ProjetLibrary
         /// <summary>
         /// urlImage est le chemin de l'image dans le projet.
         /// </summary>
-        public string UrlImage { private set; get; }
-
+        public string UrlImage
+        {
+            set { urlImage = value;
+                OnPropretyChanged("urlImageMod"); }
+            get { return urlImage; }
+        }
+        private string urlImage;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
         public void OnPropretyChanged(string p)
         {
-
+            PropertyChangedEventHandler handler = PropertyChanged;
+            if(handler != null)
+            {
+                handler(this, new PropertyChangedEventArgs(p));
+            }
         }
 
         /// <summary>
@@ -159,7 +172,16 @@ namespace ProjetLibrary
 
         public void laisserCommentaire(User u,Commentaire c)
         {
-            commentaires.Add(u, new Commentaire(c.Titre, c.Texte, c.Note));
+            /*try
+            {*/
+                commentaires.Add(u, new Commentaire(c.Titre, c.Texte, c.Note));
+           /* }
+            #pragma warning disable CS0168 // La variable est déclarée mais jamais utilisée
+            catch (Exception e)
+            {
+                supprimerCommentaire(u);
+                commentaires.Add(u, new Commentaire(c.Titre, c.Texte, c.Note));
+            }*/
         }
 
         public Commentaire returnComment(User u)

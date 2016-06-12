@@ -67,6 +67,9 @@
     <Compile Include="NewIngredient.xaml.cs">
       <DependentUpon>NewIngredient.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Rating.xaml.cs">
+      <DependentUpon>Rating.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Supprimer.xaml.cs">
       <DependentUpon>Supprimer.xaml</DependentUpon>
     </Compile>
@@ -123,6 +126,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="NewIngredient.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Rating.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
