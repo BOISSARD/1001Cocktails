@@ -30,7 +30,6 @@ namespace Projet
         private static int nbIng, exNbIng;
         private string nom, exNom, url, recette;
         private List<Ingredient> ingredients = new List<Ingredient>();
-        //private Cocktail cocktail;
 
         public NewCocktail()
         {
@@ -44,14 +43,14 @@ namespace Projet
             int num = 0;
             exNom = c.Nom;
             nbIngredientsC_DropDownClosed(new object(), new EventArgs());
-            nbIng = c.IngredientRead.Count();
+            nbIng = c.IngredientObs.Count();
             nbIngredientsC.SelectedIndex = nbIng - 1;
             nbIngredientsC_DropDownClosed(new object(),new EventArgs());
             foreach(NewIngredient ni in ListIng.Items)
             {
-                ni.nomIngredientC.Text = c.IngredientRead.ElementAt(num).Nom;
-                ni.quantiteIngredientC.Text = c.IngredientRead.ElementAt(num).Quantite.ToString();
-                ni.unitesIngredientC.SelectedValue = c.IngredientRead.ElementAt(num).Unite;
+                ni.nomIngredientC.Text = c.IngredientObs.ElementAt(num).Nom;
+                ni.quantiteIngredientC.Text = c.IngredientObs.ElementAt(num).Quantite.ToString();
+                ni.unitesIngredientC.SelectedValue = c.IngredientObs.ElementAt(num).Unite;
                 num++;
             }
             url = UrlC.Text;
@@ -82,9 +81,7 @@ namespace Projet
                     }
                 }
 
-                MyManager.supprimerCocktail(exNom);
-                MyManager.ajouterCocktail(nom,recette,ingredients,url);
-                //MessageBox.Show(MyManager.ToString());
+                MyManager.modifierCocktail(exNom,nom,recette,ingredients,url);
                 this.Close();
             }
             else

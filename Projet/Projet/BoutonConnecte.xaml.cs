@@ -62,7 +62,7 @@ namespace Projet
 
         private void Comment(object sender, RoutedEventArgs e)
         {
-            if ((Main.Liste.SelectedValue as Cocktail).CommentaireRead.ContainsKey(MyManager.CurrentUser))
+            if ((Main.Liste.SelectedValue as Cocktail).CommentaireObs.ContainsKey(MyManager.CurrentUser))
             {
                 var result = MessageBox.Show("Vous avez déjà laisser un commentaire pour ce cocktail.\nVoulez-vous le modifier ?", "Déjà commenter", MessageBoxButton.YesNo);
                 if(result == MessageBoxResult.Yes)

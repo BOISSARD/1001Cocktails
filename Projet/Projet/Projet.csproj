@@ -61,11 +61,17 @@
     <Compile Include="BoutonVisiteur.xaml.cs">
       <DependentUpon>BoutonVisiteur.xaml</DependentUpon>
     </Compile>
+    <Compile Include="DescCommentaire.xaml.cs">
+      <DependentUpon>DescCommentaire.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Description.xaml.cs">
       <DependentUpon>Description.xaml</DependentUpon>
     </Compile>
     <Compile Include="NewIngredient.xaml.cs">
       <DependentUpon>NewIngredient.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Rated.xaml.cs">
+      <DependentUpon>Rated.xaml</DependentUpon>
     </Compile>
     <Compile Include="Rating.xaml.cs">
       <DependentUpon>Rating.xaml</DependentUpon>
@@ -78,6 +84,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="BoutonVisiteur.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="DescCommentaire.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -126,6 +136,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="NewIngredient.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Rated.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

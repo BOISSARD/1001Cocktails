@@ -34,7 +34,14 @@
                             <Setter Property="ContentTemplate">
                                 <Setter.Value>
                                     <DataTemplate>
-                                        <TextBlock Style="{StaticResource textBase}" FontSize="16" Text="Rechercher"/>
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition/>
+                                                <RowDefinition/>
+                                            </Grid.RowDefinitions>
+                                            <TextBlock Grid.Row="0" Style="{StaticResource textBase}" FontSize="16" Text="Rechercher !" HorizontalAlignment="Center"/>
+                                            <TextBlock Grid.Row="1" Style="{StaticResource textBase}" Text="Rechercher une image dans votre ordinateur." TextWrapping="Wrap"/>
+                                        </Grid>
                                     </DataTemplate>
                                 </Setter.Value>
                             </Setter>

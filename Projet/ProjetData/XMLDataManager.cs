@@ -107,12 +107,12 @@ namespace ProjetData
                                     new XElement("cocktail",
                                         new XElement("nom", cocktail.Nom),
                                         new XElement("recette", cocktail.Recette),
-                                        new XElement("ingredients", cocktail.IngredientRead.Select(ing => 
+                                        new XElement("ingredients", cocktail.IngredientObs.Select(ing => 
                                                                                             new XElement("ingredient",
                                                                                                 new XElement("nom", ing.Nom),
                                                                                                 new XElement("quantite", ing.Quantite),
                                                                                                 new XElement("unite", ing.Unite)))),
-                                        new XElement("commentaires", cocktail.CommentaireRead.Select(com =>
+                                        new XElement("commentaires", cocktail.CommentaireObs.Select(com =>
                                                                                             new XElement("commentaire",
                                                                                                 new XAttribute("pseudo", com.Key.Pseudo),
                                                                                                 new XElement("titre", com.Value.Titre),

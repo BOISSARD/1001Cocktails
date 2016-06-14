@@ -33,7 +33,7 @@
                     <TextBlock Grid.Row="0" Grid.Column="1" Text="Nom :" Padding="15,5,5,5" VerticalAlignment="Center"/>
                     <TextBlock Grid.Row="0" Grid.Column="2" Padding="20,5,5,5" VerticalAlignment="Center" Name="nom" Text="{Binding Nom}" Style="{StaticResource descrip}"/>
                     <TextBlock Grid.Row="1" Grid.Column="1" Text="Ingrédients : " Padding="15,5,5,5"/>
-                    <ListView Grid.Column="2" Grid.Row="1" Margin="5,0" ItemsSource="{Binding IngredientRead}">
+                    <ListView Grid.Column="2" Grid.Row="1" Margin="5,0" ItemsSource="{Binding IngredientObs}">
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <TextBlock Text="{Binding}" Style="{StaticResource ResourceKey=textBase}"/>
@@ -44,25 +44,10 @@
                 <TextBlock Text="Recette :" Padding="15,5,5,5" Grid.Row="1" VerticalAlignment="Center"/>
                 <TextBlock Text="{Binding Recette}" Padding="15,5,5,5" Grid.Row="2" Style="{StaticResource descrip}" TextWrapping="Wrap"/>
                 <TextBlock Text="Avis :" Padding="15,5,5,5" Grid.Row="3" VerticalAlignment="Center"/>
-                <ListView Margin="10,0,10,10" Grid.Row="4" ItemsSource="{Binding CommentaireRead}">
+                <ListView Margin="10,0,10,10" Grid.Row="4" ItemsSource="{Binding CommentaireObs}">
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <Grid Width="{Binding RelativeSource={RelativeSource FindAncestor,AncestorType={x:Type ListView}},Path=ActualWidth}">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition/>
-                                    <RowDefinition Height="1*"/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="1*"/>
-                                    <ColumnDefinition Width="1*"/>
-                                    <ColumnDefinition Width="1*"/>
-                                </Grid.ColumnDefinitions>
-                                <TextBlock Text="{Binding Value.Titre}" Grid.Column="0" Grid.Row="0" Padding="25,0" HorizontalAlignment="Left" Style="{StaticResource ResourceKey=textBase}"/>
-                                <TextBlock Text="{Binding Value.Note}" Grid.Column="1" Grid.Row="0" Padding="25,0" HorizontalAlignment="Center" Style="{StaticResource ResourceKey=textBase}"/>
-                                <!--<local:Rating Grid.Column="1" Grid.Row="0" Padding="25,0" HorizontalAlignment="Center" Height="15"/>-->
-                                <TextBlock Text="{Binding Key.Pseudo}" Grid.Column="2" Grid.Row="0" Padding="25,0,45,0" HorizontalAlignment="Right" Style="{StaticResource ResourceKey=textBase}"/>
-                                <TextBlock Text="{Binding Value.Texte}" Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="1" Padding="25,0,45,0" HorizontalAlignment="Left" Style="{StaticResource ResourceKey=textBase}"/>
-                            </Grid>
+                            <local:DescCommentaire DataContext="{Binding }"/>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>

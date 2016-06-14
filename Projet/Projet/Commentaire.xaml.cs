@@ -39,7 +39,7 @@ namespace Projet
         {
             //DataContext = c;
             co = c;
-            if (c.CommentaireRead.ContainsKey(MyManager.CurrentUser))
+            if (c.CommentaireObs.ContainsKey(MyManager.CurrentUser))
             {
                 Titre.Text = c.returnComment(MyManager.CurrentUser).Titre;
                 Texte.Text = c.returnComment(MyManager.CurrentUser).Texte;
@@ -58,7 +58,7 @@ namespace Projet
 
         private void Poster(object sender, RoutedEventArgs e)
         {
-            if (!co.CommentaireRead.ContainsKey(new User(Pseudo.Text)))
+            if (!co.CommentaireObs.ContainsKey(new User(Pseudo.Text)))
             {
                 if (MyManager.Connected)
                     co.laisserCommentaire(MyManager.CurrentUser, new ProjetLibrary.Commentaire(Titre.Text, Texte.Text, (short)Note.Value));

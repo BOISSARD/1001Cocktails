@@ -46,24 +46,17 @@ namespace ProjetLibrary
         /// <summary>
         /// ingredients est la liste d'ingrédients.
         /// </summary>
-        private List<Ingredient> ingredients = new List<Ingredient>();
-        public ReadOnlyCollection<Ingredient> IngredientRead
-        {
-            set
-            {
-                ingredients = value.ToList();
-                OnPropretyChanged("ingredients");
-            }
-            get
-            {
-                return ingredients.AsReadOnly();
-            }
-        }
-        internal List<Ingredient> Ingredient
+        private ObservableCollection<Ingredient> ingredients = new ObservableCollection<Ingredient>();
+        public ObservableCollection<Ingredient> IngredientObs
         {
             get
             {
                 return ingredients;
+            }
+            set
+            {
+                ingredients = value;
+                OnPropretyChanged("IngredientObs");
             }
         }
 
@@ -78,20 +71,20 @@ namespace ProjetLibrary
         /// <summary>
         /// commentaires est la liste des commentaires laisser par un utilisateurs de type User.
         /// </summary>
-        private Dictionary<User, Commentaire> commentaires = new Dictionary<User, Commentaire>();
-        public ReadOnlyDictionary<User, Commentaire> CommentaireRead
+        private ObservableDictionary<User, Commentaire> commentaires = new ObservableDictionary<User, Commentaire>();
+        public ObservableDictionary<User, Commentaire> CommentaireObs
         {
             set
             {
-                commentaires = value.ToDictionary(x=> x.Key, x=> x.Value);
-                OnPropretyChanged("commentaires");
+                commentaires = value;
+                OnPropretyChanged("CommentaireObs");
             }
             get
             {
-                return new ReadOnlyDictionary<User, Commentaire>(commentaires.ToDictionary(kvp => kvp.Key as User, kvp => kvp.Value as Commentaire));
+                return commentaires;
             }
         }
-
+        
         /// <summary>
         /// urlImage est le chemin de l'image dans le projet.
         /// </summary>
@@ -189,11 +182,20 @@ namespace ProjetLibrary
         {
             if (ingredients == null)
             {
-                ingredients = new List<Ingredient>();
+                ingredients = new ObservableCollection<Ingredient>();
             }
-            if (!ingredients.Contains(ingredient))
+            if (ingredients.Contains(ingredient))
             {
-                ingredients.Add(new Ingredient(ingredient.Nom,ingredient.Quantite,ingredient.Unite));
+                this.supprimerIngredient(ingredient);
+            }
+            ingredients.Add(new Ingredient(ingredient.Nom, ingredient.Quantite, ingredient.Unite));
+        }
+
+        public void ajouterIngredients(List<Ingredient> ing)
+        {
+            foreach(Ingredient i in ing)
+            {
+                this.ajouterIngredient(i);
             }
         }
 
@@ -201,7 +203,7 @@ namespace ProjetLibrary
         /// Méthode pour supprimer un ingrédient au cocktail.
         /// </summary>
         /// <param name="ingredient"></param>
-        public void supprimerIngredients(Ingredient ingredient)
+        public void supprimerIngredient(Ingredient ingredient)
         {
             if (ingredients.Contains(ingredient))
             {

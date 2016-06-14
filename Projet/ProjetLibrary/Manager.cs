@@ -208,7 +208,7 @@ namespace ProjetLibrary
         /// <param name="ing">une liste d'ingrédients</param>
         /// <param name="com">une readonlycollection d'ingrédients</param>
         /// <param name="image">le chemin de l'image désiré</param>
-        public void ajouterCocktail(string nom, string recette, List<Ingredient> ing, ReadOnlyDictionary<User, Commentaire> com, string image)
+        public void ajouterCocktail(string nom, string recette, List<Ingredient> ing, ObservableDictionary<User, Commentaire> com, string image)
         {
             Dictionary<User, Commentaire> commentaires = new Dictionary<User, Commentaire>();
             foreach (var co in com)
@@ -236,7 +236,7 @@ namespace ProjetLibrary
         public void ajouterCocktail(string nom, string recette, List<Ingredient> ing, Dictionary<User, Commentaire> com, string image)
         {
             Dictionary<User, Commentaire> commentaires = new Dictionary<User, Commentaire>();
-            ajouterCocktail(nom, recette, ing, new ReadOnlyDictionary<User, Commentaire>(com), image);
+            ajouterCocktail(nom, recette, ing, com, image);
         }
 
         /// <summary>
@@ -258,6 +258,16 @@ namespace ProjetLibrary
             }
         }
 
+        public void modifierCocktail(string exNom,string nom,string recette,List<Ingredient> ing,string url)
+        {
+            Cocktail c = getCocktail(exNom);
+            c.Nom = nom;
+            c.Recette = recette;
+            c.UrlImage = url;
+            c.IngredientObs.Clear();
+            c.ajouterIngredients(ing);
+        }
+
         /// <summary>
         /// Recupérer le cocktail désiré
         /// </summary>
@@ -276,24 +286,7 @@ namespace ProjetLibrary
         public Cocktail getNewCocktail(string nom)
         {
             Cocktail c = getCocktail(nom);
-            return new Cocktail(c.Nom, c.Recette, c.IngredientRead, c.CommentaireRead, c.UrlImage);
-        }
-
-        /// <summary>
-        /// Modifier le coktail désiré
-        /// </summary>
-        /// <param name="exNom">l'ancien nom</param>
-        /// <param name="nom">le nouveau nom</param>
-        /// <param name="recette">la nouvelle recette</param>
-        /// <param name="list">la nouvelle liste d'ingrédients</param>
-        public void modifierIngCocktail(string nom, IEnumerable<Ingredient> liste)
-        {
-            Cocktail c = getCocktail(nom);
-            c.Ingredient.Clear();
-            foreach (Ingredient i in liste)
-            {
-                c.ajouterIngredient(i);
-            }
+            return new Cocktail(c.Nom, c.Recette, c.IngredientObs, c.CommentaireObs, c.UrlImage);
         }
 
         /// <summary>
@@ -349,7 +342,7 @@ namespace ProjetLibrary
         {
             foreach (Cocktail c in dataManager.loadCocktail())
             {
-                this.ajouterCocktail(c.Nom, c.Recette, c.IngredientRead.ToList(), c.CommentaireRead, c.UrlImage);
+                this.ajouterCocktail(c.Nom, c.Recette, c.IngredientObs.ToList(), c.CommentaireObs, c.UrlImage);
             }
         }
 
