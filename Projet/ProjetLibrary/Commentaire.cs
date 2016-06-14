@@ -99,7 +99,7 @@ namespace ProjetLibrary
         /// <returns>rune chaîne de caractère</returns>
         public override string ToString()
         {
-            return string.Format("{0} {1} {2}", Titre, Texte, Note);
+            return string.Format("{0} {1} {2}", Titre, Note, Texte);
         }
     }
 }
