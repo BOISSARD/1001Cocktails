@@ -49,13 +49,21 @@ namespace ProjetLibrary
         private List<Ingredient> ingredients = new List<Ingredient>();
         public ReadOnlyCollection<Ingredient> IngredientRead
         {
-            private set
+            set
             {
                 ingredients = value.ToList();
+                OnPropretyChanged("ingredients");
             }
             get
             {
                 return ingredients.AsReadOnly();
+            }
+        }
+        internal List<Ingredient> Ingredient
+        {
+            get
+            {
+                return ingredients;
             }
         }
 
@@ -73,6 +81,11 @@ namespace ProjetLibrary
         private Dictionary<User, Commentaire> commentaires = new Dictionary<User, Commentaire>();
         public ReadOnlyDictionary<User, Commentaire> CommentaireRead
         {
+            set
+            {
+                commentaires = value.ToDictionary(x=> x.Key, x=> x.Value);
+                OnPropretyChanged("commentaires");
+            }
             get
             {
                 return new ReadOnlyDictionary<User, Commentaire>(commentaires.ToDictionary(kvp => kvp.Key as User, kvp => kvp.Value as Commentaire));
@@ -121,9 +134,12 @@ namespace ProjetLibrary
         /// </summary>
         /// <param name="nom">prenant un nom</param>
         /// <param name="ingredients">et une liste d'ingrédients</param>
-        public Cocktail(string nom, List<Ingredient> ingredients) : this(nom)
+        public Cocktail(string nom, IEnumerable<Ingredient> ingredients) : this(nom)
         {
-            ingredients.ForEach(i => this.ingredients.Add(new Ingredient(i.Nom, i.Quantite, i.Unite)));
+            foreach(Ingredient i in ingredients)
+            {
+                this.ingredients.Add(new Ingredient(i.Nom, i.Quantite, i.Unite));
+            }
         }
 
         /// <summary>
@@ -132,7 +148,7 @@ namespace ProjetLibrary
         /// <param name="nom"></param>
         /// <param name="recette">prenant une recette</param>
         /// <param name="ingredients"></param>
-        public Cocktail(string nom, string recette, List<Ingredient> ingredients) : this(nom, ingredients)
+        public Cocktail(string nom, string recette, IEnumerable<Ingredient> ingredients) : this(nom, ingredients)
         {
             this.Recette = recette;
         }
@@ -144,7 +160,7 @@ namespace ProjetLibrary
         /// <param name="recette"></param>
         /// <param name="ingredients"></param>
         /// <param name="url"></param>
-        public Cocktail(string nom, string recette, List<Ingredient> ingredients, string url) : this(nom, recette, ingredients)
+        public Cocktail(string nom, string recette, IEnumerable<Ingredient> ingredients, string url) : this(nom, recette, ingredients)
         {
             this.UrlImage = url;
         }
@@ -157,7 +173,7 @@ namespace ProjetLibrary
         /// <param name="ingredients"></param>
         /// <param name="commentaires"></param>
         /// <param name="url"></param>
-        public Cocktail(string nom, string recette, List<Ingredient> ingredients, Dictionary<User, Commentaire> commentaires, string url) : this(nom, recette, ingredients, url)
+        public Cocktail(string nom, string recette, IEnumerable<Ingredient> ingredients, IEnumerable<KeyValuePair<User, Commentaire>> commentaires, string url) : this(nom, recette, ingredients, url)
         {
             foreach (var com in commentaires)
             {
@@ -177,7 +193,7 @@ namespace ProjetLibrary
             }
             if (!ingredients.Contains(ingredient))
             {
-                ingredients.Add(ingredient);
+                ingredients.Add(new Ingredient(ingredient.Nom,ingredient.Quantite,ingredient.Unite));
             }
         }
 
@@ -200,16 +216,7 @@ namespace ProjetLibrary
         /// <param name="c">un commentaire</param>
         public void laisserCommentaire(User u, Commentaire c)
         {
-            /*try
-            {*/
             commentaires.Add(u, new Commentaire(c.Titre, c.Texte, c.Note));
-            /* }
-             #pragma warning disable CS0168 // La variable est déclarée mais jamais utilisée
-             catch (Exception e)
-             {
-                 supprimerCommentaire(u);
-                 commentaires.Add(u, new Commentaire(c.Titre, c.Texte, c.Note));
-             }*/
         }
 
         /// <summary>

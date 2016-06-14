@@ -34,16 +34,18 @@ namespace Projet
             InitializeComponent();
         }
 
-        public Ingredient getIngredient() 
+        public Ingredient MyIngredient
         {
-            try
-            {
-                return new Ingredient(nomIngredientC.Text, Int32.Parse(quantiteIngredientC.Text), Fabrique.convertToUnite(unitesIngredientC.Text));
-            }
-            catch(Exception ex)
-            {
-                MessageBox.Show(ex.ToString());
-                return null;
+            get{
+                try
+                {
+                    return new Ingredient(nomIngredientC.Text, Int32.Parse(quantiteIngredientC.Text), Fabrique.convertToUnite(unitesIngredientC.Text));
+                }
+                catch(Exception ex)
+                {
+                    //MessageBox.Show(ex.ToString()+"\n\ntest test");
+                    return null;
+                }
             }
         }
     }

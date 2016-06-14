@@ -68,46 +68,27 @@
     <url>http://az659704.vo.msecnd.net/v1/image/c_lpad,w_1500,h_1500/v1400603728/cocktail_bora_bora-1.png</url>
   </cocktail>
   <cocktail>
-    <nom>Vodka-Orange</nom>
-    <recette>Mélangez la vodka et le jus d'orange</recette>
+    <nom>Ti' punch</nom>
+    <recette>Ecrasez lentement le citron vert avec le sirop de sucre de canne et ajoutez le rhum.
+Décor: Une rondelle de citron vert sur le bord du verre.</recette>
     <ingredients>
       <ingredient>
-        <nom>Vodka</nom>
-        <quantite>10</quantite>
+        <nom>rhum blanc</nom>
+        <quantite>6</quantite>
         <unite>cl</unite>
       </ingredient>
       <ingredient>
-        <nom>jus d'orange</nom>
-        <quantite>20</quantite>
-        <unite>cl</unite>
-      </ingredient>
-    </ingredients>
-    <commentaires>
-      <commentaire pseudo="Jacky">
-        <titre>Potable</titre>
-        <texte></texte>
-        <note>1</note>
-      </commentaire>
-    </commentaires>
-    <url>http://image.org</url>
-  </cocktail>
-  <cocktail>
-    <nom>Vodka-Pomme coucou</nom>
-    <recette>Mélangez la vodka et le jus de pomme.
-Coucou</recette>
-    <ingredients>
-      <ingredient>
-        <nom>Vodka</nom>
-        <quantite>10</quantite>
+        <nom>sirop de sucre de canne</nom>
+        <quantite>2</quantite>
         <unite>cl</unite>
       </ingredient>
       <ingredient>
-        <nom>jus de pomme</nom>
-        <quantite>20</quantite>
-        <unite>cl</unite>
+        <nom>citron vert</nom>
+        <quantite>2</quantite>
+        <unite>tranche</unite>
       </ingredient>
     </ingredients>
     <commentaires />
-    <url>http://image.org</url>
+    <url>http://www.siroter.com/cocktails/ti-punch-cocktail-590.jpg</url>
   </cocktail>
 </cocktails>

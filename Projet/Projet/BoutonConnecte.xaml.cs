@@ -52,6 +52,7 @@ namespace Projet
         private void Modif(object sender, RoutedEventArgs e)
         {
             new NewCocktail(Main.Liste.SelectedValue as Cocktail).ShowDialog();
+            //Main.Liste.SelectedItem = null;
         }
 
         private void Suppr(object sender, RoutedEventArgs e)

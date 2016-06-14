@@ -37,11 +37,10 @@ namespace Projet
         }
 
 
-        public Supprimer(Cocktail c)
+        public Supprimer(Cocktail c) : this()
         {
-            InitializeComponent();
             nom = c.Nom;
-            MyManager.supprimerCocktail(nom);
+            //MyManager.supprimerCocktail(nom);
         }
 
         private void Annuler(object sender, RoutedEventArgs e)

@@ -5,7 +5,7 @@
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         xmlns:local="clr-namespace:Projet"
         xmlns:import="clr-namespace:ProjetLibrary;assembly=ProjetLibrary"
-        Title="MainWindow" Height="550" Width="820" Style="{StaticResource fenetre}"
+        Title="MainWindow" Height="670" Width="820" Style="{StaticResource fenetre}"
         Closing="Fermer">
 
     <Window.Resources>
@@ -29,7 +29,7 @@
                         <RowDefinition Height="0.3*"/>
                         <RowDefinition Height="0.7*"/>
                     </Grid.RowDefinitions>
-                    <Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Margin="10" Source="{Binding UrlImage}"/>
+                    <Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="2" Margin="10" Source="{Binding UrlImage}" VerticalAlignment="Center"/>
                     <TextBlock Grid.Row="0" Grid.Column="1" Text="Nom :" Padding="15,5,5,5" VerticalAlignment="Center"/>
                     <TextBlock Grid.Row="0" Grid.Column="2" Padding="20,5,5,5" VerticalAlignment="Center" Name="nom" Text="{Binding Nom}" Style="{StaticResource descrip}"/>
                     <TextBlock Grid.Row="1" Grid.Column="1" Text="Ingrédients : " Padding="15,5,5,5"/>
@@ -42,7 +42,7 @@
                     </ListView>
                 </Grid>
                 <TextBlock Text="Recette :" Padding="15,5,5,5" Grid.Row="1" VerticalAlignment="Center"/>
-                <TextBlock Text="{Binding Recette}" Padding="15,5,5,5" Grid.Row="2" Style="{StaticResource descrip}"/>
+                <TextBlock Text="{Binding Recette}" Padding="15,5,5,5" Grid.Row="2" Style="{StaticResource descrip}" TextWrapping="Wrap"/>
                 <TextBlock Text="Avis :" Padding="15,5,5,5" Grid.Row="3" VerticalAlignment="Center"/>
                 <ListView Margin="10,0,10,10" Grid.Row="4" ItemsSource="{Binding CommentaireRead}">
                     <ListView.ItemTemplate>

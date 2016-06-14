@@ -176,10 +176,11 @@ namespace ProjetLibrary
         public void ajouterCocktail(string nom, string recette, List<Ingredient> ing)
         {
             Cocktail c = new Cocktail(nom, recette, ing);
-            if (CurrentUser != null && !livre.Contains(c))
+            if (CurrentUser != null && livre.Contains(c))
             {
-                livre.Add(c);
+                this.supprimerCocktail(nom);
             }
+            livre.Add(c);
         }
 
         /// <summary>
@@ -192,10 +193,11 @@ namespace ProjetLibrary
         public void ajouterCocktail(string nom, string recette, List<Ingredient> ing, string image)
         {
             Cocktail c = new Cocktail(nom, recette, ing, image);
-            if (CurrentUser != null && !livre.Contains(c))
+            if (CurrentUser != null && livre.Contains(c))
             {
-                livre.Add(c);
+                this.supprimerCocktail(nom);
             }
+            livre.Add(c);
         }
 
         /// <summary>
@@ -216,10 +218,11 @@ namespace ProjetLibrary
                 else commentaires.Add(co.Key, co.Value);
             }
             Cocktail c = new Cocktail(nom, recette, ing, commentaires, image);
-            if (CurrentUser != null && !livre.Contains(c))
+            if (CurrentUser != null && livre.Contains(c))
             {
-                livre.Add(c);
+                this.supprimerCocktail(nom);
             }
+            livre.Add(c);
         }
 
         /// <summary>
@@ -252,6 +255,44 @@ namespace ProjetLibrary
                         livre.RemoveAt(i);
                     }
                 }
+            }
+        }
+
+        /// <summary>
+        /// Recupérer le cocktail désiré
+        /// </summary>
+        /// <param name="nom">du cocktail recherché</param>
+        /// <returns>la référence du cocktail recherché</returns>
+        public Cocktail getCocktail(string nom)
+        {
+            return livre.Where(i => i.Nom == nom).Single();
+        }
+
+        /// <summary>
+        /// Recupérer un cocktail désiré
+        /// </summary>
+        /// <param name="nom">du cocktail recherché</param>
+        /// <returns>une nouvelle instance</returns>
+        public Cocktail getNewCocktail(string nom)
+        {
+            Cocktail c = getCocktail(nom);
+            return new Cocktail(c.Nom, c.Recette, c.IngredientRead, c.CommentaireRead, c.UrlImage);
+        }
+
+        /// <summary>
+        /// Modifier le coktail désiré
+        /// </summary>
+        /// <param name="exNom">l'ancien nom</param>
+        /// <param name="nom">le nouveau nom</param>
+        /// <param name="recette">la nouvelle recette</param>
+        /// <param name="list">la nouvelle liste d'ingrédients</param>
+        public void modifierIngCocktail(string nom, IEnumerable<Ingredient> liste)
+        {
+            Cocktail c = getCocktail(nom);
+            c.Ingredient.Clear();
+            foreach (Ingredient i in liste)
+            {
+                c.ajouterIngredient(i);
             }
         }
 

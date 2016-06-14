@@ -6,7 +6,7 @@
         xmlns:local="clr-namespace:Projet"
         mc:Ignorable="d" 
         Title="NewCocktail" Height="520" Width="400" Style="{StaticResource fenetre}" Name="window">
-    
+
     <Grid Name="grid">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="74*"/>
@@ -23,10 +23,29 @@
             <RowDefinition Height="120*"/>
             <RowDefinition Height="55*"/>
         </Grid.RowDefinitions>
-        <Image Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Width="100" Margin="48,5,49,0" Name="urlC" Source="{Binding UrlImage}"/>
-        <Button Grid.Column="0" Grid.Row="3" Margin="15,5" Content="Modifier image"/>
+        <Button Grid.Column="0" Grid.Row="0" Grid.RowSpan="3" Margin="30,5" Click="Rechercher">
+            <Button.Background>
+                <ImageBrush ImageSource="{Binding ElementName=UrlC, Path=Text, Mode=OneWay}"/>
+            </Button.Background>
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="ContentTemplate">
+                                <Setter.Value>
+                                    <DataTemplate>
+                                        <TextBlock Style="{StaticResource textBase}" FontSize="16" Text="Rechercher"/>
+                                    </DataTemplate>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        <TextBox Grid.Column="0" Grid.Row="3" Margin="5,5" Text="{Binding UrlImage, Mode=OneWay}" Name="UrlC"/>
         <TextBlock Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Text="Nom :" VerticalAlignment="Center" Margin="15,12,0,12"/>
-        <TextBox Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Margin="5" VerticalContentAlignment="Center" Name="nomC" Text="{Binding Nom}"/>
+        <TextBox Grid.Column="1" Grid.Row="1" Grid.ColumnSpan="2" Margin="5" VerticalContentAlignment="Center" Name="nomC" Text="{Binding Nom,Mode=OneWay}"/>
         <TextBlock Grid.Column="1" Grid.Row="2" Grid.ColumnSpan="2" Text="Nombre d'ingrédients :" VerticalAlignment="Center" Margin="15,13,0,7"/>
         <ComboBox Grid.Column="1" Grid.Row="3" Grid.ColumnSpan="2" Margin="35,5" Name="nbIngredientsC" DropDownClosed="nbIngredientsC_DropDownClosed" SelectedIndex="0">
             <ComboBoxItem Content="1"/>
@@ -44,7 +63,7 @@
             <local:NewIngredient x:Name="ingredient1" Height="84" Width="350" HorizontalContentAlignment="Stretch"/>
         </ListBox>
         <TextBlock Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="5" Text="Recette :" VerticalAlignment="Center" Margin="15,13,0,13"/>
-        <TextBox Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="6" Margin="10,0" AcceptsReturn="True" VerticalScrollBarVisibility="Visible" TextWrapping="Wrap" Name="recetteC" Text="{Binding Recette}"/>
+        <TextBox Grid.Column="0" Grid.ColumnSpan="3" Grid.Row="6" Margin="10,0" AcceptsReturn="True" TextWrapping="Wrap" Name="recetteC" Text="{Binding Recette,Mode=OneWay}"/>
         <Button Grid.Column="0" Grid.Row="7" Content="Ajouter" Margin="10,10" Click="Ajout"/>
         <Button Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="7" Content="Annuler" Margin="10,10" Click="Annuler"/>
     </Grid>

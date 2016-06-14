@@ -27,31 +27,26 @@ namespace Projet
                 return ((Application.Current as App).Resources["MyManager"] as ObjectDataProvider).Data as Manager;
             }
         }
-        private static int nbIng, exNbIng = 1;
-        private string nom, url, recette;
-        //private List<Ingredient> ingredients = new List<Ingredient>();
-        
+        private static int nbIng, exNbIng;
+        private string nom, exNom, url, recette;
+        private List<Ingredient> ingredients = new List<Ingredient>();
+        //private Cocktail cocktail;
 
         public NewCocktail()
         {
             InitializeComponent();
-            this.Height = 520;
-            this.Width = 400;
-            //nbIngredientsC.SelectedIndex = 0;
-            //nomC.Text = nom;
+            exNbIng = 1;
         }
 
         public NewCocktail(Cocktail c) : this()
         {
             DataContext = c;
             int num = 0;
+            exNom = c.Nom;
+            nbIngredientsC_DropDownClosed(new object(), new EventArgs());
             nbIng = c.IngredientRead.Count();
             nbIngredientsC.SelectedIndex = nbIng - 1;
             nbIngredientsC_DropDownClosed(new object(),new EventArgs());
-            //foreach (Ingredient i in c.IngredientRead)
-            //{
-            //    ingredients.Add(i);
-            //}
             foreach(NewIngredient ni in ListIng.Items)
             {
                 ni.nomIngredientC.Text = c.IngredientRead.ElementAt(num).Nom;
@@ -59,6 +54,7 @@ namespace Projet
                 ni.unitesIngredientC.SelectedValue = c.IngredientRead.ElementAt(num).Unite;
                 num++;
             }
+            url = UrlC.Text;
         }
 
         private void Annuler(object sender, RoutedEventArgs e)
@@ -70,59 +66,90 @@ namespace Projet
         {
             nom = nomC.Text;
             recette = recetteC.Text;
+            url = UrlC.Text;
+
             if ((nom != null || nom != "") && (recette != null || recette != ""))
             {
-                Cocktail myCocktail = new Cocktail(nomC.Text);
-                myCocktail.Recette = recetteC.Text;
+                ingredients.Clear();
                 foreach (NewIngredient o in ListIng.Items)
                 {
-                    myCocktail.ajouterIngredient(o.getIngredient());
+                    if (o.MyIngredient != null)
+                        ingredients.Add(o.MyIngredient);
+                    else
+                    {
+                        MessageBox.Show("Tous les éléments n'ont pas été remplis !");
+                        return;
+                    }
                 }
 
-                MyManager.ajouterCocktail(myCocktail.Nom,myCocktail.Recette,myCocktail.IngredientRead.ToList());
+                MyManager.supprimerCocktail(exNom);
+                MyManager.ajouterCocktail(nom,recette,ingredients,url);
+                //MessageBox.Show(MyManager.ToString());
                 this.Close();
             }
             else
             {
-                MessageBox.Show("Test");
+                MessageBox.Show("Tous les éléments n'ont pas été remplis !");
                 return;
             }
-            //this.Close();
+        }
+
+        private void Rechercher(object sender, RoutedEventArgs e)
+        {
+            string filename = "";
+            Microsoft.Win32.OpenFileDialog dlg = new Microsoft.Win32.OpenFileDialog();
+            dlg.InitialDirectory = "C:\\Users\\Public\\Pictures";
+            dlg.FileName = "Images";
+            dlg.DefaultExt = ".jpg | .png | .gif";
+            dlg.Filter = "All images files (.jpg, .png, .gif)|*.jpg;*.png;*.gif|JPG files (.jpg)|*.jpg|PNG files (.png)|*.png|GIF files (.gif)|*.gif"; // Filter files by extension 
+            
+            bool? result = dlg.ShowDialog();
+            
+            if (result == true)
+            {
+                filename = dlg.FileName;
+            }
+            UrlC.Text = filename;
         }
 
         private void nbIngredientsC_DropDownClosed(object sender, EventArgs e)
         {
-            //MessageBox.Show(sender.ToString());
-            //MessageBox.Show(e.ToString());
             nbIng = nbIngredientsC.SelectedIndex + 1;
 
-            if (nbIng == exNbIng) return;
-            else if (nbIng < exNbIng)
+            if (nbIng < exNbIng)
             {
                 for (int i = exNbIng - 1; i >= nbIng; i--)
                 {
                     ListIng.Items.RemoveAt(i);
-                    if (i == 1 || i == 2)
-                    {
-                        grid.RowDefinitions[4].Height = new GridLength(grid.RowDefinitions[4].ActualHeight - 90, GridUnitType.Star);
-                        this.Height = this.ActualHeight - 84;
-                    }
                 }
                 exNbIng -= exNbIng - nbIng;
             }
-            else
+            else if (nbIng > exNbIng)
             {
                 for (int i = exNbIng+1; i <= nbIng; i++)
                 {
-                    NewIngredient ing = new NewIngredient() { Name = "ingredient" + nbIng };
-                    ListIng.Items.Add(ing);
-                    if (i == 2 || i == 3)
-                    {
-                        grid.RowDefinitions[4].Height = new GridLength(grid.RowDefinitions[4].ActualHeight + 85, GridUnitType.Star);
-                        this.Height = this.ActualHeight + 84;
-                    }
+                    ListIng.Items.Add(new NewIngredient() { Name = "ingredient" + nbIng });
                 }
-                exNbIng += nbIng-exNbIng;
+                exNbIng += nbIng - exNbIng;
+            }
+            else
+            {
+                return;
+            }
+            if (exNbIng == 1)
+            {
+                grid.RowDefinitions[4].Height = new GridLength(95, GridUnitType.Star);
+                this.Height = 520;
+            }
+            if (exNbIng == 2)
+            {
+                grid.RowDefinitions[4].Height = new GridLength(190, GridUnitType.Star);
+                this.Height = 604;
+            }
+            if (exNbIng >= 3)
+            {
+                grid.RowDefinitions[4].Height = new GridLength(285, GridUnitType.Star);
+                this.Height = 688;
             }
         }
     }
