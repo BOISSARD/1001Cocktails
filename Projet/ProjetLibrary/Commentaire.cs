@@ -11,6 +11,8 @@ namespace ProjetLibrary
     /// </summary>
     public class Commentaire : IEquatable<Commentaire>
     {
+        #region Propriétées
+
         /// <summary>
         /// Titre est le titre du commentaire.
         /// </summary>
@@ -24,19 +26,24 @@ namespace ProjetLibrary
         /// </summary>
         public short Note
         {
-            private set;
-            //{
-            //    if (value >= 0 && value <= 10)
-            //    {
-            //        Note = value;
-            //    }
-            //    else return;
-            //}
-            get;
-            //{
-            //    return Note;
-            //}
+            private set
+            {
+                if (value >= 0 && value <= 5)
+                {
+                    note = value;
+                }
+                else return;
+            }
+            get
+            {
+                return note;
+            }
         }
+        public short note;
+
+        #endregion
+
+        #region Constructeurs
 
         /// <summary>
         /// Constructeur d'un commentaire.
@@ -60,6 +67,10 @@ namespace ProjetLibrary
         {
             this.Texte = texte;
         }
+
+        #endregion
+
+        #region Méthodes override
 
         /// <summary>
         /// Redéfinition de la méthode GetHashCode
@@ -101,5 +112,7 @@ namespace ProjetLibrary
         {
             return string.Format("{0} {1} {2}", Titre, Note, Texte);
         }
+
+        #endregion
     }
 }

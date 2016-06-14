@@ -12,6 +12,8 @@ namespace ProjetLibrary
     /// </summary>
     public class Ingredient : IEquatable<Ingredient>
     {
+        #region Propriétées
+
         /// <summary>
         /// Nom est le nom de l'ingrédient .
         /// </summary>
@@ -25,6 +27,10 @@ namespace ProjetLibrary
         /// </summary>
         public Unite Unite { private set; get; }
 
+        #endregion
+
+        #region Constructeurs
+
         /// <summary>
         /// Constructeur de l'ingrédient.
         /// </summary>
@@ -37,6 +43,10 @@ namespace ProjetLibrary
             this.Quantite = quantite;
             this.Unite = unite;
         }
+
+        #endregion
+
+        #region Méthodes override
 
         /// <summary>
         /// Redéfinition de la méthode GetHashCode.
@@ -123,6 +133,8 @@ namespace ProjetLibrary
                 return string.Format("{0} : {1} {2}", Nom, Quantite.ToString(), unit);
             }
         }
+
+        #endregion
 
     }
 }

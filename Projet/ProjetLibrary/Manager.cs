@@ -13,6 +13,8 @@ namespace ProjetLibrary
     /// </summary>
     public class Manager : INotifyPropertyChanged
     {
+        #region Propriétées
+
         /// <summary>
         /// livre est une liste de cocktail.
         /// </summary>
@@ -36,18 +38,13 @@ namespace ProjetLibrary
         private List<User> utilisateurs = new List<User>();
         public ReadOnlyCollection<User> UserRead
         {
-            private set;
-            get;
-        }
-
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        private void OnPropertyChanged(string propriete)
-        {
-            if (PropertyChanged != null)
+            set
             {
-                PropertyChanged(this, new PropertyChangedEventArgs(propriete));
+                utilisateurs = value.ToList();
+            }
+            get
+            {
+                return utilisateurs.AsReadOnly();
             }
         }
 
@@ -56,17 +53,10 @@ namespace ProjetLibrary
         /// </summary>
         private IDataManager dataManager;
 
-        /// <summary>
-        /// Constructeur de Manager.
-        /// </summary>
-        /// <param name="dataManager">qui prend un DataManager</param>
-        public Manager(IDataManager dataManager)
-        {
-            this.dataManager = dataManager;
-            UserRead = new ReadOnlyCollection<User>(utilisateurs);
+        #endregion
 
-            utilisateurs.Add(new User("Admin", "admin@gmail.com", "admin63"));
-        }
+        #region Propriétées calculées
+
 
         /// <summary>
         /// currentUser de type User est l'utilisateur inscrit qui utilise l'application.
@@ -94,6 +84,40 @@ namespace ProjetLibrary
                 return CurrentUser != null;
             }
         }
+
+        #endregion
+
+        #region Evenement modification des propritées
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        private void OnPropertyChanged(string propriete)
+        {
+            if (PropertyChanged != null)
+            {
+                PropertyChanged(this, new PropertyChangedEventArgs(propriete));
+            }
+        }
+
+        #endregion
+
+        #region Constructeur
+
+        /// <summary>
+        /// Constructeur de Manager.
+        /// </summary>
+        /// <param name="dataManager">qui prend un DataManager</param>
+        public Manager(IDataManager dataManager)
+        {
+            this.dataManager = dataManager;
+            UserRead = new ReadOnlyCollection<User>(utilisateurs);
+
+            utilisateurs.Add(new User("Admin", "admin@gmail.com", "admin63"));
+        }
+
+        #endregion
+
+        #region Méthodes de connexion
 
         /// <summary>
         /// Méthode connexion permettant un utilisateur d'être le currentUser.
@@ -128,6 +152,10 @@ namespace ProjetLibrary
                 CurrentUser = null;
             }
         }
+
+        #endregion
+
+        #region Méthodes gestion des utilisateurs
 
         /// <summary>
         /// Méthode ajouterUser qui permet d'ajouter un utilisateur à la liste d'utilisateurs
@@ -167,13 +195,17 @@ namespace ProjetLibrary
             return utilisateurs.Where(u => u.Pseudo == pseudo).SingleOrDefault();
         }
 
+        #endregion
+
+        #region Méthodes gestion des cocktails
+
         /// <summary>
         /// Méthode ajouterCocktail qui permet d'ajouter un cocktail à la liste de cocktails livre.
         /// </summary>
         /// <param name="nom">prenant un nom</param>
         /// <param name="recette">une recette</param>
         /// <param name="ing">une liste d'ingrédients</param>
-        public void ajouterCocktail(string nom, string recette, List<Ingredient> ing)
+        public void ajouterCocktail(string nom, string recette, IEnumerable<Ingredient> ing)
         {
             Cocktail c = new Cocktail(nom, recette, ing);
             if (CurrentUser != null && livre.Contains(c))
@@ -190,7 +222,7 @@ namespace ProjetLibrary
         /// <param name="recette">une recette</param>
         /// <param name="ing">une liste d'ingrédients</param>
         /// <param name="image">le chemin de l'image désiré</param>
-        public void ajouterCocktail(string nom, string recette, List<Ingredient> ing, string image)
+        public void ajouterCocktail(string nom, string recette, IEnumerable<Ingredient> ing, string image)
         {
             Cocktail c = new Cocktail(nom, recette, ing, image);
             if (CurrentUser != null && livre.Contains(c))
@@ -208,7 +240,7 @@ namespace ProjetLibrary
         /// <param name="ing">une liste d'ingrédients</param>
         /// <param name="com">une readonlycollection d'ingrédients</param>
         /// <param name="image">le chemin de l'image désiré</param>
-        public void ajouterCocktail(string nom, string recette, List<Ingredient> ing, ObservableDictionary<User, Commentaire> com, string image)
+        public void ajouterCocktail(string nom, string recette, IEnumerable<Ingredient> ing, ObservableDictionary<User, Commentaire> com, string image)
         {
             Dictionary<User, Commentaire> commentaires = new Dictionary<User, Commentaire>();
             foreach (var co in com)
@@ -233,7 +265,7 @@ namespace ProjetLibrary
         /// <param name="ing">une liste d'ingrédients</param>
         /// <param name="com">un dictionnaire d'ingrédients</param>
         /// <param name="image">le chemin de l'image désiré</param>
-        public void ajouterCocktail(string nom, string recette, List<Ingredient> ing, Dictionary<User, Commentaire> com, string image)
+        public void ajouterCocktail(string nom, string recette, IEnumerable<Ingredient> ing, Dictionary<User, Commentaire> com, string image)
         {
             Dictionary<User, Commentaire> commentaires = new Dictionary<User, Commentaire>();
             ajouterCocktail(nom, recette, ing, com, image);
@@ -258,7 +290,7 @@ namespace ProjetLibrary
             }
         }
 
-        public void modifierCocktail(string exNom,string nom,string recette,List<Ingredient> ing,string url)
+        public void modifierCocktail(string exNom,string nom,string recette, IEnumerable<Ingredient> ing,string url)
         {
             Cocktail c = getCocktail(exNom);
             c.Nom = nom;
@@ -288,6 +320,10 @@ namespace ProjetLibrary
             Cocktail c = getCocktail(nom);
             return new Cocktail(c.Nom, c.Recette, c.IngredientObs, c.CommentaireObs, c.UrlImage);
         }
+
+        #endregion
+
+        #region Méthodes gestion de la persistance
 
         /// <summary>
         /// Méthode permettant de sauvergarder les listes livre et utilisateurs.
@@ -346,6 +382,10 @@ namespace ProjetLibrary
             }
         }
 
+        #endregion
+
+        #region Méthodes overrides
+
         /// <summary>
         /// Redéfinition de la méthode ToString.
         /// </summary>
@@ -359,5 +399,7 @@ namespace ProjetLibrary
             }
             return sb.ToString();
         }
+
+        #endregion
     }
 }

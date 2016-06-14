@@ -9,6 +9,7 @@ namespace ProjetLibrary
 {
     /// <summary>
     /// Interface pour la façade immuable du type Cocktail.
+    /// Qui n'est finalement pas utile car nous avons besoins d'avoir la possibilité de modifier les cocktails.
     /// </summary>
     public interface ICocktail
     {

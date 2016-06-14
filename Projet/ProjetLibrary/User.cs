@@ -13,6 +13,8 @@ namespace ProjetLibrary
     /// </summary>
     public class User : IEquatable<User>
     {
+        #region Propriétées
+
         /// <summary>
         /// Pseudo est le pseudo du cocktail, il est unique pour tous les cocktails.
         /// </summary>
@@ -25,6 +27,10 @@ namespace ProjetLibrary
         /// Password est le mot de passe que l'utilisateur à choisit pour son compte.
         /// </summary>
         public string Password { private set; get; }
+
+        #endregion
+
+        #region Constructeur
 
         /// <summary>
         /// Constructeur de User numéro 1.
@@ -55,6 +61,10 @@ namespace ProjetLibrary
         {
             this.Mail = mail;
         }
+
+        #endregion
+
+        #region Méthodes override
 
         /// <summary>
         /// Redéfinition de la méthode GetHashCode.
@@ -96,5 +106,7 @@ namespace ProjetLibrary
         {
             return string.Format("{0} {1} {2}", Pseudo, Mail, Password);
         }
+
+        #endregion
     }
 }

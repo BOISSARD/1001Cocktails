@@ -15,6 +15,8 @@ namespace ProjetLibrary
     /// </summary>
     public class Cocktail : IEquatable<Cocktail>, INotifyPropertyChanged
     {
+        #region Propriétées
+
         /// <summary>
         /// Nom est le nom du cocktail, il est unique pour tous les cocktails.
         /// </summary>
@@ -61,14 +63,6 @@ namespace ProjetLibrary
         }
 
         /// <summary>
-        /// Propriété calculé permettant de connaitre
-        /// </summary>
-        public int nbIngredients
-        {
-            get { return ingredients.Count(); }
-        }
-
-        /// <summary>
         /// commentaires est la liste des commentaires laisser par un utilisateurs de type User.
         /// </summary>
         private ObservableDictionary<User, Commentaire> commentaires = new ObservableDictionary<User, Commentaire>();
@@ -84,7 +78,7 @@ namespace ProjetLibrary
                 return commentaires;
             }
         }
-        
+
         /// <summary>
         /// urlImage est le chemin de l'image dans le projet.
         /// </summary>
@@ -99,6 +93,22 @@ namespace ProjetLibrary
         }
         private string urlImage;
 
+        #endregion
+
+        #region Propriétées calculées
+
+        /// <summary>
+        /// Propriété calculé permettant de connaitre
+        /// </summary>
+        public int nbIngredients
+        {
+            get { return ingredients.Count(); }
+        }
+
+        #endregion
+
+        #region Evenement modification des propritées
+
         /// <summary>
         /// Evenement permettant l'actualisation des listes dans la vue après modification d'une collection.
         /// </summary>
@@ -111,6 +121,10 @@ namespace ProjetLibrary
                 handler(this, new PropertyChangedEventArgs(p));
             }
         }
+
+        #endregion
+
+        #region Constructeurs
 
         /// <summary>
         /// Constructeur d'un cocktail sous sa forme la plus élémentaire
@@ -174,6 +188,10 @@ namespace ProjetLibrary
             }
         }
 
+        #endregion
+
+        #region Méthodes gestion des ingrédients
+
         /// <summary>
         /// Méthode pour ajouter un ingrédient au cocktail.
         /// </summary>
@@ -191,7 +209,11 @@ namespace ProjetLibrary
             ingredients.Add(new Ingredient(ingredient.Nom, ingredient.Quantite, ingredient.Unite));
         }
 
-        public void ajouterIngredients(List<Ingredient> ing)
+        /// <summary>
+        /// Méthode pour ajouter un ensemble d'ingrédients.
+        /// </summary>
+        /// <param name="ing">une collection d'ingrédients</param>
+        public void ajouterIngredients(IEnumerable<Ingredient> ing)
         {
             foreach(Ingredient i in ing)
             {
@@ -210,6 +232,10 @@ namespace ProjetLibrary
                 ingredients.Remove(ingredient);
             }
         }
+
+        #endregion
+
+        #region Méthodes gestion des commentaires
 
         /// <summary>
         /// Méthode permettant d'ajouter un commentaire pour un utilisateur au dictionnaire.
@@ -239,6 +265,10 @@ namespace ProjetLibrary
         {
             commentaires.Remove(u);
         }
+
+        #endregion
+
+        #region Méthodes override
 
         /// <summary>
         /// Redéfinition de la méthode GetHashCode.
@@ -292,5 +322,6 @@ namespace ProjetLibrary
             return sb.ToString();
         }
 
+        #endregion
     }
 }

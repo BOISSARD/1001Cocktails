@@ -6,18 +6,43 @@ using System.Threading.Tasks;
 
 namespace ProjetLibrary
 {
+    /// <summary>
+    /// Classe static permettant de créer des objets dont le type est inaccessible.
+    /// </summary>
     static public class Fabrique
     {
+        /// <summary>
+        /// Méthode static permettant de récupérer une nouvelle instance d'un cocktail.
+        /// </summary>
+        /// <param name="nom">le nom du nouveau cocktail</param>
+        /// <param name="recette">la recette de ce cocktail</param>
+        /// <param name="ingredients">une collection d'ingredient</param>
+        /// <param name="url">le lien de l'image qui correspond à ce cocktail</param>
+        /// <returns>la nouvelle instance de cocktail</returns>
         public static Cocktail creerCocktail(string nom, string recette, List<Ingredient> ingredients, string url)
         {
             return new Cocktail(nom, recette, ingredients, url);
         }
 
+        /// <summary>
+        /// Méthode static permettant de récupérer une nouvelle instance d'un cocktail comprenant en plus un dictionnaire de commentaire.
+        /// </summary>
+        /// <param name="nom"></param>
+        /// <param name="recette"></param>
+        /// <param name="ingredients"></param>
+        /// <param name="commentaires">dictionnaire de commentaires en fonction de l'utilisateur</param>
+        /// <param name="url"></param>
+        /// <returns>le cocktail</returns>
         public static Cocktail creerCocktail(string nom, string recette, List<Ingredient> ingredients, Dictionary<User, Commentaire> commentaires, string url)
         {
             return new Cocktail(nom, recette, ingredients, commentaires, url);
         }
 
+        /// <summary>
+        /// Méthode static permettant de convertir une chaine de caractères en Unite
+        /// </summary>
+        /// <param name="unite">string </param>
+        /// <returns>l'unité de type Unite</returns>
         public static Unite convertToUnite(string unite)
         {
             switch (unite)
@@ -50,15 +75,5 @@ namespace ProjetLibrary
                     return Unite.unite;
             }
         }
-
-        //public static KeyValuePair<User,Commentaire> creerUserCom(string pseudo, string titre, string texte, short note)
-        //{
-        //    return new KeyValuePair<Manager.recupUser(pseudo), Commentaire>();
-        //}
-
-        //public static User recupUser(string pseudo)
-        //{
-        //    return Manager.utilisateurs.Where(u => u.Pseudo == pseudo).SingleOrDefault();
-        //}
     }
 }
