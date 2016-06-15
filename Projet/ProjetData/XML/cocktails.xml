@@ -91,4 +91,22 @@ Décor: Une rondelle de citron vert sur le bord du verre.</recette>
     <commentaires />
     <url>http://www.siroter.com/cocktails/ti-punch-cocktail-590.jpg</url>
   </cocktail>
+  <cocktail>
+    <nom>Cocktail</nom>
+    <recette>Ceci est la recette.</recette>
+    <ingredients>
+      <ingredient>
+        <nom>Ingrédient1</nom>
+        <quantite>12</quantite>
+        <unite>unite</unite>
+      </ingredient>
+      <ingredient>
+        <nom>Ingredient2</nom>
+        <quantite>26</quantite>
+        <unite>unite</unite>
+      </ingredient>
+    </ingredients>
+    <commentaires />
+    <url></url>
+  </cocktail>
 </cocktails>
