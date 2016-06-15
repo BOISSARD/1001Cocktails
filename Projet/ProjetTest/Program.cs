@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ProjetLibrary;
 using ProjetData;
+using System.Reflection;
+using System.Text.RegularExpressions;
 
 namespace ProjetTest
 {
@@ -14,11 +17,13 @@ namespace ProjetTest
         {
             Manager m = new Manager(new XMLDataManager());
 
+            //test6(m);
+
             test1(m);
 
             //test2(m);
 
-            test3(m);
+            //test3(m);
 
             //test4(m);
 
@@ -107,6 +112,18 @@ namespace ProjetTest
         public static void test5(Manager m)
         {
             Console.WriteLine(m.sauvegardError());
+        }
+
+        public static void test6(Manager m)
+        {
+            Console.WriteLine("Current directory : {0}", Directory.GetCurrentDirectory());
+            string path = Directory.GetCurrentDirectory();
+            var tab = Regex.Split(path, @"(?<=Projet)");
+            Console.WriteLine("Chemin            : {0}", tab);
+            string chemin = tab[0];
+            Console.WriteLine("Chemin en string  : {0}", chemin);
+            Directory.SetCurrentDirectory(chemin);
+            Console.WriteLine("Current directory : {0}", Directory.GetCurrentDirectory());
         }
     }
 }

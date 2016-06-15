@@ -292,12 +292,23 @@ namespace ProjetLibrary
 
         public void modifierCocktail(string exNom,string nom,string recette, IEnumerable<Ingredient> ing,string url)
         {
-            Cocktail c = getCocktail(exNom);
-            c.Nom = nom;
-            c.Recette = recette;
-            c.UrlImage = url;
-            c.IngredientObs.Clear();
-            c.ajouterIngredients(ing);
+            try
+            {
+                Cocktail c = getCocktail(exNom);
+                c.Nom = nom;
+                c.Recette = recette;
+                if(url != null)
+                    c.UrlImage = url;
+                c.IngredientObs.Clear();
+                c.ajouterIngredients(ing);
+            }
+            catch(Exception e)
+            {
+                if (url != null)
+                    this.ajouterCocktail(nom,recette,ing,url);
+                else
+                    this.ajouterCocktail(nom, recette, ing);
+            }
         }
 
         /// <summary>

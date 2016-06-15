@@ -5,6 +5,7 @@ using System.Linq;
 using System.Xml.Linq;
 using ProjetLibrary;
 using System;
+using System.Text.RegularExpressions;
 
 namespace ProjetData
 {
@@ -39,8 +40,10 @@ namespace ProjetData
         /// </summary>
         public XMLDataManager()
         {
-            dirInfo = Directory.GetParent(Directory.GetCurrentDirectory());
-            dirData = dirInfo.FullName + "\\ProjetData\\XML\\";
+            Directory.SetCurrentDirectory(Regex.Split(Directory.GetCurrentDirectory(), @"(?<=Projet)")[0]);
+            //dirInfo = Directory.GetParent(Directory.GetCurrentDirectory());
+            //dirData = dirInfo.FullName + "\\ProjetData\\XML\\";
+            dirData = Directory.GetCurrentDirectory() + "\\ProjetData\\XML\\";
             userFile = new XDocument();
             cocktailFile = new XDocument();
         }
