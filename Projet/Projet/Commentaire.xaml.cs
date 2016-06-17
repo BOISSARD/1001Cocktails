@@ -39,15 +39,16 @@ namespace Projet
         {
             //DataContext = c;
             co = c;
-            if (c.CommentaireObs.ContainsKey(MyManager.CurrentUser))
-            {
-                Titre.Text = c.returnComment(MyManager.CurrentUser).Titre;
-                Texte.Text = c.returnComment(MyManager.CurrentUser).Texte;
-                Note.Value = c.returnComment(MyManager.CurrentUser).Note;
-            }
+
             if (MyManager.CurrentUser != null)
             {
                 Pseudo.Text = MyManager.CurrentUser.Pseudo;
+                if (c.CommentaireObs.ContainsKey(MyManager.CurrentUser))
+                {
+                    Titre.Text = c.returnComment(MyManager.CurrentUser).Titre;
+                    Texte.Text = c.returnComment(MyManager.CurrentUser).Texte;
+                    Note.Value = c.returnComment(MyManager.CurrentUser).Note;
+                }
             }
         }
 
@@ -58,19 +59,38 @@ namespace Projet
 
         private void Poster(object sender, RoutedEventArgs e)
         {
-            if (!co.CommentaireObs.ContainsKey(new User(Pseudo.Text)))
+            if (Pseudo.Text != "" || Pseudo.Text != null)
             {
-                if (MyManager.Connected)
-                    co.laisserCommentaire(MyManager.CurrentUser, new ProjetLibrary.Commentaire(Titre.Text, Texte.Text, (short)Note.Value));
-                else co.laisserCommentaire(new User(Pseudo.Text), new ProjetLibrary.Commentaire(Titre.Text, Texte.Text, (short)Note.Value));
+                if (!co.CommentaireObs.ContainsKey(new User(Pseudo.Text)))
+                {
+                    if (MyManager.Connected && Pseudo.Text == MyManager.CurrentUser.Pseudo)
+                    {
+                        co.laisserCommentaire(MyManager.CurrentUser, new ProjetLibrary.Commentaire(Titre.Text, Texte.Text, (short)Note.Value));
+                    }
+                    else if(!MyManager.UserRead.Contains(new User(Pseudo.Text)))
+                    {
+                        co.laisserCommentaire(new User(Pseudo.Text), new ProjetLibrary.Commentaire(Titre.Text, Texte.Text, (short)Note.Value));
+                    }
+                    else
+                    {
+                        MessageBox.Show(string.Format("Vous devez vous connecter avec le compte de {0} pour pouvoir laisser un avis en son nom.",Pseudo.Text));
+                        Pseudo.Text = "";
+                        return;
+                    }
+                }
+                else
+                {
+                    //MessageBox.Show("Vous avez déjà laisser un commentaire pour ce cocktail");
+                    co.supprimerCommentaire(new User(Pseudo.Text));
+                    Poster(sender, e);
+                }
+                this.Close();
             }
             else
             {
-                //MessageBox.Show("Vous avez déjà laisser un commentaire pour ce cocktail");
-                co.supprimerCommentaire(new User(Pseudo.Text));
-                Poster(sender, e);
+                MessageBox.Show("Veuillez rentrer un pseudo.");
+                return;
             }
-            this.Close();
         }
 
         private void ChoixValeurNote(object sender, RoutedEventArgs e)

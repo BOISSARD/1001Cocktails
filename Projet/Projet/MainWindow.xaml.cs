@@ -36,6 +36,7 @@ namespace Projet
             InitializeComponent();
 
             connecte.Main = this;
+            visiteur.Main = this;
 
             DataContext = MyManager;
             if (MyManager.CurrentUser == null)
